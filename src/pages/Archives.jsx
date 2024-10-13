@@ -7,6 +7,8 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../components/header';
 import '../css/Archives.css';
 import AuthorsDesk from '../components/AuthorsDesk';
+import Footer from '../components/footer';
+
 
 const ArchivesPage = () => {
   const [volumes, setVolumes] = useState([]);
@@ -264,7 +266,7 @@ const ArchivesPage = () => {
                   <div key={`${volume}-${issue}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
                     <a 
                       href='#papers-index' 
-                      onClick={() => handleIssueClick(volume, `Issue${issue}`)} 
+                      onClick={() => handleIssueClick(`Volume ${volume}`, `Issue ${issue}`)}
                       style={{ cursor: 'pointer', color: 'blue', lineHeight: '2' }}
                     >
                       Volume {volume} Issue{issue} ({getDateRange(issue)})
@@ -468,6 +470,7 @@ const ArchivesPage = () => {
           )
 
         }
+        <Footer/>
       </div>
     );
 };

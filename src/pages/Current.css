@@ -1,0 +1,574 @@
+/* .content-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+}
+
+.main-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #005b8c;
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #333;
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.section-title {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #005b8c;
+}
+
+.highlight-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.highlight-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1.1rem;
+}
+
+.current-issue-banner {
+  background-color: #005b8c;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+}
+
+.submit-btn {
+  background-color: #0085FF;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+}
+
+ .banner-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+}  
+
+.banner-volume, .banner-date {
+  font-size: 1.5rem;
+}
+
+.submission-link {
+  color: #005b8c;
+  text-decoration: underline;
+} */
+/* Current.css */
+
+/* .content-container {
+    padding-top: 50px;
+  }
+  
+  .main-title {
+    font-size: 2.8rem;
+    font-weight: bold;
+    color: #0056b3;
+  }
+  
+  .intro-text {
+    font-size: 1.2rem;
+    color: #6c757d;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .about-text {
+    font-size: 1.15rem;
+    color: #495057;
+  }
+  
+  .highlight-list {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
+  .current-issue-banner {
+    background-color: #007bff;
+    border-radius: 10px;
+    padding: 40px;
+    color: #fff;
+  }
+  
+  .banner-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .submit-btn {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  ul.highlight-list {
+    padding-left: 0;
+    list-style: none;
+  }
+  
+  ul.highlight-list li {
+    margin-bottom: 10px;
+  }
+   */
+   /* General Styles */
+body {
+    font-family: 'Merriweather', serif; /* More professional and academic font */
+    background-color: #f8f9fa; /* Subtle background for content focus */
+    color: #343a40; /* Darker text for better readability */
+  }
+  
+  /* Main Content Container */
+  .content-container {
+    padding: 2rem 5%;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  }
+  
+/*   
+  .main-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d6efd; 
+    margin-bottom: 1rem;
+    text-transform: uppercase; 
+  }
+   */
+  /* .section-title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #6c757d; /* Softer heading color */
+  /* } */
+  
+  /* .intro-text, .about-text {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  } */
+  
+  /* Highlight List */
+  /* .highlight-list {
+    padding-left: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  } */
+/*   
+  .highlight-list li {
+    margin-bottom: 0.75rem;
+  } */
+/*   
+  .highlight-list li strong {
+    color: #0d6efd; 
+  } */
+  
+  /* Current Issue Banner */
+  /* .current-issue-banner {
+    padding: 2rem;
+    background-color: #e9ecef; 
+    border-radius: 8px;
+    text-align: center;
+  }
+   */
+  /* .banner-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #212529;
+  } */
+  
+  /* .banner-volume {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #495057;
+  } */
+  
+  /* .banner-date {
+    font-size: 1.25rem;
+    color: #adb5bd;
+  } */
+  
+  /* Submit Button */
+  /* .submit-btn {
+    background-color: #0d6efd;
+    color: #ffffff;
+    font-size: 1.125rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Footer Styling */
+  /* footer {
+    background-color: #f1f3f5;
+    padding: 2rem;
+    text-align: center;
+    color: #495057;
+  }
+   */
+  /* Engagement Section */
+  /* .submission-link {
+    color: #0d6efd;
+    font-weight: 600;
+  } */
+  
+  /* .submission-link:hover {
+    text-decoration: underline;
+  } */
+  
+  /* Media Queries for Responsiveness */
+  /* @media (max-width: 768px) {
+    .content-container {
+      padding: 1.5rem;
+    }
+  
+    .main-title {
+      font-size: 2rem;
+    }
+  
+    .section-title {
+      font-size: 1.5rem;
+    }
+  
+    .banner-title {
+      font-size: 1.75rem;
+    } */
+  
+    /* .banner-volume {
+      font-size: 1.25rem;
+    }
+  
+    .submit-btn {
+      padding: 0.5rem 1.25rem;
+    }
+  
+  .text-justify {
+    text-align: justify;
+  .main-title {
+    font-size: 48px;    
+    color: #005B8C;       
+    font-family: 'Merriweather', serif;  
+    text-align: center;   
+    margin-bottom: 20px;  
+  }
+  
+  .intro-text {
+    font-size: 16px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #4d4d4d;
+    line-height: 1.6;
+    text-align: justify;
+  }
+}  */
+body {
+    font-family: 'Merriweather', serif; /* More professional and academic font */
+    background-color: #f8f9fa; /* Subtle background for content focus */
+    color: #343a40; /* Darker text for better readability */
+  }
+  
+  /* Main Content Container */
+  .content-container {
+    padding: 2rem 5%; /* Padding for top and bottom, 5% on left and right */
+    background-color: #ffffff; /* Card background color */
+    border-radius: 8px; /* Rounded corners for the card */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    margin: 0 auto; /* Center the card */
+    max-width: 1200px; /* Set a maximum width for the card */
+  }
+  
+  /* Main Title */
+  .main-title {
+    font-size: 48px; /* Font size of 48px */
+    color: #005B8C; /* Text color #005bbc */
+    font-family: 'Merriweather', serif; /* Font family Merriweather, serif */
+    text-align: center; /* Center-align the title */
+    margin-bottom: 20px; /* Add some space below the title */
+  }
+  
+  /* Intro Text */
+  .intro-text {
+    font-size: 16px;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #4d4d4d;
+    line-height: 1.6; /* Line height for better readability */
+    text-align: justify; /* Justified text for a cleaner look */
+    margin: 0 1rem; /* Add horizontal margin for space from left and right */
+  }
+  
+  /* Section Titles */
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #6c757d; /* Softer heading color */
+  }
+  
+  /* Cards */
+  .card {
+    border: none; /* Remove default card border */
+    border-radius: 8px; /* Rounded corners for card */
+  }
+  
+  /* Highlight List */
+  .highlight-list {
+    padding-left: 1.5rem;
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+  
+  /* Current Issue Banner */
+  .current-issue-banner {
+    padding: 2rem; /* Padding for the banner */
+    border-radius: 8px; /* Rounded corners for the banner */
+    text-align: center;
+  }
+  
+  /* Submit Button */
+  .submit-btn {
+    background-color: #0d6efd; /* Primary button color */
+    color: #ffffff;
+    font-size: 1.125rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px; /* Rounded button for better design */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* Engagement Section */
+  .submission-link {
+    color: #0d6efd; /* Link color */
+    font-weight: 600;
+  }
+  
+  .submission-link:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+  
+  /* Footer Styling */
+  footer {
+    background-color: #f1f3f5; /* Footer background color */
+    padding: 2rem; /* Padding for footer */
+    text-align: center; /* Center align text */
+    color: #495057; /* Text color */
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 768px) {
+    .content-container {
+      padding: 1.5rem; /* Adjust padding for smaller screens */
+    }
+  
+    .main-title {
+      font-size: 2rem; /* Adjust main title size */
+    }
+  
+    .section-title {
+      font-size: 1.5rem; /* Adjust section title size */
+    }
+  
+    .current-issue-banner {
+      font-size: 1.5rem; /* Adjust banner font size */
+    }
+  
+    .submit-btn {
+      padding: 0.5rem 1.25rem; /* Adjust button padding */
+    }
+  }
+  .card-content {
+    font-size: 16px; /* Font size for card content */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Font family */
+    color: #4d4d4d; /* Text color */
+    line-height: 1.6; /* Line height for readability */
+    text-align: justify; /* Justify text alignment */
+}
+.section-title {
+    font-size: 1.5rem; /* Slightly smaller than main title */
+    font-weight: 600; /* Medium bold */
+    color: #005bbc; /* Use your specified color */
+    margin-bottom: 0.5rem; /* Space below the title */
+    text-align: center; /* Center align the title */
+    text-transform: uppercase; /* Transform text to uppercase for emphasis */
+    letter-spacing: 1px; /* Add some spacing between letters */
+  }
+  .about-text {
+    font-size: 1.1rem; /* Increase font size */
+    line-height: 1.6; /* Increase line height for better readability */
+    color: #333; /* Darker text color for contrast */
+    margin-top: 10px; /* Add space above the paragraph */
+    max-width: 800px; /* Limit width for better line length */
+    margin-left: auto; /* Center align within the column */
+    margin-right: auto; /* Center align within the column */
+  }
+  
+  .section-title {
+    font-size: 2rem; /* Increase section title size */
+    font-weight: bold; /* Make it bold */
+    color: #007bff; /* Change to a color that matches the theme */
+    margin-bottom: 20px; /* Add space below the title */
+  }
+  
+  .section-container {
+    padding: 30px; /* Add padding around the section */
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  .section-title {
+    font-size: 30px; /* Set font size to 40px */
+    font-weight: 600; /* Semi-bold for emphasis */
+    color: #2c3e50; /* Soft navy blue for a professional look */
+    margin-bottom: 15px; /* Space below the title */
+    text-align: center; /* Center the title */
+    font-family: 'Merriweather', serif; /* Apply Merriweather serif font */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+  .section-container {
+    background-color: #f8f9fa; /* Light gray background for a clean look */
+    padding: 40px 20px; /* Padding around the content */
+    border-radius: 8px; /* Rounded corners for a softer appearance */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .section-title {
+    font-size: 28px; /* Set font size to 40px */
+    font-weight: 700; /* Bold for emphasis */
+    color: #34495e; /* Darker blue for a more professional look */
+    margin-top: -10px;
+    text-align: center; /* Center the title */
+    font-family: 'Merriweather', serif; /* Apply Merriweather serif font */
+  }
+  .about-text {
+    font-size: 18px; /* Set font size for readability */
+    line-height: 1.6; /* Line height for better text spacing */
+    color: #4d4d4d; /* Dark gray for softer contrast */
+    font-family: 'Merriweather', serif; /* Elegant serif font */
+    text-align: justify; /* Justify text to stretch across the width */
+    max-width: 1000px; /* Limit the width for better readability */
+    width: 100%; /* Full width */
+    padding: 1rem 0; /* Vertical padding for spacing */
+    margin: 0 auto; /* Center the text block */
+    overflow-wrap: break-word; /* Break long words to prevent overflow */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-text {
+        font-size: 16px; /* Slightly smaller font size for better readability on small screens */
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+        margin: 0 1rem; /* Add horizontal margins for smaller screens */
+    }
+}
+
+.banner-title {
+    font-size: 2.5rem;
+    /* font-weight: bold; */
+  }  
+.banner-volume{
+    font-size: 3.3rem;
+}
+.banner-date{
+    font-size: 2.5rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section-title {
+    font-size: 1.9rem; 
+    font-weight: bold; 
+    color: #2c3e50; 
+    margin-bottom: 20px; 
+    text-align: left; 
+    margin-left: 21px;
+}
+
+.highlight-list {
+    padding: 0; 
+    margin: 0; 
+    list-style-type: none; /* Removes default bullet points */
+}
+
+.list-item {
+    font-size: 1.1rem; 
+    line-height: 1.8; 
+    color: #333; 
+    margin-bottom: 15px; 
+    text-align: left; 
+    padding-left: 25px; /* Adjust to add space between custom bullet and text */
+    position: relative; 
+}
+
+.list-item::before {
+    content: "•"; 
+    color: #007bff; /* Custom blue bullet */
+    font-size: 1.2rem; 
+    position: absolute; 
+    left: 0; 
+    top: 0; 
+}
+
+.submission-link {
+    color: #007bff; 
+    text-decoration: none; 
+    border-bottom: 1px solid #007bff; 
+    transition: color 0.3s, border-bottom 0.3s; 
+}
+
+.submission-link:hover {
+    color: #0056b3; 
+    border-bottom: 1px solid #0056b3; 
+}
+
+@media (max-width: 768px) {
+    .list-item {
+        font-size: 1rem; 
+        padding-left: 10px; 
+    }
+
+    .section-title {
+        font-size: 1.8rem; 
+    }
+}

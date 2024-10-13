@@ -149,9 +149,9 @@ function Index() {
                 <Row className='section1'>
                     <Col xs={12} md={9}>
                         <div className="info">
-                            <h1 style={{}}>International Journal of Enginering, Science Technology and Management (IJESTM)</h1>
+                            <h1 style={{color: '#0072b1'}}>International Journal of Enginering, Science Technology and Management (IJESTM)</h1>
                             <p>
-                                <span><b>International Journal of Enginerring, Science Technology and Management (IJESTM)</b></span>
+                                <span ><b>International Journal of Enginerring, Science Technology and Management (IJESTM) </b></span>
                                 is a leading international multi-disciplinary journal dedicated to advancing research and knowledge across various fields. With a commitment to excellence, innovation, and inclusivity, our journal serves as a platform for researchers, scholars, and professionals from diverse disciplines to share their valuable insights and discoveries. The journal accepts the original research and review articles and extended version of the conference and journal papers from Scientists, Industrialists, Academicians, Engineers and Students in all the fields of electrical and computer system designs.
                                 <br />The journal has high visibility on the articles from the scientific and research communities around the world. The researchers can access the articles and utilize for the development of scientific and research proposals on engineering and technology.
                             </p>

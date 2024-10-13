@@ -1,35 +1,65 @@
+/* Base page styling */
 .indexing-page {
-    padding: 20px;
-    text-align: center;
+  padding: 50px 20px;
+  text-align: left;
+  background-color: #f0f0f5; /* Subtle background color for a clean look */
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Title styling */
+.indexing-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 30px;
+  text-align: left;
+  font-family: 'Merriweather', serif;
+}
+
+/* Grid layout for logos */
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive, ensures equal size */
+  gap: 20px; /* Spacing between logos */
+  justify-items: center; /* Center each logo */
+}
+
+/* Individual logo item */
+.logo-item {
+  text-align: center;
+  padding: 15px;
+}
+
+.logo-item img {
+  width: 120px; /* Fixed size for uniformity */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px;
+  object-fit: contain; /* Ensures the image fits well in the given size */
+}
+
+.logo-item p {
+  font-size: 1rem;
+  color: #444;
+  margin-top: 5px;
+  font-weight: 500;
+}
+
+/* Hover effect for better interaction */
+.logo-item:hover img {
+  transform: scale(1.05); /* Slight zoom on hover */
+  transition: transform 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .indexing-title {
+    font-size: 2rem;
   }
-  
+
   .logo-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Creates a responsive grid */
-    gap: 20px;
-    justify-items: center;  /* Aligns items in the center */
-    margin-top: 20px;
+    gap: 15px; /* Reduce spacing on smaller screens */
   }
-  
-  .logo-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc; /* Optional border for each item */
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-  }
-  
+
   .logo-item img {
-    max-width: 100px;
-    height: auto;
-    margin-bottom: 10px;
+    width: 100px; /* Adjust image size for mobile */
   }
-  
-  .logo-item p {
-    font-size: 1rem;
-    color: #333;
-  }
-  
+}

@@ -1,5 +1,7 @@
 import React from 'react';
 import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
+import './footer.css';
+
 
 export default function Footer() {
   return (
@@ -46,19 +48,19 @@ export default function Footer() {
                 {/* <MDBIcon icon="gem" className="me-3" /> */}
                 International Journal of Engineering, Science Technology and Management 
               </h6>
-              <p>
+              <p  className="footer-paragraph">
               IJESTM is a scholarly open access, peer reviewed international journal with a primary objective to provide the academic community and industry for the submission of original research and applications related to all subjects..              </p>
             </MDBCol>
 
             <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Contact us</h6>
-              <p>
+              <p className="footer-paragraph">
               Feel free to contact us, if you need any queries to be answered
                 {/* <a href='#!' className='text-reset'>
                   Angular
                 </a> */}
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     editor@ijestm.com
                 </a>
@@ -77,32 +79,32 @@ export default function Footer() {
 
             <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Quick Links</h6>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Author's Guidelines
                 </a>
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Online Submission
                 </a>
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Call for paper
                 </a>
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Publication Ethics
                 </a>
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Reviewer Policy
                 </a>
               </p>
-              <p>
+              <p className="footer-paragraph">
                 <a href='#!' className='text-reset'>
                     Reviewer Guidelines
                 </a>
@@ -111,14 +113,14 @@ export default function Footer() {
 
             <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
               <h6 className='text-uppercase fw-bold mb-4'>Aim & Services</h6>
-              <p>
+              <p className="footer-paragraph">
                 {/* <MDBIcon icon="home" className="me-2" /> */}
                 Accepts original and high quality research and technical papers.
               </p>
-              <p>
+              <p className="footer-paragraph">
                 {/* <MDBIcon icon="envelope" className="me-3" /> */}
                 Paper will publish immediately in current issue after registration.              </p>
-              <p>
+              <p className="footer-paragraph">
                 {/* <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88 */}
                 Authors can download their full papers at any time with digital certificate.
               </p>

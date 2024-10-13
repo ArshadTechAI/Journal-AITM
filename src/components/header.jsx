@@ -496,10 +496,10 @@ function Header() {
 
         {/* Social Media Icons */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <a href="https://www.facebook.com" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faFacebook} size={'xl'} color="#003366" /></a>
-          <a href="https://www.twitter.com" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faTwitter} size={'xl'} color="#003366" /></a>
-          <a href="https://www.instagram.com" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faInstagram} size={'xl'} color="#003366" /></a>
-          <a href="https://www.linkedin.com" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faLinkedin} size={'xl'} color="#003366" /></a>
+          <a href="https://www.facebook.com/anjumanitm" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faFacebook} size={'xl'} color="#003366" /></a>
+          <a href="https://twitter.com/anjumanitm" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faTwitter} size={'xl'} color="#003366" /></a>
+          <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faInstagram} size={'xl'} color="#003366" /></a>
+          <a href="https://www.linkedin.com/school/anjumanitm/" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faLinkedin} size={'xl'} color="#003366" /></a>
 
           {/* Profile Icon */}
           {/* <a href="/profile" style={{ marginLeft: '20px' }}><FontAwesomeIcon icon={faUserCircle} size={30} color="#003366" /></a> */}

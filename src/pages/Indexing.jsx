@@ -11,9 +11,7 @@ const logos = [
   { id: 5, src: '/images/5.png', alt: 'Logo 5', name: 'International Scientific Indexing' },
   { id: 6, src: '/images/6.jpg', alt: 'Logo 6', name: 'DRJI' },
   { id: 7, src: '/images/7.png', alt: 'Logo 7', name: 'Root Indexing' },
-  { id: 8, src: '/images/8.png', alt: 'Logo 8', name: 'Scientific Journal Imapct Factor' },
-
-  // Add more logos as needed
+  { id: 8, src: '/images/8.png', alt: 'Logo 8', name: 'Scientific Journal Impact Factor' },
 ];
 
 const Indexing = () => {
@@ -21,12 +19,12 @@ const Indexing = () => {
     <>
       <Header />
       <div className="indexing-page">
-        <h1>Indexing Partners</h1>
+        <h1 className="indexing-title">Our Indexing Partners</h1>
         <div className="logo-grid">
           {logos.map((logo) => (
             <div className="logo-item" key={logo.id}>
               <img src={logo.src} alt={logo.alt} />
-              {/* <p>{logo.name}</p> */}
+              <p>{logo.name}</p>
             </div>
           ))}
         </div>

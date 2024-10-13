@@ -1,0 +1,401 @@
+ .aim-scope-page {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0; /* Remove margin to eliminate space */
+    width: 100%; /* Set width to 100% for full width */
+    max-width: none; /* Remove max-width restriction */
+    padding-left: 10px; /* Optional padding for aesthetics */
+    padding-right: 10px; /* Optional padding for aesthetics */
+}
+
+
+h1, h2 {
+    color: #003366; /* Dark blue for headings */
+    margin-bottom: 10px; /* Space below headings */
+}
+
+h2 {
+    border-bottom: 2px solid #003366; /* Underline for h2 headings */
+    padding-bottom: 5px; /* Space below h2 text */
+}
+
+ol, ul {
+    margin-left: 20px; /* Indent lists for clarity */
+}
+
+li {
+    margin-bottom: 10px; /* Space between list items */
+}
+
+p {
+    margin-bottom: 15px; /* Space below paragraphs */
+}
+
+/* Add hover effect on links if any */
+a {
+    color: #003366; /* Match link color to headings */
+    text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover for clarity */
+}
+.center-text {
+    text-align: center;
+    margin: 20px 0; /* Optional: adds space above and below the heading */
+    font-size: 40px; 
+}
+
+.underline {
+        text-decoration: underline;
+        margin-bottom: 20px; /* Adjust this value for desired spacing */
+} 
+.aim-scope-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9; /* Light background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .title {
+    font-size: 2.5rem;
+    color: #4a90e2; /* A shade of blue for the title */
+    margin-bottom: 20px;
+  }
+  
+  .introduction,
+  .aim-scope-section p {
+    margin: 15px 0;
+    padding: 10px;
+    border-left: 4px solid #4a90e2; /* Stylish left border */
+    background-color: #ffffff; /* White background for the text area */
+  }
+  
+  .section-title {
+    font-size: 2rem;
+    margin-top: 30px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .aim-list, .scope-list, .focus-values-list, .article-types-list, .audience-list, .peer-review-list {
+    padding-left: 20px;
+    margin: 10px 0;
+    list-style-type: disc; /* Disc style for lists */
+  }
+  
+  .nested-list {
+    padding-left: 20px;
+    list-style-type: circle; /* Circle style for nested lists */
+  }
+  
+  .b {
+    font-weight: bold; /* Bold for emphasis */
+  }
+  
+  .center-text {
+    text-align: center; /* Center align text */
+  }
+  
+  .spacing {
+    height: 20px; /* For spacing between elements */
+  }
+  
+  body {
+    margin: 0; /* Remove default margin */
+    font-family: 'Arial', sans-serif; /* Base font for the entire body */
+    background-color: #f4f4f4; /* Light gray background for the body */
+  }
+  
+  .aim-scope-page {
+    max-width: 1200px; /* Limit the max width for readability */
+    margin: 0 auto; /* Center the container */
+    padding: 40px; /* Increased padding for spacious feel */
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  }
+  
+  .title {
+    font-size: 3rem; /* Increased font size for emphasis */
+    color: #005b8c; /* Blue color for the title */
+    text-align: center; /* Center align the title */
+    margin-bottom: -10px; /* Space below the title */
+    margin-top: -30px;
+  }
+  
+  .introduction {
+    font-size: 1.1rem; /* Slightly larger font for better readability */
+    margin-bottom: 30px; /* Space below introduction */
+    line-height: 1.8; /* Increased line-height for readability */
+    color: #333333; /* Darker gray for the text */
+    padding: 20px; /* Padding for internal spacing */
+    border-left: 4px solid #4a90e2; /* Stylish left border */
+    background-color: #f9f9f9; /* Light background for introduction */
+    border-radius: 5px; /* Rounded corners for introduction */
+  }
+  
+  .section-title {
+    font-size: 2.5rem; /* Larger font size for section titles */
+    margin-top: 40px; /* Space above section title */
+    color: #333; /* Dark color for section titles */
+    text-transform: uppercase; /* Uppercase for emphasis */
+    border-bottom: 2px solid #4a90e2; /* Underline for section titles */
+    padding-bottom: 10px; /* Space below the title */
+  }
+  
+  .aim-scope-section p {
+    margin: 20px 0; /* Space around paragraphs */
+    padding: 10px; /* Padding for paragraphs */
+    line-height: 1.6; /* Increased line height for readability */
+    color: 333333; /* Slightly lighter gray for paragraph text */
+  }
+  
+  .aim-list,
+  .scope-list,
+  .focus-values-list,
+  .article-types-list,
+  .audience-list,
+  .peer-review-list {
+    padding-left: 20px; /* Padding for list */
+    margin: 10px 0; /* Margin for spacing */
+    list-style-type: disc; /* Disc style for lists */
+  }
+  
+  .nested-list {
+    padding-left: 20px; /* Padding for nested lists */
+    list-style-type: circle; /* Circle style for nested lists */
+  }
+  
+  .b {
+    font-weight: bold; /* Bold for emphasis */
+  }
+  
+  .center-text {
+    text-align: center; /* Center align text */
+  }
+  
+  .spacing {
+    height: 20px; /* Spacing between elements */
+  }
+  
+  /* Hover effects for links */
+  a {
+    color: #4a90e2; /* Link color */
+    text-decoration: none; /* No underline */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #2a6ca7; /* Darker blue on hover */
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .aim-scope-page {
+      padding: 20px; /* Less padding on smaller screens */
+    }
+  
+    .title {
+      font-size: 2.5rem; /* Adjust title size on smaller screens */
+    }
+  
+    .section-title {
+      font-size: 2rem; /* Adjust section title size */
+    }
+  }
+  
+
+
+
+
+
+  .right-align {
+    margin-left: 620px;
+  }
+
+  .scope-list {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+    width: 530px;
+  }
+ 
+  
+  .scope-list li {
+    background-color: #f9f9f9; /* Light background color for the card */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin: 10px 0; /* Space between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s; /* Smooth transform on hover */
+  }
+  
+  .scope-list li:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  .scope-list1 {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+    /* width: 530px; */
+
+    width: 530px;
+    margin-right: -100px;
+  }
+  .scope-list1 li{
+    background-color: #f9f9f9; /* Light background color for the card */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin: 10px 0; /* Space between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s; /* Smooth transform on hover */
+
+  }
+  .scope-list1 li:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  .nested-list {
+    list-style-type: circle; /* Circle bullets for nested lists */
+    padding-left: 20px; /* Indent nested lists */
+  }
+  
+  .nested-list li {
+    margin: 5px 0; /* Space between nested items */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .scope-list {
+    list-style-type: none; /* Remove default list bullets */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .scope-list li {
+    background-color: #f9f9f9; /* Light background color for the card */
+    border: 1px solid #e0e0e0; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside the card */
+    margin: 10px 0; /* Space between cards */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: transform 0.2s; /* Smooth transform on hover */
+  }
+  
+  .scope-list li:hover {
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  .nested-list {
+    list-style-type: circle; /* Circle bullets for nested lists */
+    padding-left: 20px; /* Indent nested lists */
+  }
+  
+  .nested-list li {
+    margin: 5px 0; /* Space between nested items */
+    margin: 5px 0;
+    width: 49%;
+    margin-left: -3px;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .left{
+    margin-left: 16px;
+    font-size: 20px;
+  }
+  .left_right{
+    margin-left: 540px;
+    font-size: 20px;
+  }
+  .left_right1{
+    margin-left: 500px;
+  }
+  .right1{
+    margin-left: 560px;
+    width: 900px;
+  }
+  .left1{
+    width: 900px;
+
+  }
