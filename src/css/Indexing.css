@@ -1,53 +1,108 @@
 /* Base page styling */
 .indexing-page {
-  padding: 50px 20px;
-  text-align: left;
-  background-color: #f0f0f5; /* Subtle background color for a clean look */
-  font-family: 'Open Sans', sans-serif;
+  padding: 60px 20px;
+  background-color: #f5f7fa;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  animation: fadeIn 1s ease-in; /* Fade-in animation */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Title styling */
 .indexing-title {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: #2a2a2a;
-  margin-bottom: 30px;
-  text-align: left;
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #4A4A4A; /* Slightly darker title */
+  margin-bottom: 20px;
   font-family: 'Merriweather', serif;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
-/* Grid layout for logos */
+/* Intro paragraph styling */
+.indexing-intro {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Grid layout for cards */
 .logo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Responsive, ensures equal size */
-  gap: 20px; /* Spacing between logos */
-  justify-items: center; /* Center each logo */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px; /* Reduced gap between cards */
+  padding: 0 30px;
 }
 
-/* Individual logo item */
+/* Card styling */
 .logo-item {
-  text-align: center;
-  padding: 15px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Add transition for background color */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 250px; /* Reduced height for smaller cards */
+  width: 250px; /* Reduced width for smaller cards */
+  padding: 15px; /* Adjusted padding */
+  margin: 0 auto; /* Centering the card */
+  position: relative; /* Positioning for the overlay effect */
 }
 
+/* Card hover effect */
+.logo-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
+  background-color: #f9f9f9; /* Change background color on hover */
+}
+
+/* Image styling */
 .logo-item img {
-  width: 120px; /* Fixed size for uniformity */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px;
-  object-fit: contain; /* Ensures the image fits well in the given size */
+  width: 80%;
+  height: auto;
+  max-height: 120px; /* Adjusted max height for smaller cards */
+  object-fit: contain;
+  margin-bottom: 10px; /* Adjusted margin */
+  border-radius: 8px; /* Rounded corners for images */
+  transition: transform 0.3s ease; /* Smooth image transition */
 }
 
-.logo-item p {
-  font-size: 1rem;
-  color: #444;
-  margin-top: 5px;
-  font-weight: 500;
+/* Image hover effect */
+.logo-item img:hover {
+  transform: scale(1.1); /* Slightly enlarge the image on hover */
 }
 
-/* Hover effect for better interaction */
-.logo-item:hover img {
-  transform: scale(1.05); /* Slight zoom on hover */
-  transition: transform 0.3s ease-in-out;
+/* Title styling inside card */
+.logo-item h3 {
+  font-size: 1.2rem; /* Adjusted font size for smaller cards */
+  color: #2a2a2a;
+  margin-top: 10px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .indexing-title {
+    font-size: 2.4rem;
+  }
+
+  .logo-grid {
+    gap: 10px; /* Keep the gap smaller on medium screens */
+  }
 }
 
 @media (max-width: 768px) {
@@ -55,11 +110,28 @@
     font-size: 2rem;
   }
 
+  .indexing-intro {
+    font-size: 1.1rem;
+  }
+
   .logo-grid {
-    gap: 15px; /* Reduce spacing on smaller screens */
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+    gap: 10px; /* Keep the gap smaller */
+  }
+
+  .logo-item {
+    height: auto; /* Auto height to fit content */
+    width: auto;  /* Auto width to fit content */
   }
 
   .logo-item img {
-    width: 100px; /* Adjust image size for mobile */
+    max-height: 100px; /* Smaller image for mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .logo-grid {
+    grid-template-columns: 1fr; /* Single column on very small screens */
+    gap: 10px; /* Smaller gap on very small screens */
   }
 }

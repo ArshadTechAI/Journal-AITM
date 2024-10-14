@@ -264,13 +264,14 @@ const ArchivesPage = () => {
               for (let issue = maxIssues; issue >= 1; issue--) {
                 items.push(
                   <div key={`${volume}-${issue}`} style={{ display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
-                    <a 
-                      href='#papers-index' 
-                      onClick={() => handleIssueClick(`Volume ${volume}`, `Issue ${issue}`)}
-                      style={{ cursor: 'pointer', color: 'blue', lineHeight: '2' }}
-                    >
-                      Volume {volume} Issue{issue} ({getDateRange(issue)})
-                    </a>
+                   <a 
+  href='#papers-index' 
+  onClick={() => handleIssueClick(`Volume${volume}`, `Issue${issue}`)}
+  style={{ cursor: 'pointer', color: 'blue', lineHeight: '2' }}
+>
+  Volume {volume} Issue {issue} ({getDateRange(issue)})
+</a>
+
                   </div>
                 );
               }
