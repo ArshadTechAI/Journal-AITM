@@ -1,10 +1,15 @@
-/* Base page styling */
+/* Base page styling with white background */
 .indexing-page {
   padding: 60px 20px;
-  background-color: #f5f7fa;
+  background-color: #ffffff;
   font-family: 'Roboto', sans-serif;
   text-align: center;
-  animation: fadeIn 1s ease-in; /* Fade-in animation */
+  max-width: 1150px;
+  margin: 0 auto;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  animation: fadeIn 1s ease-in;
+  margin-top: 20px;
 }
 
 /* Fade-in animation */
@@ -21,77 +26,105 @@
 .indexing-title {
   font-size: 2.8rem;
   font-weight: 700;
-  color: #4A4A4A; /* Slightly darker title */
+  color: #333;
   margin-bottom: 20px;
   font-family: 'Merriweather', serif;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  letter-spacing: 1px;
 }
 
 /* Intro paragraph styling */
 .indexing-intro {
   font-size: 1.2rem;
-  color: #666;
+  color: #555;
   margin-bottom: 40px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
+  font-weight: 300;
 }
 
 /* Grid layout for cards */
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px; /* Reduced gap between cards */
-  padding: 0 30px;
+  gap: 10px;
+  padding: 0 40px;
+  margin-bottom: 40px;
 }
 
 /* Card styling */
 .logo-item {
   background-color: white;
   border-radius: 12px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Add transition for background color */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 250px; /* Reduced height for smaller cards */
-  width: 250px; /* Reduced width for smaller cards */
-  padding: 15px; /* Adjusted padding */
-  margin: 0 auto; /* Centering the card */
-  position: relative; /* Positioning for the overlay effect */
+  height: 280px;
+  width: 280px;
+  padding: 20px;
+  margin: 0 auto;
+  position: relative;
 }
 
-/* Card hover effect */
 .logo-item:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-  background-color: #f9f9f9; /* Change background color on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
 }
 
-/* Image styling */
 .logo-item img {
   width: 80%;
   height: auto;
-  max-height: 120px; /* Adjusted max height for smaller cards */
+  max-height: 150px;
   object-fit: contain;
-  margin-bottom: 10px; /* Adjusted margin */
-  border-radius: 8px; /* Rounded corners for images */
-  transition: transform 0.3s ease; /* Smooth image transition */
+  margin-bottom: 15px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-/* Image hover effect */
-.logo-item img:hover {
-  transform: scale(1.1); /* Slightly enlarge the image on hover */
-}
-
-/* Title styling inside card */
 .logo-item h3 {
-  font-size: 1.2rem; /* Adjusted font size for smaller cards */
+  font-size: 1.4rem;
   color: #2a2a2a;
   margin-top: 10px;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.logo-description {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+  margin-top: 5px;
+  line-height: 1.4;
+}
+
+/* Footer section styling */
+.indexing-footer {
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+}
+
+.indexing-footer h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.indexing-footer p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Responsive adjustments */
@@ -101,7 +134,12 @@
   }
 
   .logo-grid {
-    gap: 10px; /* Keep the gap smaller on medium screens */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .logo-item img {
+    max-height: 140px;
   }
 }
 
@@ -115,23 +153,82 @@
   }
 
   .logo-grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
-    gap: 10px; /* Keep the gap smaller */
-  }
-
-  .logo-item {
-    height: auto; /* Auto height to fit content */
-    width: auto;  /* Auto width to fit content */
-  }
-
-  .logo-item img {
-    max-height: 100px; /* Smaller image for mobile */
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .logo-grid {
-    grid-template-columns: 1fr; /* Single column on very small screens */
-    gap: 10px; /* Smaller gap on very small screens */
+    grid-template-columns: 1fr;
+  }
+
+  .indexing-footer {
+    padding: 20px;
+  }
+
+  .indexing-footer p {
+    font-size: 1rem;
+  }
+}
+/* Page title styling */
+.indexing-title {
+  font-size: 3rem; /* Font size */
+  color: #005B8c; /* Text color */
+  font-family: 'Merriweather', serif; /* Font family */
+  margin: 20px 0; /* Margin above and below the title */
+  text-align: center; /* Center align the title */
+  margin-top: -20px;
+}
+.indexing-footer {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 40px; /* Increased padding for spacing */
+  border-radius: 10px; /* Slightly more rounded corners */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
+  max-width: 1100px; /* Increased max width for better readability */
+  margin: 30px auto; /* Centered with margin */
+  border-left: 5px solid #005B8C; /* Decorative left border for a touch of style */
+}
+
+.footer-heading {
+  font-size: 40px; /* Larger font for headings */
+  font-family: 'Merriweather', serif; /* Font style for headings */
+  color: #005B8C; /* Color for headings */
+  margin-bottom: 20px; /* Spacing below headings */
+  position: relative; /* Position for the pseudo-element */
+}
+
+.footer-heading::after {
+  content: ""; /* Adds a decorative line below headings */
+  display: block; /* Makes it a block element */
+  width: 50px; /* Width of the line */
+  height: 3px; /* Height of the line */
+  background-color: #005B8C; /* Color of the line */
+  margin: 10px 0; /* Spacing around the line */
+  border-radius: 2px; /* Rounded edges for the line */
+}
+
+.footer-paragraph {
+  font-size: 15px; /* Increased font size for paragraphs */
+  font-family: system-ui, -apple-system, Segoe UI; /* Font family for paragraphs */
+  color: white; /* Text color for paragraphs */
+  line-height: 1.7; /* Increased line height for readability */
+  margin-bottom: 25px; /* Spacing below paragraphs */
+}
+
+.footer-paragraph:last-of-type {
+  margin-bottom: 0; /* No margin below the last paragraph */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .indexing-footer {
+      padding: 30px; /* Adjust padding on smaller screens */
+      max-width: 95%; /* Use most of the width on mobile */
+  }
+  .footer-heading {
+      font-size: 32px; /* Smaller headings on mobile */
+  }
+  .footer-paragraph {
+      font-size: 16px; /* Slightly smaller paragraphs on mobile */
   }
 }

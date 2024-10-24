@@ -113,6 +113,7 @@
     background-color: #EFEFEF;
     border-radius: 12px;
     padding: 20px;
+    margin-top: 52px;
 }
 .section2a .download_box{
     flex-direction: column;
@@ -203,3 +204,248 @@
         margin: 10px;
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .section1 .info {
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    line-height: 1.8;
+}
+
+.section1 .info h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0072b1;
+}
+
+.section1 .info p.intro-text {
+    font-size: 1.1rem;
+    text-align: justify;
+    margin-bottom: 15px;
+}
+
+.section1 .info p.mission-text {
+    font: 17.6px system-ui, -apple-system, "segoe";
+    text-align: justify;
+    margin-bottom: 15px;
+    color: #4d4d4d;
+    line-height: 27px;
+}
+
+
+.section1 .info p b {
+    color: #0072b1;
+    font-weight: 600;
+}
+
+.section1 .info p .fa {
+    color: #0072b1;
+    margin-right: 10px;
+}
+
+.author_desk_container {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.author_desk h1 {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.author_desk ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.author_desk ul li {
+    margin-bottom: 10px;
+}
+
+.author_desk ul li a {
+    text-decoration: none;
+    color: #0072b1;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+}
+
+.author_desk ul li a:hover {
+    color: #005580;
+}
+
+.submit {
+    background-color: #0072b1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.submit:hover {
+    background-color: #005580;
+}
+/* ------ */
+.section1 .info p.intro-text .fa-globe {
+    color: #0085FF; /* Blue Globe Icon */
+}
+
+.section1 .info p.mission-text .fa-users {
+    color: #28a745; /* Green Users Icon */
+}
+
+.section1 .info p.mission-text .fa-file-alt {
+    color: #FFC107; /* Yellow File Icon */
+}
+
+.section1 .info p.mission-text .fa-globe {
+    color: #DC3545; /* Red Globe Icon */
+}
+/* section 2 */
+.section1 .info {
+    font-family: 'Open Sans', sans-serif; /* Maintain consistent font */
+    color: #333;
+    line-height: 1.8; /* Improved readability */
+}
+
+.section1 .info h1 {
+    font-size: 2rem; /* Header size */
+    margin-bottom: 20px; /* Spacing below the header */
+    color: #0072b1; /* Consistent color */
+}
+
+.section1 .info p.benefit-text {
+    font-size: 1.1rem; /* Consistent font size */
+    text-align: justify; /* Align text for readability */
+    margin-bottom: 15px; /* Spacing below paragraphs */
+}
+
+.section1 .info p b {
+    color: #0072b1; /* Highlighted text color */
+    font-weight: 600; /* Bold text */
+}
+
+.section1 .info p .fa {
+    margin-right: 10px; /* Space between icon and text */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.custom-text {
+    color: #4d4d4d;
+    font: 17.6px system-ui, -apple-system, "Segoe";
+    display: inline; /* or inline-block */
+}
+/* next  container */
+.open-access-container {
+    display: flex; /* Flexbox to center content */
+    flex-direction: column; /* Align items vertically */
+    align-items: flex-start; /* Align items to the left */
+    color: #333; /* Default text color */
+    padding: 20px; /* Adjusted internal spacing */
+}
+
+.open-access-title {
+    font-size: 2.5rem; /* Larger font size for the main title */
+    font-weight: 700; /* Bold title */
+    color: #0072b1; /* Main color for the title */
+    margin-bottom: 10px; /* Spacing below the title */
+}
+
+.open-access-subtitle {
+    font-size: 1.5rem; /* Subtitle font size */
+    color: #555; /* Slightly darker color for subtitle */
+    margin-bottom: 20px; /* Spacing below the subtitle */
+}
+
+.open-access-list {
+    list-style-type: none; /* Remove default list style */
+    padding: 0; /* Remove default padding */
+}
+
+.open-access-list li {
+    font-size: 1.2rem; /* Font size for list items */
+    margin-bottom: 10px; /* Spacing between list items */
+    position: relative; /* For custom bullet points */
+    padding-left: 20px; /* Space for bullet point */
+}
+
+.open-access-list li:before {
+    content: ''; /* Custom bullet point */
+    position: absolute;
+    left: 0; /* Positioning of bullet */
+    top: 50%; /* Centering bullet vertically */
+    transform: translateY(-50%); /* Adjusting position */
+    width: 8px; /* Size of bullet */
+    height: 8px; /* Size of bullet */
+    border-radius: 50%; /* Circular bullet */
+    background-color: #0072b1; /* Color of bullet */
+}
+
+
+
+/* section 3 */
+.custom-text {
+    font: 17.6px system-ui, -apple-system, "segoe";
+    text-align: justify;
+    margin-bottom: 15px;
+    color: #4d4d4d;
+    line-height: 27px;
+  }
+  
+  .icon {
+    margin-right: 8px; /* Space between icon and text */
+    color: #007BFF; /* Icon color */
+    font-size: 18px; /* Icon size */
+  }
+  
+  .highlight {
+    font-weight: bold; /* Bold highlighted text */
+    color: #0072b1; /* Change the highlight color */
+  }
+  
+  .email-link {
+    color: #007BFF; /* Email link color */
+    text-decoration: underline; /* Underline for email */
+  }
+  
+  .email-link:hover {
+    color: #0056b3; /* Darker shade on hover */
+  }
+  

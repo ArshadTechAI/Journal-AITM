@@ -737,7 +737,7 @@ const handleSubmit = async (e) => {
 
             {/* <Header/> */}
             <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
-  <h2 style={{ fontSize: '3rem', color: '#005b8c' }}>Submit Research Paper</h2>
+  <h1 style={{ fontSize: '3rem', color: '#005b8c' }}>Submit Research Paper</h1>
 </div>
 
             <hr />

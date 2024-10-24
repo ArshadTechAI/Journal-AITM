@@ -1,12 +1,21 @@
-import React from 'react';
-import { MDBFooter, MDBContainer, MDBRow, MDBCol, MDBIcon } from 'mdb-react-ui-kit';
-import './footer.css';
-
+import React from "react";
+import {
+  MDBFooter,
+  MDBContainer,
+  MDBRow,
+  MDBCol,
+  MDBIcon,
+} from "mdb-react-ui-kit";
+import "./footer.css";
 
 export default function Footer() {
   return (
-    <MDBFooter color='white' style={{backgroundColor: '#303030'}} className='text-center text-lg-start text-muted'>
-      <section className='d-flex justify-content-center justify-content-lg-between p-4 '>
+    <MDBFooter
+      color="white"
+      style={{ backgroundColor: "#303030" }}
+      className="text-center text-lg-start text-muted"
+    >
+      <section className="d-flex justify-content-center justify-content-lg-between p-4 ">
         {/* <div className='me-5 d-none d-lg-block'>
           <span>Get connected with us on social networks:</span>
         </div>
@@ -33,36 +42,46 @@ export default function Footer() {
         </div> */}
       </section>
 
-      <section className=''>
-        <MDBContainer className='text-center text-md-center mt-5 text-white'>
-          <MDBRow className='mt-3'>
-            <MDBCol md="3" lg="4" xl="3" className='mx-auto mb-4'>
-                <img
-                  src="/images/logo_white_bg.png" // Replace with your logo path
-                  alt="IJESTM Logo"
-                  style={{
-                    marginBottom: '20px',
-                  }}
-                />
-              <h6 className='text-uppercase fw-bold mb-4'>
+      <section className="">
+        <MDBContainer className="text-center text-md-center mt-5 text-white">
+          <MDBRow className="mt-3">
+            <MDBCol md="3" lg="4" xl="3" className="mx-auto mb-4">
+              <img
+                src="/images/logo_white_bg.png" // Replace with your logo path
+                alt="IJESTM Logo"
+                style={{
+                  marginBottom: "20px",
+                }}
+              />
+              <h6 className="text-uppercase fw-bold mb-4">
                 {/* <MDBIcon icon="gem" className="me-3" /> */}
-                International Journal of Engineering, Science Technology and Management 
+                International Journal of Engineering, Science Technology and
+                Management 
               </h6>
-              <p  className="footer-paragraph">
-              IJESTM is a scholarly open access, peer reviewed international journal with a primary objective to provide the academic community and industry for the submission of original research and applications related to all subjects..              </p>
+              <p className="footer-paragraph">
+                IJESTM is a scholarly open access, peer reviewed international
+                journal with a primary objective to provide the academic
+                community and industry for the submission of original research
+                and applications related to all subjects..{" "}
+              </p>
             </MDBCol>
 
-            <MDBCol md="2" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Contact us</h6>
+            <MDBCol md="2" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Contact us</h6>
               <p className="footer-paragraph">
-              Feel free to contact us, if you need any queries to be answered
+                Feel free to contact us, if you need any queries to be answered
                 {/* <a href='#!' className='text-reset'>
                   Angular
                 </a> */}
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    editor@ijestm.com
+                <a href="mailto:aitm@ijestm.com" className="text-reset">
+                  aitm@ijestm.com
+                </a>
+
+                <br />
+                <a href="tel:9945387216" className="text-reset">
+                  9945387216
                 </a>
               </p>
               {/* <p>
@@ -77,52 +96,55 @@ export default function Footer() {
               </p> */}
             </MDBCol>
 
-            <MDBCol md="3" lg="2" xl="2" className='mx-auto mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Quick Links</h6>
+            <MDBCol md="3" lg="2" xl="2" className="mx-auto mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Quick Links</h6>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Author's Guidelines
+                <a href="/publication-ethics" className="text-reset">
+                  Author's Guidelines
                 </a>
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Online Submission
+                <a href="/submissions" className="text-reset">
+                  Online Submission
                 </a>
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Call for paper
+                <a href="/contact-us" className="text-reset">
+                  Call for paper
                 </a>
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Publication Ethics
+                <a href="/publication-ethics" className="text-reset">
+                  Publication Ethics
                 </a>
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Reviewer Policy
+                <a href="/publication-ethics" className="text-reset">
+                  Reviewer Policy
                 </a>
               </p>
               <p className="footer-paragraph">
-                <a href='#!' className='text-reset'>
-                    Reviewer Guidelines
+                <a href="/publication-ethics" className="text-reset">
+                  Reviewer Guidelines
                 </a>
               </p>
             </MDBCol>
 
-            <MDBCol md="4" lg="3" xl="3" className='mx-auto mb-md-0 mb-4'>
-              <h6 className='text-uppercase fw-bold mb-4'>Aim & Services</h6>
+            <MDBCol md="4" lg="3" xl="3" className="mx-auto mb-md-0 mb-4">
+              <h6 className="text-uppercase fw-bold mb-4">Aim & Services</h6>
               <p className="footer-paragraph">
                 {/* <MDBIcon icon="home" className="me-2" /> */}
                 Accepts original and high quality research and technical papers.
               </p>
               <p className="footer-paragraph">
                 {/* <MDBIcon icon="envelope" className="me-3" /> */}
-                Paper will publish immediately in current issue after registration.              </p>
+                Paper will publish immediately in current issue after
+                registration.{" "}
+              </p>
               <p className="footer-paragraph">
                 {/* <MDBIcon icon="phone" className="me-3" /> + 01 234 567 88 */}
-                Authors can download their full papers at any time with digital certificate.
+                Authors can download their full papers at any time with digital
+                certificate.
               </p>
               {/* <p>
                 <MDBIcon icon="print" className="me-3" /> + 01 234 567 89
@@ -132,16 +154,25 @@ export default function Footer() {
         </MDBContainer>
       </section>
 
-      <center><hr style={{ width: '70%', color: 'white'}}/></center>
+      <center>
+        <hr style={{ width: "70%", color: "white" }} />
+      </center>
 
-      <div className='text-center p-4 text-white' style={{ backgroundColor: 'rgba(0, 0, 0, 0.05)' }}>
+      <div
+        className="text-center p-4 text-white"
+        style={{ backgroundColor: "rgba(0, 0, 0, 0.05)" }}
+      >
         © 2021 Copyright:
         <span>
-            <a className='text-reset fw-bold' href='https://.com/' style={{margin: '0px 10px 0px 10px',}}>
-            AITM 
-            </a>
+          <a
+            className="text-reset fw-bold"
+            href="https://.com/"
+            style={{ margin: "0px 10px 0px 10px" }}
+          >
+            AITM
+          </a>
         </span>
-         | All rights reserved
+        | All rights reserved
       </div>
     </MDBFooter>
   );

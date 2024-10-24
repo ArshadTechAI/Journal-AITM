@@ -497,13 +497,24 @@ function Current() {
 
   return (
     <>
+    
       <Header />
 
       <Container fluid className="content-container my-5 px-5">
         <Row>
           <Col lg={12} className="text-center">
             <h2 className="main-title">Explore the Latest Research</h2>
-            <p className="intro-text">
+            <p
+  className="intro-text"
+  style={{
+    fontSize: '17.6px',
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    color: 'rgb(77, 77, 77)',
+    lineHeight: '1.6',
+    textAlign: 'justify',
+    margin: '0px 1rem',
+  }}
+>
               The <strong>Current Issue</strong> of <strong>IJESTM</strong>{" "}
               brings together a diverse range of studies and research articles
               from leading experts. This issue offers fresh perspectives,
@@ -531,13 +542,22 @@ function Current() {
           <Col lg={4} className="mb-4">
           <Card className="shadow-lg">
               <Card.Body>
-                <Card.Title className="section-title">
+                <Card.Title className="section-title" style={{ color: '#005b8c' }}>
                 Innovative Research                </Card.Title>
-                <Card.Text className="card-content">
-                Learn about the latest trends and breakthroughs in Science Field. Discover how groundbreaking research is transforming
-                  industries and paving the way for future advancements.
+                <Card.Text
+  className="card-content"
+  style={{
+    fontSize: '17.6px',
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    color: 'black',
+    lineHeight: '1.4',
+    textAlign: 'justify',
+    margin: '0px 1rem',
+  }}
+>
+  {`Learn about the latest trends and breakthroughs in the Science Field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.`.replace(/\s+/g, ' ').trim()}
+</Card.Text>
 
-                </Card.Text>
               </Card.Body>
             </Card>
            
@@ -547,14 +567,19 @@ function Current() {
           <Col lg={4} className="mb-4">
             <Card className="shadow-lg">
               <Card.Body>
-                <Card.Title className="section-title">
+                <Card.Title className="section-title" style={{ color: '#005b8c' }}>
                   Global Perspectives
                 </Card.Title>
-                <Card.Text className="card-content">
-                  Discover research from scholars worldwide, offering a
-                  comprehensive global outlook. Gain insight into how different
-                  regions approach and solve global challenges in innovative
-                  ways.
+                <Card.Text className="card-content"
+                style={{
+                  fontSize: '17.6px',
+                  fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                  color: 'black',
+                  lineHeight: '1.4',
+                  textAlign: 'justify',
+                  margin: '0px 1rem',
+                }}>
+                Discover research from scholars worldwide, offering a comprehensive global outlook. Gain insight into how different regions approach and solve global challenges in innovative ways.Inspire collaborative change.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -564,10 +589,17 @@ function Current() {
           <Col lg={4} className="mb-4">
             <Card className="shadow-lg">
               <Card.Body>
-                <Card.Title className="section-title">
-                Multidisciplinary Focus
+              <Card.Title className="section-title" style={{ color: '#005b8c' }}>
+              Multidisciplinary Focus
                 </Card.Title>
-                <Card.Text className="card-content">
+                <Card.Text className="card-content" style={{
+    fontSize: '17.6px',
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    color: 'black',
+    lineHeight: '1.4',
+    textAlign: 'justify',
+    margin: '0px 1rem',
+  }}>
                 The articles in this issue span multiple disciplines, offering
                   a holistic view and interdisciplinary insights. It’s a
                   convergence of diverse fields that lead to more innovative
@@ -585,15 +617,38 @@ function Current() {
 
  
         <Row className="mt-5">
-  <Col lg={12} className="text-center section-container">
-    <h2 className="section-title mb-4">
-      About the Current Issue
-    </h2>
-    <p className="about-text">
-      At <strong>IJESTM</strong>, we are committed to publishing high-quality, peer-reviewed research that makes a lasting impact. This issue presents studies from top-tier researchers exploring both established fields and emerging trends, offering groundbreaking discoveries and innovative perspectives that push the boundaries of knowledge.
-      <br />
-      Our latest issue showcases a diverse array of studies conducted by top-tier researchers, each contributing valuable insights into their respective fields. This issue presents a thorough exploration of both established domains and emerging trends, highlighting the dynamic nature of contemporary research.
-    </p>
+        <Col lg={11.5} className="text-center section-container" style={{ margin: 'auto' }}>  <h2
+  className="section-title mb-4"
+  style={{
+    fontSize: '25px',
+    fontFamily: 'Merriweather, serif',
+    color: 'rgb(0, 114, 177)',
+    marginTop: '-5px',
+  }}
+>
+  About the Current Issue
+</h2>
+
+<p
+  className="about-text"
+  style={{
+    fontSize: '17.6px',
+    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+    color: 'rgb(77, 77, 77)',
+    lineHeight: '1.6',
+    textAlign: 'justify',
+    margin: '0 0 0 1rem', // Only left margin
+    width: '100%', // Ensures full width
+    //  padding: '1rem',
+      maxWidth: '1050px',
+       margin: 'auto'
+  }}
+>
+  At <strong>IJESTM</strong>, we are committed to publishing high-quality, peer-reviewed research that makes a lasting impact. This issue presents studies from top-tier researchers exploring both established fields and emerging trends, offering groundbreaking discoveries and innovative perspectives that push the boundaries of knowledge.
+  <br />
+  Our latest issue showcases a diverse array of studies conducted by top-tier researchers, each contributing valuable insights into their respective fields. This issue presents a thorough exploration of both established domains and emerging trends, highlighting the dynamic nature of contemporary research.
+</p>
+
   </Col>
 </Row>
 
@@ -601,18 +656,22 @@ function Current() {
 
 
 
-<Row className="mt-5 text-center">
+<Row className="mt-4 text-center">
   <Col>
-    <div
-      className="current-issue-banner py-5"
-      style={{
-        backgroundImage: `url(${process.env.PUBLIC_URL}/images/bulb_bg.png)`,
-        backgroundSize: 'cover', // Ensure the image covers the entire area
-        backgroundPosition: 'center', // Center the image
-        color: "#fff",
-        
-      }}
-    >
+  <div
+  className="current-issue-banner py-5"
+  style={{
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/bulb_bg.png)`,
+    backgroundSize: '90%', // Adjust to the desired percentage
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat', // Prevents the image from repeating
+    color: '#fff',
+    borderRadius: '30px',
+    marginTop: '30px',
+    padding: '20px', // Optional: Add padding for inner content spacing
+    overflow: 'hidden', // Ensures content does not spill over rounded corners
+  }}
+>
       <h1 className="banner-title">Current Issue</h1>
       <h3 className="banner-volume">
         Volume {currentData?.volume}, Issue {currentData?.issue}
@@ -638,16 +697,32 @@ function Current() {
 </Row>
 <Row className="mt-5">
   <Col lg={12} className="text-left">
-    <h3 className="section-title">How to Engage with the Content :</h3>
+    <h3 className="section-title" style={{
+    fontSize: '25px',
+    fontFamily: 'Merriweather, serif',
+    color: 'rgb(0, 114, 177)',
+  }}>How to Engage with the Content :</h3>
     <ul className="highlight-list">
       <li className="list-item">
-        <strong>Read Full Articles :</strong> Click on the article title to view or download in PDF format.
+        <strong style={{
+                    fontSize: "17.6px",
+                    fontFamily: "system-ui, -apple-system, Segoe",
+                    color: "#0072B1",
+                    fontWeight: "600"}}>Read Full Articles:</strong> Click on the article title to view or download in PDF format.
       </li>
       <li className="list-item">
-        <strong>Stay Updated :</strong> Subscribe to our newsletter for updates on new issues and special collections.
+        <strong style={{
+                    fontSize: "17.6px",
+                    fontFamily: "system-ui, -apple-system, Segoe",
+                    color: "#0072B1",
+                    fontWeight: "600"}}>Stay Updated:</strong> Subscribe to our newsletter for updates on new issues and special collections.
       </li>
       <li className="list-item">
-        <strong>Submit Your Work :</strong> Visit our{" "}
+        <strong style={{
+                    fontSize: "17.6px",
+                    fontFamily: "system-ui, -apple-system, Segoe",
+                    color: "#0072B1",
+                    fontWeight: "600"}}>Submit Your Work:</strong> Visit our{" "}
         <a href="/submissions" className="submission-link">
           Submission Guidelines
         </a>{" "}

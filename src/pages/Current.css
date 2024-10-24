@@ -302,21 +302,21 @@ body {
   
   /* Intro Text */
   .intro-text {
-    font-size: 16px;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font: 17.6px system-ui, -apple-system, "segoe";
+    text-align: justify;
+    margin-bottom: 15px;
     color: #4d4d4d;
-    line-height: 1.6; /* Line height for better readability */
-    text-align: justify; /* Justified text for a cleaner look */
-    margin: 0 1rem; /* Add horizontal margin for space from left and right */
+    line-height: 27px;
   }
   
   /* Section Titles */
-  .section-title {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #6c757d; /* Softer heading color */
-  }
+  /* .section-title {
+    font: 17.6px system-ui, -apple-system, "segoe";
+    text-align: justify;
+    margin-bottom: 15px;
+    color: black;
+    line-height: 27px;
+  } */
   
   /* Cards */
   .card {
@@ -396,7 +396,7 @@ body {
   .card-content {
     font-size: 16px; /* Font size for card content */
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Font family */
-    color: #4d4d4d; /* Text color */
+    color: black;/* Text color */
     line-height: 1.6; /* Line height for readability */
     text-align: justify; /* Justify text alignment */
 }
@@ -409,15 +409,7 @@ body {
     text-transform: uppercase; /* Transform text to uppercase for emphasis */
     letter-spacing: 1px; /* Add some spacing between letters */
   }
-  .about-text {
-    font-size: 1.1rem; /* Increase font size */
-    line-height: 1.6; /* Increase line height for better readability */
-    color: #333; /* Darker text color for contrast */
-    margin-top: 10px; /* Add space above the paragraph */
-    max-width: 800px; /* Limit width for better line length */
-    margin-left: auto; /* Center align within the column */
-    margin-right: auto; /* Center align within the column */
-  }
+  
   
   .section-title {
     font-size: 2rem; /* Increase section title size */
@@ -451,124 +443,3 @@ body {
 
 
 
-
-  .section-container {
-    background-color: #f8f9fa; /* Light gray background for a clean look */
-    padding: 40px 20px; /* Padding around the content */
-    border-radius: 8px; /* Rounded corners for a softer appearance */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  
-  .section-title {
-    font-size: 28px; /* Set font size to 40px */
-    font-weight: 700; /* Bold for emphasis */
-    color: #34495e; /* Darker blue for a more professional look */
-    margin-top: -10px;
-    text-align: center; /* Center the title */
-    font-family: 'Merriweather', serif; /* Apply Merriweather serif font */
-  }
-  .about-text {
-    font-size: 18px; /* Set font size for readability */
-    line-height: 1.6; /* Line height for better text spacing */
-    color: #4d4d4d; /* Dark gray for softer contrast */
-    font-family: 'Merriweather', serif; /* Elegant serif font */
-    text-align: justify; /* Justify text to stretch across the width */
-    max-width: 1000px; /* Limit the width for better readability */
-    width: 100%; /* Full width */
-    padding: 1rem 0; /* Vertical padding for spacing */
-    margin: 0 auto; /* Center the text block */
-    overflow-wrap: break-word; /* Break long words to prevent overflow */
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .about-text {
-        font-size: 16px; /* Slightly smaller font size for better readability on small screens */
-        padding: 0.5rem; /* Adjust padding for smaller screens */
-        margin: 0 1rem; /* Add horizontal margins for smaller screens */
-    }
-}
-
-.banner-title {
-    font-size: 2.5rem;
-    /* font-weight: bold; */
-  }  
-.banner-volume{
-    font-size: 3.3rem;
-}
-.banner-date{
-    font-size: 2.5rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.section-title {
-    font-size: 1.9rem; 
-    font-weight: bold; 
-    color: #2c3e50; 
-    margin-bottom: 20px; 
-    text-align: left; 
-    margin-left: 21px;
-}
-
-.highlight-list {
-    padding: 0; 
-    margin: 0; 
-    list-style-type: none; /* Removes default bullet points */
-}
-
-.list-item {
-    font-size: 1.1rem; 
-    line-height: 1.8; 
-    color: #333; 
-    margin-bottom: 15px; 
-    text-align: left; 
-    padding-left: 25px; /* Adjust to add space between custom bullet and text */
-    position: relative; 
-}
-
-.list-item::before {
-    content: "•"; 
-    color: #007bff; /* Custom blue bullet */
-    font-size: 1.2rem; 
-    position: absolute; 
-    left: 0; 
-    top: 0; 
-}
-
-.submission-link {
-    color: #007bff; 
-    text-decoration: none; 
-    border-bottom: 1px solid #007bff; 
-    transition: color 0.3s, border-bottom 0.3s; 
-}
-
-.submission-link:hover {
-    color: #0056b3; 
-    border-bottom: 1px solid #0056b3; 
-}
-
-@media (max-width: 768px) {
-    .list-item {
-        font-size: 1rem; 
-        padding-left: 10px; 
-    }
-
-    .section-title {
-        font-size: 1.8rem; 
-    }
-}

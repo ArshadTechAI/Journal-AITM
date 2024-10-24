@@ -155,16 +155,38 @@ const Indexing = () => {
     ))}
   </div>
   <div className="indexing-footer">
-    <h2>Why Indexing Matters?</h2>
-    <p>
-      Indexing is crucial for the visibility and credibility of academic journals. It allows researchers to easily find our publications, thus increasing citation rates and enhancing the impact of our research. We are committed to maintaining high standards of quality to remain indexed by these prestigious platforms.
+    <h2 className="footer-heading" style={{
+    fontSize: '30px',
+    fontFamily: 'Merriweather, serif',
+    color: 'rgb(0, 114, 177)',
+  }}>Why Indexing Matters?</h2>
+    <p className="footer-paragraph">
+        Indexing is crucial for the visibility and credibility of academic journals. It allows researchers to easily find our publications, thus increasing citation rates and enhancing the impact of our research. We are committed to maintaining high standards of quality to remain indexed by these prestigious platforms.
     </p>
-    <h2>Join Us in Our Journey!</h2>
-    <p>
-      If you're a researcher looking to publish, we invite you to submit your work to our journal. Let’s work together to advance knowledge and contribute to the academic community.
+    
+    <h2 className="footer-heading" style={{
+    fontSize: '30px',
+    fontFamily: 'Merriweather, serif',
+    color: 'rgb(0, 114, 177)',
+    marginTop: '30px',
+  }}>Join Us in Our Journey!</h2>
+    <p className="footer-paragraph">
+        If you're a researcher looking to publish, we invite you to submit your work to our journal. Let’s work together to advance knowledge and contribute to the academic community.
     </p>
-  </div>
 </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
 
       <Footer />
     </>

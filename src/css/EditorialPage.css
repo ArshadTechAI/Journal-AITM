@@ -338,3 +338,13 @@ h3 {
   font-size: 3rem;
   color: #005b8c;
 }
+
+/* extra css */
+.style{
+  font: 17.6px system-ui, -apple-system, "segoe";
+    text-align: justify;
+    margin-bottom: 15px;
+    color: #4d4d4d;
+    line-height: 27px;
+
+}

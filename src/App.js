@@ -118,7 +118,7 @@ import Header from './components/header';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PaperDetailPage from './pages/PaperDetailPage';
 
-
+import AdminPanel from './pages/AdminPanel';
 
 function App() {
   return (
@@ -136,6 +136,7 @@ function App() {
           <Route path="/publication-ethics" element={<PublicationEthics />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/paper-detail-page" element={<PaperDetailPage />} />
+          <Route path="/admin-panel-hod_cse@123" element={<AdminPanel />} />
 
         </Routes>
       </div>
