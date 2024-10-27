@@ -472,6 +472,9 @@ import Header from "../components/header";
 import { useNavigate } from 'react-router-dom';
 import Footer from "../components/footer";
 import "./Current.css"; // Ensure to add custom CSS for further styling
+import { FaBookOpen, FaGlobe, FaLayerGroup } from 'react-icons/fa';
+
+
 
 function Current() {
   const navigate = useNavigate(); // Initialize useNavigate
@@ -555,7 +558,7 @@ function Current() {
     margin: '0px 1rem',
   }}
 >
-  {`Learn about the latest trends and breakthroughs in the Science Field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.`.replace(/\s+/g, ' ').trim()}
+<FaBookOpen style={{ color: "#6A5ACD", marginRight: "8px" }}/>{`Learn about the latest trends and breakthroughs in the Science Field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.`.replace(/\s+/g, ' ').trim()}
 </Card.Text>
 
               </Card.Body>
@@ -579,6 +582,8 @@ function Current() {
                   textAlign: 'justify',
                   margin: '0px 1rem',
                 }}>
+                                <FaGlobe style={{ color: "#0085FF", marginRight: "8px" }} />
+
                 Discover research from scholars worldwide, offering a comprehensive global outlook. Gain insight into how different regions approach and solve global challenges in innovative ways.Inspire collaborative change.
                 </Card.Text>
               </Card.Body>
@@ -600,7 +605,7 @@ function Current() {
     textAlign: 'justify',
     margin: '0px 1rem',
   }}>
-                The articles in this issue span multiple disciplines, offering
+                  <FaLayerGroup style={{ color: "#FF5733", marginRight: "8px"}}/>The articles in this issue span multiple disciplines, offering
                   a holistic view and interdisciplinary insights. It’s a
                   convergence of diverse fields that lead to more innovative
                   solutions.

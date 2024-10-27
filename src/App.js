@@ -119,6 +119,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import PaperDetailPage from './pages/PaperDetailPage';
 
 import AdminPanel from './pages/AdminPanel';
+import LoginPage from './pages/LoginPage';
+import PrivateRoute from './pages/PrivateRoute';
 
 function App() {
   return (
@@ -136,7 +138,15 @@ function App() {
           <Route path="/publication-ethics" element={<PublicationEthics />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/paper-detail-page" element={<PaperDetailPage />} />
-          <Route path="/admin-panel-hod_cse@123" element={<AdminPanel />} />
+          {/* <Route path="/admin-panel-hod_cse@123" element={<AdminPanel />} /> */}
+          {/* <Route path="/supersecure-admin-portal" element={<AdminPanel />} /> */}
+          <Route path="/admin-panel" element={<PrivateRoute><AdminPanel />
+                        </PrivateRoute>
+                    }
+                />
+
+          <Route path="/login-page" element={<LoginPage/>} />
+         
 
         </Routes>
       </div>

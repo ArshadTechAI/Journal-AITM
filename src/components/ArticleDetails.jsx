@@ -48,7 +48,7 @@ const ArticleDetails = ({ paper, className = "" }) => {
                     {data.map((row, index) => (
                         <div key={index} className="table-row">
                             <div className="table-cell label">{row.label}</div>
-                            <div className="table-cell value">{row.label == 'DOI' ? <a href={`${row.value}`} target="_blank">{row.value}</a> : row.value}</div>
+                            <div className="table-cell value">{row.label == 'DOI' ? <a href={`${row.value}`} target="_blank" rel="noreferrer">{row.value}</a> : row.value}</div>
                         </div>
                     ))}
                 </div>
@@ -56,7 +56,7 @@ const ArticleDetails = ({ paper, className = "" }) => {
             </div>
 
             <div style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <a href={paper.fileURL} target="_blank" style={{ width: '15%' }} className="submit_button">
+                <a href={paper.fileURL} target="_blank" style={{ width: '15%' }} className="submit_button" rel="noreferrer">
                     <FontAwesomeIcon icon={faFilePdf} color='white' />
                     &nbsp;View/Download PDF file
                 </a>

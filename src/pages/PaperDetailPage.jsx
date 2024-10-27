@@ -169,7 +169,7 @@ const PaperDetailPage = () => {
 
                 <center>
                     <Button>
-                        <a href={paper.fileURL} target="_blank" style={{ color: 'white', textDecoration: 'none' }}>
+                        <a href={paper.fileURL} target="_blank" style={{ color: 'white', textDecoration: 'none' }} rel="noreferrer">
                             <FontAwesomeIcon icon={faFilePdf} color='white' />
                             &nbsp;View/Download PDF
                         </a>

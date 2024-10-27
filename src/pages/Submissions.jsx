@@ -742,7 +742,9 @@ const handleSubmit = async (e) => {
 
             <hr />
 
-            <h3><b>Important Instructions</b></h3>
+            <h3>
+  <b style={{ color: "rgb(0, 91, 140)" }}>Important Instructions</b>
+</h3>
 
             {/* <form onSubmit={handleSubmit}> */}
             <form>
@@ -952,11 +954,20 @@ const handleSubmit = async (e) => {
                         <input className='small_input not_required_field' type="text" placeholder='Enter reviewer referral Id ' id="reviewerReferralId" name="reviewerReferralId"/>
                     </div>
 
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                        <input type="checkbox" name="privacy_policy" value="privacy_policy" required/>
-                        <div style={{ width: '10px'}}></div>
-                        <label htmlFor="privacy_policy">I agree with the <span><a href="#">journal/website's policies</a></span> </label>
-                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
+  <input 
+    type="checkbox" 
+    id="privacy_policy" 
+    style={{ width: '16px', height: '16px', verticalAlign: 'middle' }} 
+  />
+  <label htmlFor="privacy_policy" style={{ marginLeft: '10px', verticalAlign: 'middle' }}>
+    I agree with the <a href="/publication-ethics">journal/website's policies</a>
+  </label>
+</div>
+
+
+
+                    {/* </div> */}
 
                     <div style={{ height: '20px'}}></div>
 

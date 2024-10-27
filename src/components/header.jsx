@@ -346,7 +346,7 @@
 
 
 import { faFacebook, faInstagram, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
-import { faPerson, faPersonCircleCheck, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPerson, faPersonCircleCheck, faUserCircle, faUserCog } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { collection, getDocs, doc, getDoc, query } from "firebase/firestore/lite";
 import {db} from '../backend/firebase';
@@ -500,7 +500,7 @@ function Header() {
           <a href="https://twitter.com/anjumanitm" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faTwitter} size={'xl'} color="#003366" /></a>
           <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faInstagram} size={'xl'} color="#003366" /></a>
           <a href="https://www.linkedin.com/school/anjumanitm/" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faLinkedin} size={'xl'} color="#003366" /></a>
-
+          <a href="/login-page" style={{ marginLeft: '20px' }}><FontAwesomeIcon icon={faUserCog} size={30} color="#003366" /></a>
           {/* Profile Icon */}
           {/* <a href="/profile" style={{ marginLeft: '20px' }}><FontAwesomeIcon icon={faUserCircle} size={30} color="#003366" /></a> */}
         </div>

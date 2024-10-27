@@ -1,3 +1,4 @@
+
 // import React from 'react'
 // import Header from '../components/header'
 // import Footer from '../components/footer'
@@ -693,7 +694,7 @@
 
 // export default ContactUs;
 
-import React from "react";
+import React, { useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -712,9 +713,63 @@ import {
 
 import Header from "../components/header";
 import Footer from "../components/footer";
-import "../css/ContactUs.css"; // Custom CSS for further styling
+import "../css/ContactUs.css"; // Custom CSS for further 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 function ContactUs() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("https://formspree.io/f/mvgoglbz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      
+      if (response.ok) {
+        toast.success("Message sent successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast.error("Failed to send the message. Please try again.", {
+          position: "top-right",
+          autoClose: 3000,
+        });
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      toast.error("An error occurred. Please try again.", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+    }
+  }
+ 
+
+
+
+
+
+
   return (
     <>
       <Header />
@@ -797,7 +852,7 @@ function ContactUs() {
           }}>
             <FontAwesomeIcon
               icon={faEnvelope}
-              style={{ color: "#DB4437", marginRight: "8px" }} // Gmail Red
+              style={{ color: "#DB4437", marginRight: "8px" }}
             />
             <strong style={{ color: "#0072B1", fontSize: "18px" }}>
               Email :
@@ -807,13 +862,13 @@ function ContactUs() {
             </span>
           </p>
           <p style={{
-            font: '16px system-ui, -apple-system, "Segoe"', // Slightly smaller font size
+            font: '16px system-ui, -apple-system, "Segoe"', 
             color: "#4d4d4d",
             margin: "5px 0",
           }}>
             <FontAwesomeIcon
               icon={faPhone}
-              style={{ color: "#00AFF0", marginRight: "8px" }} // Skype Blue
+              style={{ color: "#00AFF0", marginRight: "8px" }} 
             />
             <strong style={{ color: "#0072B1", fontSize: "18px" }}>
               Phone :
@@ -823,13 +878,13 @@ function ContactUs() {
             </span>
           </p>
           <p style={{
-            font: '16px system-ui, -apple-system, "Segoe"', // Slightly smaller font size
+            font: '16px system-ui, -apple-system, "Segoe"',
             color: "#4d4d4d",
             margin: "5px 0",
           }}>
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
-              style={{ color: "#00B140", marginRight: "8px" }} // TripAdvisor Green
+              style={{ color: "#00B140", marginRight: "8px" }} 
             />
             <strong style={{ color: "#0072B1", fontSize: "18px" }}>
               Address :
@@ -843,58 +898,45 @@ function ContactUs() {
         <div className="social-media" style={{
   marginTop: "10px",
   display: "flex",
-  flexDirection: "column", // Arrange children in a column
-  alignItems: "flex-start", // Align items to the start
+  flexDirection: "column", 
+  alignItems: "flex-start", 
   
 }}>
   <p style={{
     fontWeight: "medium",
     color: "#4d4d4d",
-    marginBottom: "10px", // Add some space below the text
+    marginBottom: "10px", 
     fontSize: "20px",
   }}>
     We are also available at:
   </p>
-  {/* <div style={{
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "nowrap", // Prevent wrapping
-    overflowX: "auto", // Allow horizontal scrolling if necessary
-  }}>
-    <a href="https://www.whatsapp.com/" target="_blank" rel="noreferrer" className="whatsapp-icon" style={{ marginRight: "10px" }}>
-      <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#25D366", fontSize: "24px", marginRight: "10px" }} />
-      
-    </a>
-    <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}>
-      <FontAwesomeIcon icon={faTwitter} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="facebook-icon" style={{ marginRight: "10px" }}>
-    <FontAwesomeIcon icon={faFacebook} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="linkedin-icon">
-      <FontAwesomeIcon icon={faLinkedin} style={{ color: "#0077b5", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-  </div> */}
+
   <div style={{
     display: "flex",
     alignItems: "center",
-    flexWrap: "nowrap", // Prevent wrapping
-    // overflowX: "hidden", // Hide horizontal scrollbar
-    whiteSpace: "nowrap" // Prevent text/icon from wrapping
+    flexWrap: "nowrap", 
+    whiteSpace: "nowrap"
   }}>
-    <a href="https://www.whatsapp.com/" target="_blank" rel="noreferrer" className="whatsapp-icon" style={{ marginRight: "10px" }}>
+<a 
+  href="https://wa.me/9945387216" // Correct format
+  target="_blank" 
+  rel="noreferrer" 
+  className="whatsapp-icon" 
+  style={{ marginRight: "10px" }}
+>
+  
       <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#25D366", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://twitter.com/" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}>
+    <a href="https://twitter.com/anjumanitm" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}>
       <FontAwesomeIcon icon={faTwitter} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.instagram.com/" target="_blank" rel="noreferrer" className="instagram-icon">
+    <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" target="_blank" rel="noreferrer" className="instagram-icon">
       <FontAwesomeIcon icon={faInstagram} style={{ color: "#E1306C", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.facebook.com/" target="_blank" rel="noreferrer" className="facebook-icon" style={{ marginRight: "10px" }}>
+    <a href="https://www.facebook.com/anjumanitm" target="_blank" rel="noreferrer" className="facebook-icon" style={{ marginRight: "10px" }}>
       <FontAwesomeIcon icon={faFacebook} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer" className="linkedin-icon">
+    <a href="https://www.linkedin.com/school/anjumanitm/" target="_blank" rel="noreferrer" className="linkedin-icon">
       <FontAwesomeIcon icon={faLinkedin} style={{ color: "#0077b5", fontSize: "24px", marginRight: "10px" }} />
     </a>
 </div>
@@ -931,73 +973,82 @@ function ContactUs() {
           </Col>
         </Row>
 
-        {/* <Row className="mt-5">
-          <Col lg={12}>
-            <h3 className="section-title" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>Send Us a Message</h3>
-            <Form style={{ maxWidth: "600px", margin: "0 auto" }}>
-  <Row className="mb-3">
-    <Col md={12}>
-      <Form.Group controlId="formName">
-        <Form.Label>Name:</Form.Label>
-        <Form.Control type="text" placeholder="Enter your name" required />
-      </Form.Group>
-    </Col>
-  </Row>
-  
-  <Row className="mb-3">
-    <Col md={12}>
-      <Form.Group controlId="formEmail">
-        <Form.Label>Email:</Form.Label>
-        <Form.Control type="email" placeholder="Enter your email" required />
-      </Form.Group>
-    </Col>
-  </Row>
-
-  <Form.Group controlId="formMessage">
-    <Form.Label>Message:</Form.Label>
-    <Form.Control as="textarea" rows={4} placeholder="Type your message here..." required />
-  </Form.Group> 
-
-  <Button variant="primary" type="submit" className="mt-3">
-    Send Message
-  </Button>
-</Form>
-
-          </Col>
-        </Row> */}
         <Row className="mt-5">
   <Col lg={12}>
     <h3 className="section-title" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>
       Send Us a Message
     </h3>
-    <Form style={{ maxWidth: "700px", margin: "0 auto", backgroundColor: "#f9f9f9", borderRadius: "10px", padding: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
-      <Row className="mb-3">
-        <Col md={12}>
-          <Form.Group controlId="formName">
-            <Form.Label>Name:</Form.Label>
-            <Form.Control type="text" placeholder="Enter your name" required style={{ borderRadius: "5px", borderColor: "#0072b1" }} />
-          </Form.Group>
-        </Col>
-      </Row>
+    <ToastContainer /> 
+  
+    <Form  onSubmit={handleSubmit} method="POST" style={{ maxWidth: "700px", margin: "0 auto", backgroundColor: "#f9f9f9", borderRadius: "10px", padding: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+  <Row className="mb-3">
+    <Col md={12}>
+      <Form.Group controlId="formName">
+        <Form.Label>Name:</Form.Label>
+        <Form.Control 
+          type="text" 
+          name="name"  // Name attribute added here
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Enter your name" 
+          required 
+          style={{ borderRadius: "5px", borderColor: "#0072b1" }} 
+        />
+      </Form.Group>
+    </Col>
+  </Row>
 
-      <Row className="mb-3">
-        <Col md={12}>
-          <Form.Group controlId="formEmail">
-            <Form.Label>Email:</Form.Label>
-            <Form.Control type="email" placeholder="Enter your email" required style={{ borderRadius: "5px", borderColor: "#0072b1" }} />
-          </Form.Group>
-        </Col>
-      </Row>
+  <Row className="mb-3">
+    <Col md={12}>
+      <Form.Group controlId="formEmail">
+        <Form.Label>Email:</Form.Label>
+        <Form.Control 
+          type="email" 
+          name="email"  
+          value={formData.email}
+          onChange={handleChange}
 
-      <Form.Group controlId="formMessage">
-        <Form.Label>Message:</Form.Label>
-        <Form.Control as="textarea" rows={4} placeholder="Type your message here..." required style={{ borderRadius: "5px", borderColor: "#0072b1" }} />
-      </Form.Group> 
+          placeholder="Enter your email" 
+          required 
+          style={{ borderRadius: "5px", borderColor: "#0072b1" }} 
+        />
+      </Form.Group>
+    </Col>
+  </Row>
 
-      <Button variant="primary" type="submit" className="mt-3" style={{ borderRadius: "5px", backgroundColor: "#0072b1", border: "none" }}>
-        Send Message
-      </Button>
-    </Form>
+  {/* <Form.Group controlId="formMessage">
+    <Form.Label>Message:</Form.Label>
+    <Form.Control 
+      as="textarea" 
+      name="message" 
+      value={formData.subject}
+      onChange={handleChange}
+      rows={4} 
+      placeholder="Type your message here..." 
+      required 
+      style={{ borderRadius: "5px", borderColor: "#0072b1" }} 
+    />
+  </Form.Group> */}
+  <Form.Group controlId="formMessage">
+  <Form.Label>Message:</Form.Label>
+  <Form.Control 
+    as="textarea" 
+    name="message" 
+    value={formData.message}  // Updated to 'message'
+    onChange={handleChange}
+    rows={4} 
+    placeholder="Type your message here..." 
+    required 
+    style={{ borderRadius: "5px", borderColor: "#0072b1" }} 
+  />
+</Form.Group>
+
+
+  <Button variant="primary" type="submit" className="mt-3" style={{ borderRadius: "5px", backgroundColor: "#0072b1", border: "none" }}>
+    Send Message
+  </Button>
+</Form>
+
   </Col>
 </Row>
 
@@ -1009,3 +1060,10 @@ function ContactUs() {
 }
 
 export default ContactUs;
+
+
+
+
+
+
+
