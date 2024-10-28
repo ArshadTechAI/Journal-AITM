@@ -496,14 +496,52 @@ function Header() {
 
         {/* Social Media Icons */}
         <div style={{ display: 'flex', alignItems: 'center' }}>
-          <a href="https://www.facebook.com/anjumanitm" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faFacebook} size={'xl'} color="#003366" /></a>
-          <a href="https://twitter.com/anjumanitm" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faTwitter} size={'xl'} color="#003366" /></a>
-          <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faInstagram} size={'xl'} color="#003366" /></a>
-          <a href="https://www.linkedin.com/school/anjumanitm/" style={{ margin: '0 10px' }}><FontAwesomeIcon icon={faLinkedin} size={'xl'} color="#003366" /></a>
-          <a href="/login-page" style={{ marginLeft: '20px' }}><FontAwesomeIcon icon={faUserCog} size={30} color="#003366" /></a>
-          {/* Profile Icon */}
-          {/* <a href="/profile" style={{ marginLeft: '20px' }}><FontAwesomeIcon icon={faUserCircle} size={30} color="#003366" /></a> */}
-        </div>
+  <a
+    href="https://www.facebook.com/anjumanitm"
+    style={{ margin: '0 10px', transition: 'transform 0.3s ease' }}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+  >
+    <FontAwesomeIcon icon={faFacebook} size={'xl'} color="#003366" />
+  </a>
+
+  <a
+    href="https://twitter.com/anjumanitm"
+    style={{ margin: '0 10px', transition: 'transform 0.3s ease' }}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+  >
+    <FontAwesomeIcon icon={faTwitter} size={'xl'} color="#003366" />
+  </a>
+
+  <a
+    href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx"
+    style={{ margin: '0 10px', transition: 'transform 0.3s ease' }}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+  >
+    <FontAwesomeIcon icon={faInstagram} size={'xl'} color="#003366" />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/school/anjumanitm/"
+    style={{ margin: '0 10px', transition: 'transform 0.3s ease' }}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+  >
+    <FontAwesomeIcon icon={faLinkedin} size={'xl'} color="#003366" />
+  </a>
+
+  <a
+    href="/login-page"
+    style={{ marginLeft: '20px', transition: 'transform 0.3s ease' }}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.2)')}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+  >
+    <FontAwesomeIcon icon={faUserCog} size={30} color="#003366" />
+  </a>
+</div>
+
       </Container>
 
       {/* <hr color='black'/> */}

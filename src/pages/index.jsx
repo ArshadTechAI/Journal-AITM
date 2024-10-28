@@ -1,59 +1,216 @@
-import React, { useState, useEffect } from "react";
+// import React, { useState, useEffect } from "react";
 
+// import { useNavigate } from "react-router-dom";
+// import { db } from "../backend/firebase";
+// import {
+//   collection,
+//   getDocs,
+//   doc,
+//   getDoc,
+//   query,
+// } from "firebase/firestore/lite";
+// import Header from "../components/header";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import {
+//   faGlobe,
+//   faLanguage,
+//   faRocket,
+//   faClock,
+//   faEnvelope,
+//   faHeadset,
+//   faFilePdf,
+// } from "@fortawesome/free-solid-svg-icons";
+// import { FaGlobe, FaHandshake, FaUsers, FaFileAlt } from "react-icons/fa"; // Import some icons
+// import {
+//   FaAward,
+//   FaGlobeAmericas,
+//   FaUsersCog,
+//   FaUnlockAlt,
+// } from "react-icons/fa"; // Import additional icons
+
+// import "../css/style.css";
+// import { Button, Col, Container, Row } from "react-bootstrap";
+// import Footer from "../components/footer";
+// import AOS from 'aos';
+// import 'aos/dist/aos.css';
+
+// useEffect(() => {
+//   AOS.init({ duration: 1000 });
+// }, []);
+
+// function Index() {
+//   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+//   const navi = useNavigate();
+
+//   const handleSubmit = () => {
+//     navi("/submissions");
+//   };
+
+//   // for current volume and issue
+//   const [currentData, setCurrentData] = useState(null);
+
+//   let volume = "";
+//   let issue = "";
+
+//   useEffect(() => {
+//     const fetchData = async () => {
+//       // Fetch current document
+//       const currentDoc = await getDoc(doc(db, "Current", "current"));
+//       const currentData = currentDoc.data();
+//       volume = currentData.volume;
+//       issue = currentData.issue;
+//       // console.log(currentData);
+//       setCurrentData(currentData);
+//     };
+//     fetchData();
+//   }, []);
+
+//   const formatDateRange = (issueId) => {
+//     const dateRanges = {
+//       Issue1: "January-March 2024",
+//       Issue2: "April-June 2024",
+//       Issue3: "July-September 2024",
+//       Issue4: "Octorber-December 2024",
+//       // Add more mappings here
+//     };
+//     return dateRanges[issueId] || "Unknown Date Range";
+//   };
+
+//   // Browse journal by decipline
+//   const [areas, setAreas] = useState([]);
+//   const [loading, setLoading] = useState(true);
+//   const [loading2, setLoading2] = useState(false); // Change default to false
+//   const [papers, setPapers] = useState([]);
+//   const [paperId, setPaperId] = useState([]);
+//   const [selectedArea, setSelectedArea] = useState("");
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     const fetchAreas = async () => {
+//       try {
+//         const docRef = doc(db, "Research_Areas", "research_areas");
+//         const docSnap = await getDoc(docRef);
+//         if (docSnap.exists()) {
+//           setAreas(docSnap.data().areas);
+//         } else {
+//           console.log("No such document!");
+//         }
+//       } catch (error) {
+//         console.error("Error fetching document: ", error);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchAreas();
+//   }, []);
+
+//   const fetchPapersByArea = async (area) => {
+//     try {
+//       setLoading2(true);
+//       const papersData = [];
+//       const volumesCollectionRef = collection(db, "PapersCollection");
+//       const volumesSnapshot = await getDocs(volumesCollectionRef);
+
+//       // Use Promise.all to wait for all issue fetches to complete
+//       await Promise.all(
+//         volumesSnapshot.docs.map(async (volumeDoc) => {
+//           const volumeId = volumeDoc.id;
+//           const issues = ["Issue1", "Issue2", "Issue3", "Issue4"];
+
+//           await Promise.all(
+//             issues.map(async (issue) => {
+//               const issueRef = collection(
+//                 db,
+//                 "PapersCollection",
+//                 volumeId,
+//                 issue
+//               );
+//               // const q = query(issueRef, limit(8));
+
+//               // const issueSnapshot = await getDocs(q);
+//               const issueSnapshot = await getDocs(issueRef);
+
+//               issueSnapshot.forEach((paperDoc) => {
+//                 const paperData = paperDoc.data();
+//                 const paperId = paperDoc.id; // Get the ID of the current document
+
+//                 // Only add if the research area matches
+//                 if (paperData.researchArea === area) {
+//                   console.log(paperId);
+//                   papersData.push({
+//                     ...paperData, // Spread the existing paper data
+//                     id: paperId, // Add the document ID
+//                   });
+//                 }
+//               });
+//             })
+//           );
+//         })
+//       );
+
+//       setPapers(papersData.slice(0, 8));
+//       setSelectedArea(area);
+//     } catch (error) {
+//       console.error("Error fetching papers: ", error);
+//     } finally {
+//       setLoading2(false);
+//     }
+//   };
+
+//   const handlePaperClick = (paper) => {
+//     console.log("clicked");
+//     console.log(paperId);
+//     navigate("/paper-detail-page", { state: { paper } });
+//   };
+
+//   const checkScreenSize = () => {
+//     setIsSmallScreen(window.innerWidth <= 768);
+//   };
+
+//   useEffect(() => {
+//     window.addEventListener("resize", checkScreenSize);
+//     return () => {
+//       window.removeEventListener("resize", checkScreenSize);
+//     };
+//   }, []);
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../backend/firebase";
-import {
-  collection,
-  getDocs,
-  doc,
-  getDoc,
-  query,
-} from "firebase/firestore/lite";
+import { collection, getDocs, doc, getDoc } from "firebase/firestore/lite";
 import Header from "../components/header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faGlobe,
-  faLanguage,
-  faRocket,
-  faClock,
-  faEnvelope,
-  faHeadset,
-  faFilePdf,
-} from "@fortawesome/free-solid-svg-icons";
-import { FaGlobe, FaHandshake, FaUsers, FaFileAlt } from "react-icons/fa"; // Import some icons
-import {
-  FaAward,
-  FaGlobeAmericas,
-  FaUsersCog,
-  FaUnlockAlt,
-} from "react-icons/fa"; // Import additional icons
-
+import { faGlobe, faLanguage, faRocket, faClock, faEnvelope, faHeadset, faFilePdf } from "@fortawesome/free-solid-svg-icons";
+import { FaGlobe, FaHandshake, FaUsers, FaFileAlt, FaAward, FaGlobeAmericas, FaUsersCog, FaUnlockAlt } from "react-icons/fa"; 
 import "../css/style.css";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import Footer from "../components/footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Index() {
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
-  const navi = useNavigate();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
 
   const handleSubmit = () => {
-    navi("/submissions");
+    navigate("/submissions");
   };
 
-  // for current volume and issue
+  // State and logic for current volume and issue
   const [currentData, setCurrentData] = useState(null);
-
   let volume = "";
   let issue = "";
 
   useEffect(() => {
     const fetchData = async () => {
-      // Fetch current document
       const currentDoc = await getDoc(doc(db, "Current", "current"));
       const currentData = currentDoc.data();
       volume = currentData.volume;
       issue = currentData.issue;
-      // console.log(currentData);
       setCurrentData(currentData);
     };
     fetchData();
@@ -64,20 +221,18 @@ function Index() {
       Issue1: "January-March 2024",
       Issue2: "April-June 2024",
       Issue3: "July-September 2024",
-      Issue4: "Octorber-December 2024",
-      // Add more mappings here
+      Issue4: "October-December 2024",
     };
     return dateRanges[issueId] || "Unknown Date Range";
   };
 
-  // Browse journal by decipline
+  // Logic for browsing journal by discipline
   const [areas, setAreas] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [loading2, setLoading2] = useState(false); // Change default to false
+  const [loading2, setLoading2] = useState(false);
   const [papers, setPapers] = useState([]);
   const [paperId, setPaperId] = useState([]);
   const [selectedArea, setSelectedArea] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchAreas = async () => {
@@ -95,7 +250,6 @@ function Index() {
         setLoading(false);
       }
     };
-
     fetchAreas();
   }, []);
 
@@ -106,7 +260,6 @@ function Index() {
       const volumesCollectionRef = collection(db, "PapersCollection");
       const volumesSnapshot = await getDocs(volumesCollectionRef);
 
-      // Use Promise.all to wait for all issue fetches to complete
       await Promise.all(
         volumesSnapshot.docs.map(async (volumeDoc) => {
           const volumeId = volumeDoc.id;
@@ -114,28 +267,15 @@ function Index() {
 
           await Promise.all(
             issues.map(async (issue) => {
-              const issueRef = collection(
-                db,
-                "PapersCollection",
-                volumeId,
-                issue
-              );
-              // const q = query(issueRef, limit(8));
-
-              // const issueSnapshot = await getDocs(q);
+              const issueRef = collection(db, "PapersCollection", volumeId, issue);
               const issueSnapshot = await getDocs(issueRef);
 
               issueSnapshot.forEach((paperDoc) => {
                 const paperData = paperDoc.data();
-                const paperId = paperDoc.id; // Get the ID of the current document
+                const paperId = paperDoc.id;
 
-                // Only add if the research area matches
                 if (paperData.researchArea === area) {
-                  console.log(paperId);
-                  papersData.push({
-                    ...paperData, // Spread the existing paper data
-                    id: paperId, // Add the document ID
-                  });
+                  papersData.push({ ...paperData, id: paperId });
                 }
               });
             })
@@ -153,8 +293,6 @@ function Index() {
   };
 
   const handlePaperClick = (paper) => {
-    console.log("clicked");
-    console.log(paperId);
     navigate("/paper-detail-page", { state: { paper } });
   };
 
@@ -168,7 +306,6 @@ function Index() {
       window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
-
   return (
     <>
       <Header />
@@ -283,6 +420,8 @@ function Index() {
         <Row className="section1">
           <Col xs={12} md={9}>
             <div className="info">
+            <div  data-aos="fade-left" className="benefit-text">
+
               <h1
                 style={{
                   color: "#0072b1",
@@ -293,7 +432,10 @@ function Index() {
                 International Journal of Engineering, Science Technology and
                 Management (IJESTM)
               </h1>
+              </div>
               <p className="intro-text">
+              <div  data-aos="fade-up" className="benefit-text">
+
                 <FaGlobe style={{ color: "#0085FF", marginRight: "8px" }} />{" "}
                 {/* Globe icon in blue */}
                 <span>
@@ -317,15 +459,22 @@ function Index() {
                 research communities worldwide. Researchers can access articles
                 and utilize them for the development of scientific and research
                 proposals in engineering and technology.
+                </div>
               </p>
-
-              <h1 style={{
+<div  data-aos="fade-up" className="benefit-text">
+              <h1
+                style={{
                   color: "#0072b1",
-                //   fontWeight: "bold",
+                  //   fontWeight: "bold",
                   marginBottom: "20px",
                   fontSize: "43px",
-                }}>Our Mission</h1>
+                }}
+              >
+                Our Mission
+              </h1>
+              </div>
               <p className="mission-text">
+              <div  data-aos="fade-up" className="benefit-text">
                 <FaHandshake
                   style={{
                     color: "#17a2b8",
@@ -341,8 +490,10 @@ function Index() {
                 at the intersections of different disciplines. We encourage
                 researchers to explore innovative connections between fields and
                 promote a holistic approach to problem-solving.
+                </div>
               </p>
               <p className="mission-text">
+              <div  data-aos="fade-up" className="benefit-text">
                 <FaFileAlt style={{ color: "#FFC107", marginRight: "8px" }} />{" "}
                 {/* File icon in yellow */}
                 <span>
@@ -351,8 +502,10 @@ function Index() {
                 We are committed to maintaining rigorous peer-review standards
                 to ensure the publication of only the most credible and
                 impactful research.
+                </div>
               </p>
               <p className="mission-text">
+              <div  data-aos="fade-up" className="benefit-text">
                 <FaGlobe
                   style={{
                     color: "#DC3545",
@@ -366,6 +519,7 @@ function Index() {
                 </span>
                 We aim to connect researchers from around the world, fostering a
                 global community dedicated to advancing human knowledge.
+                </div>
               </p>
             </div>
           </Col>
@@ -440,11 +594,11 @@ function Index() {
                         </div>
                     </Col> */}
           <Col xs={12} md={9}>
-            <div className="info">
+            <div className="info" data-aos="fade-up">
               <h1
                 style={{
                   color: "#0072b1",
-                //   fontWeight: "bold",
+                  //   fontWeight: "bold",
                   marginBottom: "20px",
                 }}
               >
@@ -452,6 +606,7 @@ function Index() {
               </h1>
 
               <p className="benefit-text">
+                <div data-aos="fade-up" className="benefit-text">
                 <FaAward style={{ color: "#ff8c00", marginRight: "8px" }} />{" "}
                 {/* Color for the icon */}
                 <span
@@ -461,12 +616,17 @@ function Index() {
                     fontWeight: "600",
                   }}
                 >
-                  Peer-Reviewed Excellence:</span>
-                <div className="">Every article submitted to IJESTM undergoes a rigorous
+                  Peer-Reviewed Excellence:
+                </span>
+                <div className="">
+                  Every article submitted to IJESTM undergoes a rigorous
                   peer-review process to ensure the highest quality standards.
                 </div>
+                </div>
               </p>
+              
               <p className="benefit-text">
+<div data-aos="fade-up" className="benefit-text">
                 <FaGlobeAmericas
                   style={{ color: "#28a745", marginRight: "8px" }}
                 />{" "}
@@ -478,14 +638,18 @@ function Index() {
                     fontWeight: "600",
                   }}
                 >
-                  Global Reach: </span>
+                  Global Reach:{" "}
+                </span>
+                
                 <div className="custom-text">
                   Our journal is read by researchers, academics, and
                   professionals from around the world, making it an excellent
                   platform to reach a diverse audience.
                 </div>
+                </div>
               </p>
               <p className="benefit-text">
+                <div data-aos="fade-up" className="benefit-text">
                 <FaUsersCog style={{ color: "#007bff", marginRight: "8px" }} />{" "}
                 {/* Color for the icon */}
                 <span
@@ -495,28 +659,34 @@ function Index() {
                     fontWeight: "600",
                   }}
                 >
-                  Interdisciplinary Focus: </span>
+                  Interdisciplinary Focus:{" "}
+                </span>
                 <div className="custom-text">
                   IJESTM encourages cross-disciplinary collaboration, providing
                   a unique space for innovative research.
                 </div>
+                </div>
               </p>
 
               <p className="benefit-text">
+
+                <div data-aos="fade-up" className="benefit-text">
                 <FaUnlockAlt style={{ color: "#dc3545", marginRight: "8px" }} />{" "}
                 {/* Color for the icon */}
                 <span
                   style={{
-                    color: "#0072B1",  // Corrected this line
+                    color: "#0072B1", // Corrected this line
                     font: '17.6px system-ui, -apple-system, "Segoe"',
                     fontWeight: "600",
                   }}
                 >
-                  Open Access: </span>
+                  Open Access:{" "}
+                </span>
                 <div className="custom-text">
                   We believe in open access to knowledge. Many of our articles
                   are freely accessible to all, promoting the widespread
                   dissemination of research.
+                </div>
                 </div>
               </p>
             </div>
@@ -567,32 +737,50 @@ function Index() {
           </ul>
         </Container> */}
         <Container
-    fluid
-    className="open-access-container"
-    style={{
-        backgroundColor: "#EFEFEF",
-        backgroundImage: isSmallScreen ? "none" : "url(images/image2.png)",
-        backgroundSize: "cover", // Ensure the image covers the entire container
-        backgroundPosition: "right",
-        backgroundRepeat: "no-repeat",
-        padding: "40px", // Increased padding for better spacing
-        borderRadius: "12px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Adding shadow for depth
-        margin: "20px auto", // Center the container and add margin
-        maxWidth: "1100px", // Limit the maximum width of the container
-    }}
->
-    <h1 className="open-access-title">
-        <b>IJESTM</b> Open Access
-    </h1>
-    <h3 className="open-access-subtitle">IJESTM empowers researchers & readers through:</h3>
-    <ul className="open-access-list">
-        <li>Open access publishing options</li>
-        <li>Open access agreements</li>
-        <li>Author support and information</li>
-    </ul>
-</Container>
+          fluid
+          className="open-access-container"
+          style={{
+            backgroundColor: "#EFEFEF",
+            backgroundImage: isSmallScreen ? "none" : "url(images/image2.png)",
+            backgroundSize: "cover", // Ensure the image covers the entire container
+            backgroundPosition: "right",
+            backgroundRepeat: "no-repeat",
+            padding: "40px", // Increased padding for better spacing
+            borderRadius: "12px",
+            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", // Adding shadow for depth
+            margin: "20px auto", // Center the container and add margin
+            maxWidth: "1100px", // Limit the maximum width of the container
+          }}
+        >
+          <div  data-aos="fade-up" className="benefit-text">
 
+          <h1 className="open-access-title">
+            
+            <b>IJESTM</b> Open Access
+          </h1>
+          </div>
+          <div  data-aos="fade-up" className="benefit-text">
+
+          <h3 className="open-access-subtitle">
+            IJESTM empowers researchers & readers through:
+          </h3>
+          </div>
+          
+          <ul className="open-access-list">
+          <div  data-aos="fade-up" className="benefit-text">
+
+            <li>Open access publishing options</li>
+            </div>
+            <div  data-aos="fade-up" className="benefit-text">
+
+            <li>Open access agreements</li>
+            </div>
+            <div  data-aos="fade-up" className="benefit-text">
+
+            <li>Author support and information</li>
+            </div>
+          </ul>
+        </Container>
 
         <div style={{ height: "30px" }}></div>
 
@@ -662,7 +850,9 @@ function Index() {
                 justifyContent: "center",
               }}
             >
-              <h2>Browse journals by discipline</h2>
+                 <div  data-aos="fade-up" className="benefit-text">
+              <h2   style={{color: "#0072b1"}}>Browse journals by discipline</h2>
+              </div>
               <div
                 style={{
                   width: "100%",
@@ -721,13 +911,15 @@ function Index() {
                 marginTop: "30px",
               }}
             >
-              <h2>
+                    <div  data-aos="fade-up" className="benefit-text">
+              <h2 style={{color:"#0072b1"}}>
                 {selectedArea
                   ? `Papers in ${selectedArea}`
                   : !loading
                   ? "Select a discipline to see papers"
                   : ""}
               </h2>
+              </div>
               <div
                 style={{
                   width: isSmallScreen ? "100%" : "80%",
@@ -916,35 +1108,41 @@ function Index() {
         <Row className="section2a">
           <Col xs={12} md={9}>
             <div className="info">
+            <div  data-aos="fade-up" className="benefit-text">
+
               <h1
-               
                 style={{
                   marginBottom: "20px",
                   fontSize: "43px",
                   color: "#0072b1",
                 }}
-                 >Join us</h1>
+              >
+                Join us
+              </h1>
+              </div>
+              <div  data-aos="fade-up" className="benefit-text">
 
               <p>
-              <div className="custom-text">
- 
-  We invite <span className="highlight">Researchers</span> and <span className="highlight">Scholars</span> to be part of our vibrant community. 
+                <div className="custom-text">
+                  We invite <span className="highlight">Researchers</span> and{" "}
+                  <span className="highlight">Scholars</span> to be part of our
+                  vibrant community. Whether you are an author, reviewer, or
+                  reader, IJESTM offers you the opportunity to contribute to the
+                  advancement of knowledge in your field. Explore the latest
+                  research in our Current Issue or delve into our Archives to
+                  discover a wealth of knowledge. For more information about
+                  submitting your work or becoming a reviewer, please visit our
+                  Submission Guidelines page. Kindly share the manuscript to{" "}
+             
 
-  
-  Whether you are an author, reviewer, or reader, IJESTM offers you the opportunity to contribute to the advancement of knowledge in your field. 
-
-  
-  Explore the latest research in our Current Issue or delve into our Archives to discover a wealth of knowledge. 
-
-  
-  For more information about submitting your work or becoming a reviewer, please visit our Submission Guidelines page. 
-
- 
-  Kindly share the manuscript to <a href="mailto:aitm@ijestm.com" className="email-link">aitm@ijestm.com</a>.
-</div>
-
-
+                  <a  data-aos="fade-left" href="mailto:aitm@ijestm.com" className="email-link">
+                    aitm@ijestm.com
+                  </a>
+                  
+                  .
+                </div>
               </p>
+              </div>
             </div>
           </Col>
 
@@ -955,12 +1153,12 @@ function Index() {
               <ul>
                 <p>Contact us for inquiries or assistance at</p>
                 <li>
-                <a href='tel:9945387216' className='text-reset'>
-    9945387216
-</a>
-<a href="mailto:aitm@ijestm.com" className='text-reset'>
-    aitm@ijestm.com
-</a>
+                  <a href="tel:9945387216" className="text-reset">
+                    9945387216
+                  </a>
+                  <a href="mailto:aitm@ijestm.com" className="text-reset">
+                    aitm@ijestm.com
+                  </a>
                 </li>
               </ul>
             </div>

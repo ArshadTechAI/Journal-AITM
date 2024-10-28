@@ -94,4 +94,13 @@
   }
    */
 
-   
+   /* ----------------------------------------------------------------------------------------------- */
+   /* animations */
+   .icon-hover-effect {
+    transition: transform 0.3s ease; /* Smooth transition for scaling */
+  }
+  
+  .icon-hover-effect:hover {
+    transform: scale(1.2); /* Increase size by 20% on hover */
+  }
+  
