@@ -658,7 +658,7 @@
 // export default AdminPanel;
 
 import React, { useEffect, useState } from 'react';
-import { collection, getDocs, doc, updateDoc, addDoc, getDoc } from 'firebase/firestore/lite';
+import { collection, getDocs, doc, updateDoc, addDoc, getDoc, setDoc } from 'firebase/firestore/lite';
 import { db } from '../backend/firebase';
 import Header from '../components/header';
 import Footer from '../components/footer';
@@ -673,6 +673,15 @@ import 'react-toastify/dist/ReactToastify.css';  // Import toast CSS
 import '../css/AdminPanel.css';
 
 function AdminPanel() {
+
+    const [editorialTeam, setEditorialTeam] = useState([]);
+    const [assignedEditor, setAssignedEditor] = useState([]);
+    const [selectedEditor, setSelectedEditor] = useState(null);
+    const [selectedEditorId, setSelectedEditorId] = useState(null);
+
+    const [isModalOpen, setModalOpen] = useState(false);
+
+
     const [papers, setPapers] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showRejectReason, setShowRejectReason] = useState(false);
@@ -698,6 +707,79 @@ function AdminPanel() {
         };
         fetchPapers();
     }, []);
+
+    useEffect(() => {
+        const fetchEditorialTeam = async () => {
+            try {
+                const editorCollection = collection(db, 'EditorialTeam');
+                const editorSnapshot = await getDocs(editorCollection);
+                const editorList = editorSnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    ...doc.data()
+                }));
+                setEditorialTeam(editorList);
+            } catch (error) {
+                console.error("Error fetching editors:", error);
+            } finally {
+            setLoading(false);
+          }
+        };
+      
+        fetchEditorialTeam(); // Corrected: invoke fetchAreas here
+      }, []);
+
+
+    //   let editorId;
+
+
+       // Open the modal when Assign button is clicked
+    // const handleAssignClick = () => {
+    //     setModalOpen(true);
+    // };
+
+    // // Close the modal
+    // const handleModalClose = () => {
+    //     setModalOpen(false);
+    // };
+
+    //    // Handle selection of editor
+    // const handleEditorSelection = (e) => {
+    //     setSelectedEditor(e.target.value);
+    // };
+
+    const getAssignedEditorName = async (editorId) => {
+        const docRef = await getDoc(doc(db, "EditorialTeam", editorId));
+        const name = docRef.data().name;
+        console.log(name);
+    }
+
+    const handleEditorChange = (e) => {
+        setSelectedEditor(e.target.value); // Update selected editor
+        setSelectedEditorId(e.target.id);  // Update selected editor ID (assuming the ID is in the target element)
+    };
+
+    // Assign editor and close the modal
+    const handleAssign = async (paper) => {
+        console.log(`Assigned to editor: ${selectedEditor}`);
+        console.log(`Paper id: ${paper.id}`);
+
+        const paperRef = doc(db, `EditorialTeam/${selectedEditor}/papersAssigned`, paper.id);
+        const paperId = paper.id;
+        // Adding the paperId to the papersAssigned subcollection for the selected editor
+        await setDoc(paperRef, { paperId, completed: false });
+
+        const currentDoc = await getDoc(doc(db, "EditorialTeam", selectedEditor));
+        const editorialTeam = currentDoc.data().name;
+
+        const paperIdRef = doc(db, 'PapersQueueCollection', paper.id);
+        await updateDoc(paperIdRef, { asigned: true, assignedToId: selectedEditor, assignedToName: editorialTeam});
+
+        console.log(`Assigned paper ${paperId} to editor: ${selectedEditor}`);
+        // Add your Firebase logic here to assign editor in the database
+        // handleModalClose();
+    };
+
+    
 
     const handleApprove = async (paper) => {
         setLoading(true);
@@ -748,6 +830,22 @@ function AdminPanel() {
         setLoading(false);
     };
 
+    const handleAcknowledgement = async (paper) => {
+        setLoading(true);
+        await sendAcknowledgementEmail(paper);
+
+        const paperRef = doc(db, 'PapersQueueCollection', paper.id);
+        await updateDoc(paperRef, { acknowledged: true });
+        
+        // // Notify success
+        // toast.success("Acknowledgement sent successfully!", {
+        //     position: "top-right",
+        //     autoClose: 3000,
+        // });
+
+        setLoading(false);
+    };
+
     const fetchPapers = async () => {
         const papersCollection = collection(db, 'PapersQueueCollection');
         const papersSnapshot = await getDocs(papersCollection);
@@ -769,13 +867,11 @@ function AdminPanel() {
         try {
             await emailjs.send(
                 'service_tl2k8ng',
-                'template_l6c94mj',
+                'template_s4m95cn',
                 {
                     to_name: name,
                     to_email: email,
-                    paper_title: paperTitle,
-                    volume: currentData?.volume,
-                    issue: currentData?.issue
+                    message: `This is to inform you that your paper "${paperTitle}" has been successfully approved by IJESTM, in Volume ${currentData?.volume}, Issue ${currentData?.issue}.`,
                 },
                 'McN8gFqdeF-Bmbn-E'
             );
@@ -795,8 +891,7 @@ function AdminPanel() {
                 {
                     to_name: paper.authors[0].name,
                     to_email: paper.authors[0].email,
-                    paper_title: paper.title,
-                    rejection_reason: rejectReason
+                    message: `We regret to inform you that your paper titled "${paper.title}" has been rejected by IJESTM due to the following reasons: \n${rejectReason}`,
                 },
                 'McN8gFqdeF-Bmbn-E'
             );
@@ -808,10 +903,31 @@ function AdminPanel() {
         }
     };
 
+    const sendAcknowledgementEmail = async (paper) => {
+        try {
+            await emailjs.send(
+                'service_tl2k8ng',
+                // 'template_l6c94mj',
+                'template_s4m95cn',
+                {
+                    to_name: paper.authors[0].name,
+                    to_email: paper.authors[0].email,
+                    message: `We would like to thank you for submitting your paper to IJESTM. We are pleased to inform you that we have successfully received your submission, titled "${paper.title}".\n\nOur editorial team will review your paper as soon as possible. Once the review process is complete, we will reach out to you with a confirmation email and further updates regarding the status of your submission.\n\nWe appreciate your interest in contributing to IJESTM and look forward to reviewing your work. If you have any questions or need further assistance, please feel free to reach out to us at info@ijestm.com.`,
+                },
+                'McN8gFqdeF-Bmbn-E'
+            );
+            // Notification
+            toast.success('Acknowledgement sent successfully.');
+        } catch (err) {
+            // Notification
+            toast.error('Failed to send Acknowledgement.');
+        }
+    };
+
     return (
         <>
 
-<ToastContainer /> {/* Add ToastContainer to render toasts */}
+            <ToastContainer /> {/* Add ToastContainer to render toasts */}
             {loading && (
                 <div className="loading-overlay">
                     <div className="loading-indicator">
@@ -841,7 +957,10 @@ function AdminPanel() {
                                 </a>
                             </h2>
                             <p className="paper-abstract">{paper.abstract}</p>
-                            <p className="author-name">Keywords: {paper.keywords}</p>
+                            <p className="author-name">Keywords: {paper.keywords.map((keyword) => (
+                                <span> {keyword}, </span>
+                            ))}</p>
+                            <p className="assigned-to">Assigned To: {paper.assignedToName}</p>
                             <div className="action-buttons">
                                 <Button
                                     className="approve-btn"
@@ -857,6 +976,33 @@ function AdminPanel() {
                                 >
                                     Reject
                                 </Button>
+                                <Button
+                                    className="ack-btn"
+                                    onClick={() => handleAcknowledgement(paper)}
+                                    disabled={paper.acknowledged === true}
+                                >
+                                    Send Acknowledgement
+                                </Button>
+                                
+                            </div>
+                            <div>
+                                <label htmlFor="editorDropdown">Assign Editor:</label>
+                                <select
+                                    id="editorDropdown"
+                                    // value={selectedEditor}
+                                    // onChange={(e) => setSelectedEditor(e.target.value)}
+                                    onChange={handleEditorChange}
+                                >
+                                    <option value="">Select an editor</option>
+                                    {editorialTeam.map((editor) => (
+                                        <option id={editor.id} key={editor.id} value={editor.id}>
+                                            {editor.name}
+                                        </option>
+                                        
+                                    ))}
+                                </select>
+
+                                <button onClick={() => handleAssign(paper)}>Assign</button>
                             </div>
 
                             {showRejectReason && (

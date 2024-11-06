@@ -1,31 +1,81 @@
-
-import React, { useEffect, useState } from "react";
-// import Header from '../components/NewCustomComponents/Header'
-import { db, storage, } from '../backend/firebase'; // Adjust the import path as necessary
+import React, { useEffect, useState, useRef } from "react"; // Step 1: Create the ref
+import { db, storage } from '../backend/firebase'; // Adjust the import path as necessary
 import { getFirestore, collection, addDoc, serverTimestamp, doc, getDoc } from "firebase/firestore/lite";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 import Header from "../components/header";
-
 import '../css/Submissions.css';
 import Footer from "../components/footer";
 import { Button } from "react-bootstrap";
+import AOS from 'aos';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; // Import Toastify styles
 
 function Submissions() {
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
 
-    const [areas, setAreas] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [selectedResearchArea, setSelectedResearchArea] = useState('');
 
-  const handleSelectionChange = (event) => {
-    setSelectedResearchArea(event.target.value);
+    // State to hold address details
+
+  const [address, setAddress] = useState({
+    country: '',
+    state: '',
+    city: '',
+    postalCode: '',
+  });
+  // Function to handle input changes
+  const handleAddressChange = (field, value) => {
+    setAddress((prevAddress) => ({
+      ...prevAddress,
+      [field]: value,
+    }));
   };
 
+
+
+
+
+
+
+
+
+    // State to hold authors' details
+    const [authors, setAuthors] = useState([
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+    ]);
+    const handleeInputChange = (index, field, value) => {
+      const updatedAuthors = [...authors];
+      updatedAuthors[index][field] = value;
+      setAuthors(updatedAuthors);
+    };
+
+
+
+
+
+
+
+
+
+
+
+  const fileInputRef = useRef(null); // Step 1: Create the ref
+
+  useEffect(() => {
+    AOS.init({ duration: 1000 });
+  }, []);
+
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
+  const [areas, setAreas] = useState([]);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     title: '',
     abstract: '',
     keywords: '',
     researchArea: '',
+    researchPaper: '',
     message: '',
     author: {
       name: '',
@@ -39,11 +89,10 @@ function Submissions() {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    if (name in formData.author) {
-      setFormData({ ...formData, author: { ...formData.author, [name]: value } });
-    } else {
-      setFormData({ ...formData, [name]: value });
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value
+    }));
   };
 
   const handleAuthorChange = (e) => {
@@ -61,30 +110,38 @@ function Submissions() {
     setFormData({ ...formData, file: e.target.files[0] });
   };
 
-
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setAuthors([
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+      { name: '', designation: '', organization: '', email: '', mobile: '' },
+    ]);
 
+
+
+      // Reset address details
+      setAddress({
+        country: '',
+        state: '',
+        city: '',
+        postalCode: '',
+      });
+
+
+  
     if (!formData.file) {
-      alert('Please upload a file');
+      toast.error('Please upload a file');
       return;
     }
-
-    if(!formData.researchArea){
-        alert('Please select a research area');
-        return;
-    }
-
-    // Start loading (Show Circular Progress)
+  
     setLoading(true);
-
     try {
-      // Split keywords into an array
       const keywordsArray = formData.keywords.split(',').map(keyword => keyword.trim());
-
-        const authorArray = [
+      const authorArray = [
         ...Array.from(document.querySelectorAll('.custom-table tbody tr'))
-        //   .slice(1) // Skip the first row as it's already included
           .map((row) => ({
             name: row.querySelector('.name-input').value.trim(),
             designation: row.querySelector('.designation-input').value.trim(),
@@ -92,27 +149,23 @@ const handleSubmit = async (e) => {
             email: row.querySelector('.email-input').value.trim(),
             mobile: row.querySelector('.mobile-input').value.trim(),
           }))
-          .filter((author) => 
+          .filter((author) =>
             author.name && author.designation && author.organization && author.email && author.mobile
-          ), // Filter out authors with any empty fields
+          ),
       ];
-      console.log(authorArray);
-
-        const country = document.querySelector('input[name="country"]').value.trim();
-        const state = document.querySelector('input[name="state"]').value.trim();
-        const city = document.querySelector('input[name="city"]').value.trim();
-        const postalCode = document.querySelector('input[name="postal_code"]').value.trim();
-        const author_address = [{
-            'country': country,
-            'state': state,
-            'city': city,
-            'postal_code': postalCode,
-        }]
-        const reviewer_referral_id = document.querySelector('input[name="reviewerReferralId"]').value.trim();
-
-
-
-      // Fetch the current volume and issue
+  
+      const country = document.querySelector('input[name="country"]').value.trim();
+      const state = document.querySelector('input[name="state"]').value.trim();
+      const city = document.querySelector('input[name="city"]').value.trim();
+      const postalCode = document.querySelector('input[name="postal_code"]').value.trim();
+      const author_address = [{
+        country,
+        state,
+        city,
+        postal_code: postalCode,
+      }];
+      const reviewer_referral_id = document.querySelector('input[name="reviewerReferralId"]').value.trim();
+  
       const currentDoc = await getDoc(doc(db, 'Current', 'current'));
       if (!currentDoc.exists()) {
         throw new Error('Current document does not exist');
@@ -120,44 +173,38 @@ const handleSubmit = async (e) => {
       const currentData = currentDoc.data();
       const volumeId = `Volume${currentData.volume}`;
       const issueId = `Issue${currentData.issue}`;
-
-      // Create a storage reference with the timestamped file name
+  
       const timestamp = Date.now();
       const storageRef = ref(storage, `papers/${timestamp}_${formData.file.name}`);
-
-      // Upload the file
       await uploadBytes(storageRef, formData.file);
-  
-      // Get the file URL
       const fileURL = await getDownloadURL(storageRef);
-
-      // Add form data to Firestore
+  
       const paperData = {
         title: formData.title,
         abstract: formData.abstract,
-        keywords: keywordsArray, // Save the array of keywords
+        keywords: keywordsArray,
         researchArea: formData.researchArea,
         message: formData.message,
-        authors: authorArray, // Save the array of authors
+        authors: authorArray,
         fileURL: fileURL,
         status: 'pending',
         timestamp: serverTimestamp(),
         authorAddress: author_address,
         reviewerReferralId: reviewer_referral_id
       };
-
-      // Add the document to PapersQueueCollection
+  
       const papersQueueCollectionRef = collection(db, 'PapersQueueCollection');
       await addDoc(papersQueueCollectionRef, paperData);
-
-      alert('Journal submitted successfully!');
-
-      // Reset form data
+  
+      toast.success('Journal submitted successfully!');
+  
+      // Clear form fields
       setFormData({
         title: '',
         abstract: '',
         keywords: '',
         researchArea: '',
+        researchPaper: '',
         message: '',
         author: {
           name: '',
@@ -168,21 +215,24 @@ const handleSubmit = async (e) => {
         },
         file: null
       });
+
+      // Clear the file input
+      fileInputRef.current.value = null; // Reset the file input
+
     } catch (error) {
       console.error("Error submitting journal: ", error);
-      alert('Error submitting journal: ' + error.message);
+      toast.error('Error submitting journal: ' + error.message);
     } finally {
-      // Stop loading (Hide Circular Progress)
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     const fetchAreas = async () => {
       try {
         const docRef = doc(db, "Research_Areas", "research_areas");
         const docSnap = await getDoc(docRef);
-
+  
         if (docSnap.exists()) {
           setAreas(docSnap.data().areas);
         } else {
@@ -194,205 +244,274 @@ const handleSubmit = async (e) => {
         setLoading(false);
       }
     };
-
-    fetchAreas();
+  
+    fetchAreas(); // Corrected: invoke fetchAreas here
   }, []);
+  
+  return (
+    <>
+      <ToastContainer />
+      <Header/>
+      <div className="body">
+        {loading && (
+          <div className="loading-overlay">
+            <div className="loading-indicator">
+              <div className="spinner"></div>
+            </div>
+          </div>
+        )}
+        <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
+          <h1 style={{ fontSize: '3rem', color: '#005b8c' }} data-aos="fade-up">Submit Research Paper</h1>
+        </div>
+        <hr />
+        <h3 data-aos="fade-up"><b style={{ color: "rgb(0, 91, 140)" }}>Important Instructions</b></h3>
+        <form onSubmit={handleSubmit}>
+          <ul>
+            <li data-aos="fade-up">We recommend reading the publication guidelines/process, Fees & Payment, and FAQs before submitting your research paper.</li>
+            <li data-aos="fade-up">Kindly fill in all the details properly as the certificate will be generated based on the information provided below.</li>
+            <li data-aos="fade-up">All input fields marked with a red left border are mandatory; they must be filled in.</li>
+            <li data-aos="fade-up">It is important that you provide a functioning email address and mobile number of the first author correctly because all communication will occur on those email address and/or mobile number.</li>
+            <li data-aos="fade-up">Details of the paper (Title, Abstract, Keywords, Author Name(s), Designation(s), Organization Name(s)) must be the same as mentioned in the research paper you are submitting.</li>
+            <li data-aos="fade-up">Please write the Abstract in Sentence case, the email address in lower case, and all other fields in Title Case (capitalize the first character of each word). It's better NOT to write in UPPER CASE.</li>
+          </ul>
+          <center>
+            <h3 className='text_with_background' data-aos="fade-up">Please fill in the details of the research paper.</h3>
+          </center>
+          <div className='input_container'>
+            <div className='row_input_component' data-aos="fade-up">
+              <label htmlFor="title">Title:</label>
+              <input
+                className='red_border_input'
+                placeholder='Please write in title case (Not in CAPITAL CASE)'
+                type="text"
+                id="title"
+                name="title"
+                value={formData.title}
+                required
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className='row_input_component' data-aos="fade-up" data-aos-delay="100">
+              <label htmlFor="abstract">Abstract:</label>
+              <input
+                className='red_border_input'
+                placeholder='Short background information about the research'
+                type="text"
+                id="abstract"
+                name="abstract"
+                value={formData.abstract}
+                required
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className='row_input_component' data-aos="fade-up" data-aos-delay="200">
+              <label htmlFor="keywords">Keywords:</label>
+              <input
+                className='red_border_input'
+                placeholder='Keywords should be comma-separated'
+                type="text"
+                id="keywords"
+                name="keywords"
+                value={formData.keywords}
+                required
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className='row_input_component' data-aos="fade-up" data-aos-delay="300">
+              <label htmlFor="researchArea">Research Area:</label>
+              <select
+                className='red_border_input'
+                id="researchArea"
+                name="researchArea"
+                value={formData.researchArea}
+                required
+                onChange={handleInputChange}
+              >
+                <option value="">Select Research Area</option>
+                {areas.map((area, index) => (
+                  <option key={index} value={area}>{area}</option>
+                ))}
+              </select>
+            </div>
+            <div className='row_input_component' data-aos="fade-up" data-aos-delay="400">
+              <label htmlFor="researchPaper">Select Research Paper:</label>
+              <input
+                className='red_border_input'
+                type="file"
+                id="researchPaper"
+                name="researchPaper"
+                accept=".pdf"
+                onChange={handleFileChange}
+                required
+                ref={fileInputRef} // Attach ref here
+              />
+            </div>
+  <div className='row_input_component' data-aos="fade-up" data-aos-delay="500">
+    <label htmlFor="message">Message to Editor or Reviewer:</label>
+    <input
+      className='red_border_input not_required_field'
+      placeholder='Enter your message here...'
+      type="text"
+      id="message"
+      name="message"
+      value={formData.message}
 
-
-
-    return (
-      <>
-        <Header/>
-        <div className="body">
-            {loading && (
-                <div className="loading-overlay">
-                    <div className="loading-indicator">
-                    <div className="spinner"></div>
-                    </div>
-                </div>
-            )}
-
-            {/* <Header/> */}
-            <div style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
-  <h1 style={{ fontSize: '3rem', color: '#005b8c' }}>Submit Research Paper</h1>
+      onChange={handleInputChange}
+    />
+  </div>
 </div>
 
-            <hr />
+<form onSubmit={handleSubmit}>
+      <center data-aos="fade-up">
+        <h3 className='text_with_background'>Authors' Details</h3>
+        <p>Don't write Dr. Prof. Mr. Mrs. Miss etc. salutations before authors' names, these will be removed, these are against international standard.</p>
+      </center>
+      
+      <table className="custom-table" data-aos="fade-up">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Designation</th>
+            <th>Organization</th>
+            <th>Email Address</th>
+            <th>Mobile Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          {authors.map((author, index) => (
+            <tr key={index}>
+              <td data-label="#">{index + 1}.</td>
+              <td data-label="Name">
+                <input
+                  type="text"
+                  placeholder="In title case"
+                  className="table-input name-input required_field"
+                  value={author.name}
+                  onChange={(e) => handleeInputChange(index, 'name', e.target.value)}
+                  required
+                />
+              </td>
+              <td data-label="Designation">
+                <input
+                  type="text"
+                  placeholder="In title case"
+                  className="table-input designation-input required_field"
+                  value={author.designation}
+                  onChange={(e) => handleeInputChange(index, 'designation', e.target.value)}
+                  required
+                />
+              </td>
+              <td data-label="Organization">
+                <input
+                  type="text"
+                  placeholder="In title case"
+                  className="table-input organization-input required_field"
+                  value={author.organization}
+                  onChange={(e) => handleeInputChange(index, 'organization', e.target.value)}
+                  required
+                />
+              </td>
+              <td data-label="Email Address">
+                <input
+                  type="email"
+                  placeholder="e.g. example@example.com"
+                  className="table-input email-input required_field"
+                  value={author.email}
+                  onChange={(e) => handleeInputChange(index, 'email', e.target.value)}
+                  required
+                />
+              </td>
+              <td data-label="Mobile Number">
+                <input
+                  type="text"
+                  placeholder="+91 0000000000"
+                  className="table-input mobile-input required_field"
+                  value={author.mobile}
+                  onChange={(e) => handleeInputChange(index, 'mobile', e.target.value)}
+                  required
+                />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      
 
-            <h3>
-  <b style={{ color: "rgb(0, 91, 140)" }}>Important Instructions</b>
-</h3>
-
-            {/* <form onSubmit={handleSubmit}> */}
-            <form>
-
-            <ul>
-                <li>
-                    We recommend to read the publication guidelines/process, Fees & Payment and FAQs before submitting your research paper.
-                </li>
-                <li>
-                    Kindly fill all the details properly as certificate will be generated on the basis of the information provided as under.            
-                </li>
-                <li>
-                    All input fields marked with red left border are mandatory, they must be filled in.            
-                </li>
-                <li>
-                    It is important that you provide functioning email address and functioning mobile number of the first author correctly because all communication will occur on those email address and/or mobile number.            
-                </li>
-                <li>
-                    Details of the paper (Title, Abstract, Keywords, Author Name(s), Designation(s), Organization Name(s)) must be same as mentioned in the research paper which you are submitting.            
-                </li>
-                <li>
-                    Please write Abstract in Sentence case, email address in lower case and all other fields in Title Case (Capitalize first character of each words). It's better NOT to write in UPPER CASE.            
-                </li>
-            </ul>
-
-            <center>
-                <h3 className='text_with_background'>Please fill in the details of the research paper.</h3>
-            </center>
-            <div className='input_contianer'>
-                <div className='row_input_component'>
-                    <label htmlFor="title">Title:</label>
-                    <input className='red_border_input' placeholder='Please write in title case (Not in CAPITAL CASE)' type="text" id="title" name="title" required 
-                    onChange={handleInputChange}/>
-                </div>
-                <div className='row_input_component'>
-                    <label htmlFor="abstract">Abstract:</label>
-                    <input className='red_border_input' placeholder='Short background information about the research' type="text" id="abstract" name="abstract" required 
-                    onChange={handleInputChange}/>
-                </div>
-                <div className='row_input_component'>
-                    <label htmlFor="keywords">Keywords:</label>
-                    <input className='red_border_input' placeholder='Comma spearted list (ex: lorem, epusm, endor...)' type="text" id="keywords" name="keywords" required 
-                    onChange={handleInputChange}/>
-                </div>
-                <div className='row_input_component'>
-                    <label htmlFor="paper">Select Research Area:</label>
-                    <select
-                        name="researchArea"
-                        value={formData.researchArea}
-                        onChange={handleInputChange}
-                        className="red_border_input"
-                        >
-                        <option value="" disabled>Select Research Area</option>
-                        {areas.map((area, index) => (
-                            <option key={index} value={area}>
-                            {area}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                
-                <div className='row_input_component' >
-                    <label htmlFor="paper">Select Research Paper:</label>
-                    <div style={{width: '80%', display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <input className='red_border_input' type="file" id="paper" name="paper" accept=".pdf,.doc,.docx,.txt" required
-                            style={{ width: '49%', padding: '10px'}}
-                            onChange={handleFileChange}
-                        />
-                        <p style={{ width: '49%', textWrap: 'wrap', fontSize: '14px', marginTop: '2px'}}>(.docx or .doc (Microsoft Office Word) or .odt (Open Document Text) file only) (Please format the document in single column layout, not in 2 columns.)</p>
-
-                    </div>
-                    
-                </div>
-
-
-                <div className='row_input_component'>
-                    <label htmlFor="message">Message to Editor or Reviewer:</label>
-                    <input className='red_border_input not_required_field' placeholder='Enter your message here...' type="text" id="message" name="message" onChange={handleInputChange}/>
-                </div>
-            </div>
-
-            <center>        
-                <h3 className='text_with_background'>Authors' Details</h3>
-                <p>Don't write Dr. Prof. Mr. Mrs. Miss etc. salutations before authors' names, these will be removed, these are against international standard.</p>
-            </center>
-            
-
-          
-            <table className="custom-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Designation</th>
-                <th>Organization</th>
-                <th>Email Address</th>
-                <th>Mobile Number</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td data-label="#">1.</td>
-                <td data-label="Name">
-                  <input type="text" placeholder="In title case" className="table-input name-input required_field" required />
-                </td>
-                <td data-label="Designation">
-                  <input type="text" placeholder="In title case" className="table-input designation-input required_field" required />
-                </td>
-                <td data-label="Organization">
-                  <input type="text" placeholder="In title case" className="table-input organization-input required_field" required />
-                </td>
-                <td data-label="Email Address">
-                  <input type="email" placeholder="e.g. example@example.com" className="table-input email-input required_field" required />
-                </td>
-                <td data-label="Mobile Number">
-                  <input type="text" placeholder="+91 0000000000" className="table-input mobile-input required_field" required />
-                </td>
-              </tr>
-              {Array.from({ length: 4 }, (_, index) => (
-                <tr key={index}>
-                  <td data-label="#">{index + 2}.</td>
-                  <td data-label="Name">
-                    <input type="text" placeholder="In title case" className="table-input name-input" />
-                  </td>
-                  <td data-label="Designation">
-                    <input type="text" placeholder="In title case" className="table-input designation-input" />
-                  </td>
-                  <td data-label="Organization">
-                    <input type="text" placeholder="In title case" className="table-input organization-input" />
-                  </td>
-                  <td data-label="Email Address">
-                    <input type="email" placeholder="e.g. example@example.com" className="table-input email-input" />
-                  </td>
-                  <td data-label="Mobile Number">
-                    <input type="text" placeholder="+91 0000000000" className="table-input mobile-input" />
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
-
+    </form>
+<div>
+  <div>
+    <div style={{marginTop: "10px"}}>
             <center><p>Are there more authors? Don't worry; just write the five authors' names and we will add other author(s) from your uploaded research paper's file.</p></center>
 
-
-            <center>        
-                <h3 className='text_with_background'>Address for Communication</h3>
-            </center>
-
-
-            <div style={{alignItems: 'center', justifyContent: 'space-between'}}>
-                <div className='column_input_component'>
-                    <label htmlFor="title">Country:</label>
-                    <input className='small_input' type="text" placeholder='Enter Country Name' id="country" name="country" required/>
-                </div>
-
-                <div className='column_input_component'>
-                    <label htmlFor="title">State:</label>
-                    <input className='small_input' type="text" placeholder='Enter State Name' id="state" name="state" required/>
-                </div>
-
-                <div className='column_input_component'>
-                    <label htmlFor="title">City/District:</label>
-                    <input className='small_input' type="text" placeholder='Enter City name' id="city" name="city" required/>
-                </div>
-
-                <div className='column_input_component'>
-                    <label htmlFor="title">Postal code:</label>
-                    <input className='small_input' type="text" placeholder='Enter Postal Code' id="postal_code" name="postal_code" required/>
-                </div>
             </div>
+            </div>
+            </div>
+            <form onSubmit={handleSubmit}>
+      <center data-aos="fade-up">
+        <h3 className='text_with_background'>Address for Communication</h3>
+      </center>
+
+      <div style={{ alignItems: 'center', justifyContent: 'space-between' }} data-aos="fade-up">
+        <div className='column_input_component'>
+          <label htmlFor="country">Country:</label>
+          <input
+            className='small_input'
+            type="text"
+            placeholder='Enter Country Name'
+            id="country"
+            name="country"
+            value={address.country}
+            onChange={(e) => handleAddressChange('country', e.target.value)}
+            required
+          />
+        </div>
+
+        <div className='column_input_component'>
+          <label htmlFor="state">State:</label>
+          <input
+            className='small_input'
+            type="text"
+            placeholder='Enter State Name'
+            id="state"
+            name="state"
+            value={address.state}
+            onChange={(e) => handleAddressChange('state', e.target.value)}
+            required
+          />
+        </div>
+
+        <div className='column_input_component'>
+          <label htmlFor="city">City/District:</label>
+          <input
+            className='small_input'
+            type="text"
+            placeholder='Enter City Name'
+            id="city"
+            name="city"
+            value={address.city}
+            onChange={(e) => handleAddressChange('city', e.target.value)}
+            required
+          />
+        </div>
+
+        <div className='column_input_component'>
+          <label htmlFor="postal_code">Postal Code:</label>
+          <input
+            className='small_input'
+            type="text"
+            placeholder='Enter Postal Code'
+            id="postal_code"
+            name="postal_code"
+            value={address.postalCode}
+            onChange={(e) => handleAddressChange('postalCode', e.target.value)}
+            required
+          />
+        </div>
+      </div>
+
+     
+    </form>
 
             <center>
                     <div className='column_input_component' style={{ width: '40%', display: 'flex', flexDirection: 'column'}}>
@@ -406,9 +525,14 @@ const handleSubmit = async (e) => {
     id="privacy_policy" 
     style={{ width: '16px', height: '16px', verticalAlign: 'middle' }} 
   />
-  <label htmlFor="privacy_policy" style={{ marginLeft: '10px', verticalAlign: 'middle' }}>
+ <label 
+    htmlFor="privacy_policy" 
+    style={{ marginLeft: '10px', verticalAlign: 'middle' }} 
+    
+>
     I agree with the <a href="/publication-ethics">journal/website's policies</a>
-  </label>
+</label>
+
 </div>
 
 
@@ -419,8 +543,25 @@ const handleSubmit = async (e) => {
 
                     <div style={{ display: 'flex', width: '20%', alignItems: 'center', justifyContent: 'center'}}>
                         {/* <button type="submit" className="submit_button">Submit</button> */}
-                        <Button onClick={handleSubmit}>Submit</Button>
-                    </div>
+                        <Button 
+        onClick={handleSubmit} 
+        style={{
+            padding: '10px 20px',
+            backgroundColor: '#005b8c',
+            color: '#fff',
+            border: 'none',
+            borderRadius: '5px',
+            fontSize: '16px',
+            fontWeight: 'bold',
+            cursor: 'pointer',
+            position: 'relative',
+            overflow: 'hidden',
+            transition: '0.4s',
+        }}
+       
+    >
+        Submit
+    </Button>                    </div>
                     <div style={{marginBottom: '50px'}}></div>
             </center>
           </form>
@@ -433,6 +574,9 @@ const handleSubmit = async (e) => {
 }
 
 export default Submissions;
+
+
+
 
 
 

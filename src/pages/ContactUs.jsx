@@ -694,7 +694,7 @@
 
 // export default ContactUs;
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -716,9 +716,19 @@ import Footer from "../components/footer";
 import "../css/ContactUs.css"; // Custom CSS for further 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
+
 
 
 function ContactUs() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: true, // Animation occurs only once when scrolled into view
+    });
+  }, []);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -774,11 +784,11 @@ function ContactUs() {
     <>
       <Header />
 
-      <Container fluid className="contact-container my-5">
+      <Container fluid className="contact-container my-5" data-aos="fade-up">
         <Row>
           <Col lg={12} className="text-center">
-            <h2 className="main-title">Contact Us</h2>
-            <p
+          <h2 className="main-title" data-aos="zoom-in">Contact Us</h2>
+          <p
               style={{
                 maxWidth: "1050px", // Adjust the maximum width as needed
                 margin: "0 auto", // Center the text
@@ -827,10 +837,11 @@ function ContactUs() {
         marginTop: "-40px",
         marginLeft: window.innerWidth > 768 ? "-22px" : "16px", // Conditional marginLeft
               }}
+              data-aos="fade-right"
     >
       <Card.Body style={{ justifyContent: "center", alignItems: "center", width: "100%",}}>
       <Card.Title className="section-title">
-      <h3 style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>
+      <h3  data-aos="zoom-in" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>
             Our Contact Information
           </h3>
         </Card.Title>
@@ -923,20 +934,23 @@ function ContactUs() {
   rel="noreferrer" 
   className="whatsapp-icon" 
   style={{ marginRight: "10px" }}
+  data-aos="fade-up" data-aos-delay="200"
 >
   
       <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#25D366", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://twitter.com/anjumanitm" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}>
+    <a href="https://twitter.com/anjumanitm" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}data-aos="fade-up" data-aos-delay="300">
       <FontAwesomeIcon icon={faTwitter} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" target="_blank" rel="noreferrer" className="instagram-icon">
+    <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" target="_blank" rel="noreferrer" className="instagram-icon"data-aos="fade-up" data-aos-delay="400">
       <FontAwesomeIcon icon={faInstagram} style={{ color: "#E1306C", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.facebook.com/anjumanitm" target="_blank" rel="noreferrer" className="facebook-icon" style={{ marginRight: "10px" }}>
+    <a href="https://www.facebook.com/anjumanitm" target="_blank" rel="noreferrer" className="facebook-icon" data-aos="fade-up" data-aos-delay="500" style={{ marginRight: "10px" }}>
       <FontAwesomeIcon icon={faFacebook} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
     </a>
-    <a href="https://www.linkedin.com/school/anjumanitm/" target="_blank" rel="noreferrer" className="linkedin-icon">
+    <a href="https://www.linkedin.com/school/anjumanitm/" target="_blank" data-aos="fade-up" data-aos-delay="6Z   CK
+    
+     ` 00" rel="noreferrer" className="linkedin-icon">
       <FontAwesomeIcon icon={faLinkedin} style={{ color: "#0077b5", fontSize: "24px", marginRight: "10px" }} />
     </a>
 </div>
@@ -969,18 +983,19 @@ function ContactUs() {
               allowFullScreen=""
               loading="lazy"
               title="Our Location"
+               data-aos="fade-up"
             ></iframe>
           </Col>
         </Row>
 
         <Row className="mt-5">
   <Col lg={12}>
-    <h3 className="section-title" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>
+    <h3 className="section-title" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}data-aos="fade-left">
       Send Us a Message
     </h3>
     <ToastContainer /> 
   
-    <Form  onSubmit={handleSubmit} method="POST" style={{ maxWidth: "700px", margin: "0 auto", backgroundColor: "#f9f9f9", borderRadius: "10px", padding: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}>
+    <Form  onSubmit={handleSubmit} method="POST" style={{ maxWidth: "700px", margin: "0 auto", backgroundColor: "#f9f9f9", borderRadius: "10px", padding: "20px", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)" }}data-aos="fade-up">
   <Row className="mb-3">
     <Col md={12}>
       <Form.Group controlId="formName">

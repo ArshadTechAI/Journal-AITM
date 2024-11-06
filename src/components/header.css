@@ -103,4 +103,11 @@
   .icon-hover-effect:hover {
     transform: scale(1.2); /* Increase size by 20% on hover */
   }
+  /* animations for navlink button */
+  .Nav.Link:hover .underline {
+    transform: translateX(0); /* Slide underline into view */
+  }
+  .Nav.Link:hover {
+    color: #007BFF; /* Customize with a pleasant color on hover */
+  }
   

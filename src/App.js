@@ -121,6 +121,7 @@ import PaperDetailPage from './pages/PaperDetailPage';
 import AdminPanel from './pages/AdminPanel';
 import LoginPage from './pages/LoginPage';
 import PrivateRoute from './pages/PrivateRoute';
+import EditorialPanel from './pages/EditorialPanel';
 
 function App() {
   return (
@@ -140,10 +141,8 @@ function App() {
           <Route path="/paper-detail-page" element={<PaperDetailPage />} />
           {/* <Route path="/admin-panel-hod_cse@123" element={<AdminPanel />} /> */}
           {/* <Route path="/supersecure-admin-portal" element={<AdminPanel />} /> */}
-          <Route path="/admin-panel" element={<PrivateRoute><AdminPanel />
-                        </PrivateRoute>
-                    }
-                />
+          <Route path="/admin-panel" element={<PrivateRoute><AdminPanel /></PrivateRoute>} />
+          <Route path="/editorial-panel" element={<PrivateRoute><EditorialPanel /></PrivateRoute>}/>
 
           <Route path="/login-page" element={<LoginPage/>} />
          

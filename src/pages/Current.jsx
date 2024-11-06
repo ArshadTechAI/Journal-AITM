@@ -473,10 +473,20 @@ import { useNavigate } from 'react-router-dom';
 import Footer from "../components/footer";
 import "./Current.css"; // Ensure to add custom CSS for further styling
 import { FaBookOpen, FaGlobe, FaLayerGroup } from 'react-icons/fa';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 
 function Current() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,  // Adjust for speed of animations
+      easing: 'ease-in-out',
+      once: true       // Animation occurs only once as you scroll
+    });
+  }, []);
+  
   const navigate = useNavigate(); // Initialize useNavigate
   const [currentData, setCurrentData] = useState(null);
 
@@ -506,7 +516,7 @@ function Current() {
       <Container fluid className="content-container my-5 px-5">
         <Row>
           <Col lg={12} className="text-center">
-            <h2 className="main-title">Explore the Latest Research</h2>
+            <h2 className="main-title" data-aos="fade-up" style={{ animation: 'fadeIn 1s ease-out' }}>Explore the Latest Research</h2>
             <p
   className="intro-text"
   style={{
@@ -516,7 +526,10 @@ function Current() {
     lineHeight: '1.6',
     textAlign: 'justify',
     margin: '0px 1rem',
+    
+
   }}
+  data-aos= "fade-up"
 >
               The <strong>Current Issue</strong> of <strong>IJESTM</strong>{" "}
               brings together a diverse range of studies and research articles
@@ -545,18 +558,19 @@ function Current() {
           <Col lg={4} className="mb-4">
           <Card className="shadow-lg">
               <Card.Body>
-                <Card.Title className="section-title" style={{ color: '#005b8c' }}>
+                <Card.Title className="section-title" data-aos= "fade-right" style={{ color: '#005b8c' }}>
                 Innovative Research                </Card.Title>
                 <Card.Text
   className="card-content"
   style={{
     fontSize: '17.6px',
     fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    color: 'black',
+    color: '#4d4d4d',
     lineHeight: '1.4',
     textAlign: 'justify',
     margin: '0px 1rem',
   }}
+  data-aos= "fade-right"
 >
 <FaBookOpen style={{ color: "#6A5ACD", marginRight: "8px" }}/>{`Learn about the latest trends and breakthroughs in the Science Field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.`.replace(/\s+/g, ' ').trim()}
 </Card.Text>
@@ -570,18 +584,18 @@ function Current() {
           <Col lg={4} className="mb-4">
             <Card className="shadow-lg">
               <Card.Body>
-                <Card.Title className="section-title" style={{ color: '#005b8c' }}>
+                <Card.Title className="section-title"  data-aos= "fade-up"  style={{ color: '#005b8c' }}>
                   Global Perspectives
                 </Card.Title>
                 <Card.Text className="card-content"
                 style={{
                   fontSize: '17.6px',
                   fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-                  color: 'black',
+                  color: '#4d4d4d',
                   lineHeight: '1.4',
                   textAlign: 'justify',
                   margin: '0px 1rem',
-                }}>
+                }}data-aos= "fade-up">
                                 <FaGlobe style={{ color: "#0085FF", marginRight: "8px" }} />
 
                 Discover research from scholars worldwide, offering a comprehensive global outlook. Gain insight into how different regions approach and solve global challenges in innovative ways.Inspire collaborative change.
@@ -594,17 +608,17 @@ function Current() {
           <Col lg={4} className="mb-4">
             <Card className="shadow-lg">
               <Card.Body>
-              <Card.Title className="section-title" style={{ color: '#005b8c' }}>
+              <Card.Title className="section-title" data-aos= "fade-left"  style={{ color: '#005b8c' }}>
               Multidisciplinary Focus
                 </Card.Title>
                 <Card.Text className="card-content" style={{
     fontSize: '17.6px',
     fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    color: 'black',
+    color: '#4d4d4d',
     lineHeight: '1.4',
     textAlign: 'justify',
     margin: '0px 1rem',
-  }}>
+  }}data-aos= "fade-left">
                   <FaLayerGroup style={{ color: "#FF5733", marginRight: "8px"}}/>The articles in this issue span multiple disciplines, offering
                   a holistic view and interdisciplinary insights. It’s a
                   convergence of diverse fields that lead to more innovative
@@ -630,6 +644,8 @@ function Current() {
     color: 'rgb(0, 114, 177)',
     marginTop: '-5px',
   }}
+  data-aos= "fade-up"
+
 >
   About the Current Issue
 </h2>
@@ -648,6 +664,8 @@ function Current() {
       maxWidth: '1050px',
        margin: 'auto'
   }}
+  data-aos= "fade-up"
+
 >
   At <strong>IJESTM</strong>, we are committed to publishing high-quality, peer-reviewed research that makes a lasting impact. This issue presents studies from top-tier researchers exploring both established fields and emerging trends, offering groundbreaking discoveries and innovative perspectives that push the boundaries of knowledge.
   <br />
@@ -661,7 +679,7 @@ function Current() {
 
 
 
-<Row className="mt-4 text-center">
+{/* <Row className="mt-4 text-center">
   <Col>
   <div
   className="current-issue-banner py-5"
@@ -677,11 +695,14 @@ function Current() {
     overflow: 'hidden', // Ensures content does not spill over rounded corners
   }}
 >
-      <h1 className="banner-title">Current Issue</h1>
-      <h3 className="banner-volume">
+      <h1 className="banner-title"   data-aos= "fade-up"
+      >Current Issue</h1>
+      <h3 className="banner-volume"   data-aos= "fade-up"
+      >
         Volume {currentData?.volume}, Issue {currentData?.issue}
       </h3>
-      <h3 className="banner-date">
+      <h3 className="banner-date"   data-aos= "fade-up"
+      >
         {formatDateRange("Issue" + currentData?.issue)}
       </h3>
 
@@ -693,41 +714,112 @@ function Current() {
         padding: "10px 30px",
         borderRadius: "50px",
       }}
+      data-aos= "fade-up"
+
       onClick={() => navigate('/submissions')} // Inline onClick handler
     >
       Submit Paper
     </Button>
     </div>
   </Col>
+</Row> */}
+<Row className="mt-4 text-center">
+  <Col>
+    <div
+      className="current-issue-banner py-5"
+      style={{
+        backgroundImage: `url(${process.env.PUBLIC_URL}/images/bulb_bg.png)`,
+        backgroundSize: 'cover', // Use 'cover' for better responsiveness
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        color: '#fff',
+        borderRadius: '30px',
+        marginTop: '30px',
+        padding: '20px',
+        overflow: 'hidden',
+      }}
+      data-aos= "fade-up"
+    >
+     <h1 className="banner-title responsive-title" data-aos="fade-up">Current Issue</h1>
+<h3 className="banner-volume responsive-volume" data-aos="fade-up">
+  Volume {currentData?.volume}, Issue {currentData?.issue}
+</h3>
+<h3 className="banner-date responsive-date" data-aos="fade-up">
+  {formatDateRange("Issue" + currentData?.issue)}
+</h3>
+<hr
+  style={{
+    width: "50%",
+    margin: "30px auto", // centers the hr element horizontally
+    borderColor: "white",
+    textAlign: "center"
+  }}
+  data-aos="fade-up" 
+/>
+
+<Button
+    className="submit-btn mt-4 responsive-button"
+    data-aos="fade-up"
+    onClick={() => navigate('/submissions')}
+>
+    Submit Paper
+</Button>
+
+    </div>
+  </Col>
 </Row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <Row className="mt-5">
   <Col lg={12} className="text-left">
     <h3 className="section-title" style={{
     fontSize: '25px',
     fontFamily: 'Merriweather, serif',
     color: 'rgb(0, 114, 177)',
-  }}>How to Engage with the Content :</h3>
+  }}   data-aos= "fade-up"
+>How to Engage with the Content :</h3>
     <ul className="highlight-list">
-      <li className="list-item">
+      <li className="list-item"data-aos= "fade-up">
         <strong style={{
                     fontSize: "17.6px",
                     fontFamily: "system-ui, -apple-system, Segoe",
                     color: "#0072B1",
-                    fontWeight: "600"}}>Read Full Articles:</strong> Click on the article title to view or download in PDF format.
+                    fontWeight: "600"}}   
+>Read Full Articles:</strong> Click on the article title to view or download in PDF format.
       </li>
-      <li className="list-item">
+      <li className="list-item"data-aos= "fade-up">
         <strong style={{
                     fontSize: "17.6px",
                     fontFamily: "system-ui, -apple-system, Segoe",
                     color: "#0072B1",
-                    fontWeight: "600"}}>Stay Updated:</strong> Subscribe to our newsletter for updates on new issues and special collections.
+                    fontWeight: "600"}}   data-aos= "fade-up"
+>Stay Updated:</strong> Subscribe to our newsletter for updates on new issues and special collections.
       </li>
-      <li className="list-item">
+      <li className="list-item"data-aos= "fade-up">
         <strong style={{
                     fontSize: "17.6px",
                     fontFamily: "system-ui, -apple-system, Segoe",
                     color: "#0072B1",
-                    fontWeight: "600"}}>Submit Your Work:</strong> Visit our{" "}
+                    fontWeight: "600"}}   data-aos= "fade-up"
+>Submit Your Work:</strong> Visit our{" "}
         <a href="/submissions" className="submission-link">
           Submission Guidelines
         </a>{" "}

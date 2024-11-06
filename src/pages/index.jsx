@@ -692,19 +692,19 @@ function Index() {
             </div>
           </Col>
 
-          <Col md={3} className="d-none d-md-block">
-            <div className="download_box">
-              <h1>Downloads</h1>
-              <hr />
-              <ul>
-                <li>
-                  <a href="">Menuscript Template</a>
+          <Col md={3} className="d-none d-md-block" data-aos="fade-up" >
+            <div className="download_box" data-aos="fade-up" >
+              <h1 data-aos="fade-up" >Downloads</h1>
+              <hr data-aos="fade-up"  />
+              <ul >
+                <li data-aos="fade-up" >
+                  <a href="/publication-ethics">Menuscript Template</a>
                 </li>
-                <li>
-                  <a href="">Copyright Form</a>
+                <li data-aos="fade-up" >
+                  <a href="/publication-ethics">Copyright Form</a>
                 </li>
-                <li>
-                  <a href="">Cover Page</a>
+                <li data-aos="fade-up" >
+                  <a href="/publication-ethics">Cover Page</a>
                 </li>
               </ul>
             </div>
@@ -785,57 +785,59 @@ function Index() {
         <div style={{ height: "30px" }}></div>
 
         <Container
-          fluid
-          className="container"
-          style={{
-            backgroundColor: "#EFEFEF",
-            // backgroundImage: isSmallScreen ? 'none' : 'url(images/bulb_bg.png)',
-            backgroundImage: "url(images/bulb_bg.png)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "auto",
-            height: "500px",
-            padding: "20px",
-            // margin: '0px 50px',
-            borderRadius: "12px",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center", // Center horizontally
-            textAlign: "center", // Center text
-          }}
-        >
-          <h1 style={{ color: "white", fontSize: "4rem" }}>
-            <b>Current Issue</b>
-          </h1>
-          <h3 style={{ color: "white", fontSize: "3rem" }}>
-            Volume {currentData != null ? currentData.volume : ""}, Issue{" "}
-            {currentData != null ? currentData.issue : ""}
-          </h3>
-          <h3 style={{ color: "white", fontSize: "2rem" }}>
-            {currentData != null
-              ? formatDateRange("Issue" + currentData.issue)
-              : ""}
-          </h3>
+  fluid
+  className="container"
+  style={{
+    backgroundImage: `url(${process.env.PUBLIC_URL}/images/bulb_bg.png)`,
+    backgroundSize: 'cover', // Use 'cover' for better responsiveness
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    color: '#fff',
+    borderRadius: '30px',
+    marginTop: '30px',
+    padding: '20px',
+    overflow: 'hidden',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center', // Ensures text is also centered
+  }}
+>
+  <h1 style={{ color: "white", fontSize: "3rem", marginTop: "10px "}} data-aos="fade-up">
+    <b>Current Issue</b>
+  </h1>
 
-          <hr
-            style={{ width: "50%", margin: "50px 0", borderColor: "white" }}
-          />
-          <Button
-            style={{
-              backgroundColor: "#0085FF",
-              padding: "10px 30px",
-              borderRadius: "50px",
-              border: "1px solid white",
-              cursor: "pointer",
-              color: "white", // Button text color
-            }}
-            onClick={handleSubmit}
-          >
-            Submit Paper
-          </Button>
-        </Container>
+  <h3 style={{ color: "white", fontSize: "3rem"}} data-aos="fade-up">
+    Volume {currentData != null ? currentData.volume : ""}, Issue{" "}
+    {currentData != null ? currentData.issue : ""}
+  </h3>
+
+  <h3 style={{ color: "white", fontSize: "2rem", margin: "10px 0" }} data-aos="fade-up">
+    {currentData != null ? formatDateRange("Issue" + currentData.issue) : ""}
+  </h3>
+
+  <hr
+    style={{ width: "50%", margin: "30px auto", borderColor: "white" }}
+    data-aos="fade-up"
+  />
+
+  <Button
+    style={{
+      backgroundColor: "#0085FF",
+      padding: "10px 30px",
+      borderRadius: "50px",
+      border: "1px solid white",
+      cursor: "pointer",
+      color: "white", // Button text color
+      marginTop: "15px",
+    }}
+    data-aos="fade-up"
+    onClick={handleSubmit}
+  >
+    Submit Paper
+  </Button>
+</Container>
+
 
         <hr style={{ marginTop: "50px" }} />
         {/* Browse journals by descipline */}
@@ -1146,17 +1148,17 @@ function Index() {
             </div>
           </Col>
 
-          <Col md={3} className="d-none d-md-block">
+          <Col md={3} className="d-none d-md-block" data-aos="fade-up" >
             <div className="download_box">
-              <h1>Contact Us</h1>
-              <hr />
+              <h1 data-aos="fade-up" >Contact Us</h1>
+              <hr data-aos="fade-up"  />
               <ul>
-                <p>Contact us for inquiries or assistance at</p>
+                <p data-aos="fade-up" >Contact us for inquiries or assistance at</p>
                 <li>
-                  <a href="tel:9945387216" className="text-reset">
+                  <a href="tel:9945387216" className="text-reset" data-aos="fade-up" >
                     9945387216
                   </a>
-                  <a href="mailto:aitm@ijestm.com" className="text-reset">
+                  <a href="mailto:aitm@ijestm.com" className="text-reset" data-aos="fade-up" >
                     aitm@ijestm.com
                   </a>
                 </li>
