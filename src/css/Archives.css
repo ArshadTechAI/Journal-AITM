@@ -13,3 +13,9 @@
     }
   }
    */
+   @media (min-width: 1200px) {
+    .papers-index .card {
+      max-width: 900px; /* Increase card width for larger screens */
+    }
+  }
+  

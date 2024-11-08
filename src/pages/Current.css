@@ -1,963 +1,139 @@
-/* .content-container {
-  padding: 2rem;
-  background-color: #f9f9f9;
-}
-
-.main-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #005b8c;
-}
-
-.intro-text {
-  font-size: 1.1rem;
-  color: #333;
-  margin: 0 auto;
-  max-width: 800px;
-}
-
-.section-title {
-  font-size: 1.75rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #005b8c;
-}
-
-.highlight-list {
-  list-style-type: none;
-  padding: 0;
-}
-
-.highlight-list li {
-  margin-bottom: 0.75rem;
-  font-size: 1.1rem;
-}
-
-.current-issue-banner {
-  background-color: #005b8c;
-  padding: 2rem;
-  color: white;
-  text-align: center;
+/* Main Content Container */
+.content-container {
+  padding: 2rem 5%; /* Default padding for larger screens */
+  background-color: #ffffff;
   border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
-.submit-btn {
-  background-color: #0085FF;
-  border: none;
-  padding: 10px 30px;
-  border-radius: 30px;
-  font-size: 1.1rem;
+/* Card Container */
+.card-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem; /* Space between cards */
+  flex-wrap: wrap; /* Wrap on smaller screens */
+  padding: 1rem 0.5rem; /* Slightly tighter padding */
 }
 
- .banner-title {
-  font-size: 2.5rem;
-  font-weight: bold;
-}  
-
-.banner-volume, .banner-date {
-  font-size: 1.5rem;
+/* Card */
+.card {
+  flex: 1 1 calc(33.333% - 1rem); /* 3 cards per row on large screens */
+  max-width: 350px;
+  padding: 15px; /* Reduced padding for a tighter look */
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  margin: 0 auto; /* Center-align cards */
 }
 
-.submission-link {
-  color: #005b8c;
-  text-decoration: underline;
-} */
-/* Current.css */
-
-/* .content-container {
-    padding-top: 50px;
-  }
-  
-  .main-title {
-    font-size: 2.8rem;
-    font-weight: bold;
-    color: #0056b3;
-  }
-  
-  .intro-text {
-    font-size: 1.2rem;
-    color: #6c757d;
-  }
-  
-  .section-title {
-    font-size: 1.75rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .about-text {
-    font-size: 1.15rem;
-    color: #495057;
-  }
-  
-  .highlight-list {
-    font-size: 1.1rem;
-    line-height: 1.6;
-  }
-  
-  .current-issue-banner {
-    background-color: #007bff;
-    border-radius: 10px;
-    padding: 40px;
-    color: #fff;
-  }
-  
-  .banner-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-  }
-  
-  .submit-btn {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  
-  ul.highlight-list {
-    padding-left: 0;
-    list-style: none;
-  }
-  
-  ul.highlight-list li {
-    margin-bottom: 10px;
-  }
-   */
-   /* General Styles */
-body {
-    font-family: 'Merriweather', serif; /* More professional and academic font */
-    background-color: #f8f9fa; /* Subtle background for content focus */
-    color: #343a40; /* Darker text for better readability */
-  }
-  
-  /* Main Content Container */
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
   .content-container {
-    padding: 2rem 5%;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-  }
-  
-
-body {
-    font-family: 'Merriweather', serif; /* More professional and academic font */
-    background-color: #f8f9fa; /* Subtle background for content focus */
-    color: #343a40; /* Darker text for better readability */
-  }
-  
-  /* Main Content Container */
-  .content-container {
-    padding: 2rem 5%; /* Padding for top and bottom, 5% on left and right */
-    background-color: #ffffff; /* Card background color */
-    border-radius: 8px; /* Rounded corners for the card */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    margin: 0 auto; /* Center the card */
-    max-width: 1200px; /* Set a maximum width for the card */
-  }
-  
-  /* Main Title */
-  .main-title {
-    font-size: 48px; /* Font size of 48px */
-    color: #005B8C; /* Text color #005bbc */
-    font-family: 'Merriweather', serif; /* Font family Merriweather, serif */
-    text-align: center; /* Center-align the title */
-    margin-bottom: 20px; /* Add some space below the title */
-  }
-  
-  /* Intro Text */
-  .intro-text {
-    font: 17.6px system-ui, -apple-system, "segoe";
-    text-align: justify;
-    margin-bottom: 15px;
-    color: #4d4d4d;
-    line-height: 27px;
+    padding: 1rem 2%; /* Reduced padding for tablets and smaller devices */
   }
 
-  
-  /* Cards */
   .card {
-    border: none; /* Remove default card border */
-    border-radius: 8px; /* Rounded corners for card */
+    flex: 1 1 48%; /* 2 cards per row */
+    max-width: none; /* Remove width limit for better fit */
   }
-  
-  /* Highlight List */
-  .highlight-list {
-    padding-left: 1.5rem;
-    font-size: 1.125rem;
-    line-height: 1.8;
-  }
-  
-  /* Current Issue Banner */
-  .current-issue-banner {
-    padding: 2rem; /* Padding for the banner */
-    border-radius: 8px; /* Rounded corners for the banner */
-    text-align: center;
-  }
-  
-  /* Submit Button */
-  .submit-btn {
-    background-color: #0d6efd; /* Primary button color */
-    color: #ffffff;
-    font-size: 1.125rem;
-    padding: 0.75rem 1.5rem;
-    border-radius: 50px; /* Rounded button for better design */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    transition: background-color 0.3s ease;
-  }
-  
-  .submit-btn:hover {
-    background-color: #0056b3; /* Darker shade on hover */
-  }
-  
-  /* Engagement Section */
-  .submission-link {
-    color: #0d6efd; /* Link color */
-    font-weight: 600;
-  }
-  
-  .submission-link:hover {
-    text-decoration: underline; /* Underline on hover */
-  }
-  
-  /* Footer Styling */
-  footer {
-    background-color: #f1f3f5; /* Footer background color */
-    padding: 2rem; /* Padding for footer */
-    text-align: center; /* Center align text */
-    color: #495057; /* Text color */
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .content-container {
-      padding: 1.5rem; /* Adjust padding for smaller screens */
-    }
-  
-    .main-title {
-      font-size: 2rem; /* Adjust main title size */
-    }
-  
-    .section-title {
-      font-size: 1.5rem; /* Adjust section title size */
-    }
-  
-    .current-issue-banner {
-      font-size: 1.5rem; /* Adjust banner font size */
-    }
-  
-    .submit-btn {
-      padding: 0.5rem 1.25rem; /* Adjust button padding */
-    }
-  }
-  .card-content {
-    font-size: 16px; /* Font size for card content */
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* Font family */
-    color: black;/* Text color */
-    line-height: 1.6; /* Line height for readability */
-    text-align: justify; /* Justify text alignment */
-}
-.section-title {
-    font-size: 1.5rem; /* Slightly smaller than main title */
-    font-weight: 600; /* Medium bold */
-    color: #005bbc; /* Use your specified color */
-    margin-bottom: 0.5rem; /* Space below the title */
-    text-align: center; /* Center align the title */
-    text-transform: uppercase; /* Transform text to uppercase for emphasis */
-    letter-spacing: 1px; /* Add some spacing between letters */
-  }
-  
-  
-  .section-title {
-    font-size: 2rem; /* Increase section title size */
-    font-weight: bold; /* Make it bold */
-    color: #007bff; /* Change to a color that matches the theme */
-    margin-bottom: 20px; /* Add space below the title */
-  }
-  
-  .section-container {
-    padding: 30px; /* Add padding around the section */
-    background-color: #f8f9fa; /* Light background color */
-    border-radius: 8px; /* Slightly rounded corners */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  }
-  .section-title {
-    font-size: 30px; /* Set font size to 40px */
-    font-weight: 600; /* Semi-bold for emphasis */
-    color: #2c3e50; /* Soft navy blue for a professional look */
-    margin-bottom: 15px; /* Space below the title */
-    text-align: center; /* Center the title */
-    font-family: 'Merriweather', serif; /* Apply Merriweather serif font */
-  }
-  
-
-
-
-
-
-
-
-
-
-
-/* responisveness */
-body {
-  font-family: 'Merriweather', serif;
-  background-color: #f8f9fa;
-  color: #343a40;
 }
 
-/* Main Content Container */
-.content-container {
-  padding: 2rem 5%;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-/* Main Title */
-.main-title {
-  font-size: 48px;
-  color: #005B8C;
-  font-family: 'Merriweather', serif;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Intro Text */
-.intro-text {
-  font: 17.6px system-ui, -apple-system, "segoe";
-  text-align: justify;
-  margin-bottom: 15px;
-  color: #4d4d4d;
-  line-height: 27px;
-}
-
-/* Cards */
-.card {
-  border: none;
-  border-radius: 8px;
-}
-
-/* Highlight List */
-.highlight-list {
-  padding-left: 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.8;
-}
-
-/* Current Issue Banner */
-.current-issue-banner {
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-/* Submit Button */
-.submit-btn {
-  background-color: #0d6efd;
-  color: #ffffff;
-  font-size: 1.125rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Engagement Section */
-.submission-link {
-  color: #0d6efd;
-  font-weight: 600;
-}
-
-.submission-link:hover {
-  text-decoration: underline;
-}
-
-/* Footer Styling */
-footer {
-  background-color: #f1f3f5;
-  padding: 2rem;
-  text-align: center;
-  color: #495057;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
+@media (max-width: 576px) {
   .content-container {
-      padding: 1.5rem 3%; /* Adjust padding for medium screens */
+    padding: 0.5rem 1rem; /* Further reduce padding for small screens */
   }
 
-  .main-title {
-      font-size: 36px; /* Adjust main title size for medium screens */
-  }
-
-  .intro-text {
-      font-size: 16px; /* Smaller font for intro text */
-      line-height: 24px; /* Adjust line height */
-  }
-
-  .submit-btn {
-      font-size: 1rem; /* Adjust button font size */
-      padding: 0.5rem 1.25rem; /* Adjust button padding */
-  }
-
-  .highlight-list {
-      font-size: 1rem; /* Adjust highlight list font size */
-  }
-}
-
-@media (max-width: 768px) {
-  .content-container {
-      padding: 1rem; /* Further adjust padding for small screens */
-  }
-
-  .main-title {
-      font-size: 28px; /* Smaller main title size */
-  }
-
-  .intro-text {
-      font-size: 15px; /* Smaller font for intro text */
-      line-height: 22px; /* Adjust line height */
-  }
-
-  .section-title {
-      font-size: 1.5rem; /* Adjust section title size */
-  }
-
-  .current-issue-banner {
-      font-size: 1.2rem; /* Adjust banner font size */
-  }
-
-  .submit-btn {
-      padding: 0.5rem 1rem; /* Further adjust button padding */
-      font-size: 0.9rem; /* Smaller font size for buttons */
-  }
-}
-
-.card-content {
-  font-size: 16px; 
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-  color: black;
-  line-height: 1.6; 
-  text-align: justify; 
-}
-
-.section-title {
-  font-size: 30px; 
-  font-weight: 600; 
-  color: #2c3e50; 
-  margin-bottom: 15px; 
-  text-align: center; 
-  font-family: 'Merriweather', serif; 
-}
-/*  iphone xr
-body {
-    font-family: 'Merriweather', serif;
-    background-color: #f8f9fa;
-    color: #343a40;
-}
-
-/* Main Content Container */
-.content-container {
-  padding: 2rem 5%;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-/* Main Title */
-.main-title {
-  font-size: 48px;
-  color: #005B8C;
-  font-family: 'Merriweather', serif;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* Intro Text */
-.intro-text {
-  font: 17.6px system-ui, -apple-system, "segoe";
-  text-align: justify;
-  margin-bottom: 15px;
-  color: #4d4d4d;
-  line-height: 27px;
-}
-
-/* Cards */
-.card {
-  border: none;
-  border-radius: 8px;
-}
-
-/* Highlight List */
-.highlight-list {
-  padding-left: 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.8;
-}
-
-/* Current Issue Banner */
-.current-issue-banner {
-  padding: 2rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-/* Submit Button */
-.submit-btn {
-  background-color: #0d6efd;
-  color: #ffffff;
-  font-size: 1.125rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Engagement Section */
-.submission-link {
-  color: #0d6efd;
-  font-weight: 600;
-}
-
-.submission-link:hover {
-  text-decoration: underline;
-}
-
-/* Footer Styling */
-footer {
-  background-color: #f1f3f5;
-  padding: 2rem;
-  text-align: center;
-  color: #495057;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-  .content-container {
-      padding: 1.5rem 3%; /* Adjust padding for medium screens */
-  }
-
-  .main-title {
-      font-size: 36px; /* Adjust main title size for medium screens */
-  }
-
-  .intro-text {
-      font-size: 16px; /* Smaller font for intro text */
-      line-height: 24px; /* Adjust line height */
-  }
-
-  .submit-btn {
-      font-size: 1rem; /* Adjust button font size */
-      padding: 0.5rem 1.25rem; /* Adjust button padding */
-  }
-
-  .highlight-list {
-      font-size: 1rem; /* Adjust highlight list font size */
-  }
-}
-
-@media (max-width: 768px) {
-  .content-container {
-      padding: 1rem; /* Further adjust padding for small screens */
-  }
-
-  .main-title {
-      font-size: 28px; /* Smaller main title size */
-  }
-
-  .intro-text {
-      font-size: 14px; /* Smaller font for intro text */
-      line-height: 20px; /* Adjust line height */
-  }
-
-  .section-title {
-      font-size: 1.5rem; /* Adjust section title size */
-  }
-
-  .current-issue-banner {
-      font-size: 1.2rem; /* Adjust banner font size */
-  }
-
-  .submit-btn {
-      padding: 0.5rem 1rem; /* Further adjust button padding */
-      font-size: 0.9rem; /* Smaller font size for buttons */
-  }
-
-  .highlight-list {
-      font-size: 0.9rem; /* Smaller highlight list font size */
-  }
-}
-
-@media (max-width: 375px) { /* Targeting very small devices like iPhone XR */
-  .content-container {
-      padding: 0.5rem; /* Minimal padding for very small screens */
-  }
-
-  .main-title {
-      font-size: 24px; /* Further reduce title size */
-      margin-bottom: 15px; /* Reduced space below title */
-  }
-
-  .intro-text {
-      font-size: 12px; /* Further reduce font size */
-      line-height: 18px; /* Adjust line height */
-  }
-
-  .submit-btn {
-      padding: 0.4rem 0.8rem; /* Reduce button padding */
-      font-size: 0.8rem; /* Smaller font size for buttons */
-  }
-
-  .highlight-list {
-      font-size: 0.8rem; /* Smaller highlight list font size */
-  }
-}
-
-.card-content {
-  font-size: 16px; 
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; 
-  color: black;
-  line-height: 1.6; 
-  text-align: justify; 
-}
-
-.section-title {
-  font-size: 30px; 
-  font-weight: 600; 
-  color: #2c3e50; 
-  margin-bottom: 15px; 
-  text-align: center; 
-  font-family: 'Merriweather', serif; 
-}
-/*  */
-body {
-  font-family: 'Merriweather', serif;
-  background-color: #f8f9fa;
-  color: #343a40;
-}
-
-/* Main Content Container */
-.content-container {
-  padding: 2rem 5%;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 0 auto;
-  max-width: 1200px;
-}
-
-/* Main Title */
-.main-title {
-  font-size: 2.5rem; /* Use rem for scalability */
-  color: #005B8C;
-  text-align: center;
-  margin-bottom: 1rem;
-}
-
-/* Intro Text */
-.intro-text {
-  font-size: 1rem; /* Use rem for scalability */
-  text-align: justify;
-  margin-bottom: 1rem;
-  color: #4d4d4d;
-  line-height: 1.5;
-}
-
-/* Cards */
-.card {
-  border: none;
-  border-radius: 8px;
-}
-
-/* Highlight List */
-.highlight-list {
-  padding-left: 1.5rem;
-  font-size: 1rem; /* Use rem for scalability */
-  line-height: 1.5;
-}
-
-/* Current Issue Banner */
-.current-issue-banner {
-  padding: 1.5rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
-/* Submit Button */
-.submit-btn {
-  background-color: #0d6efd;
-  color: #ffffff;
-  font-size: 1rem; /* Use rem for scalability */
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
-  transition: background-color 0.3s ease;
-  display: inline-block; /* Ensure it's treated as a block element */
-  margin: 1rem auto; /* Center the button */
-}
-
-.submit-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Engagement Section */
-.submission-link {
-  color: #0d6efd;
-  font-weight: 600;
-}
-
-.submission-link:hover {
-  text-decoration: underline;
-}
-
-/* Footer Styling */
-footer {
-  background-color: #f1f3f5;
-  padding: 2rem;
-  text-align: center;
-  color: #495057;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-  .content-container {
-      padding: 1.5rem 3%; /* Adjust padding for medium screens */
-  }
-
-  .main-title {
-      font-size: 2rem; /* Adjust main title size */
-  }
-
-  .intro-text {
-      font-size: 0.9rem; /* Smaller font for intro text */
-  }
-
-  .submit-btn {
-      font-size: 0.9rem; /* Adjust button font size */
-  }
-
-  .highlight-list {
-      font-size: 0.9rem; /* Adjust highlight list font size */
-  }
-}
-
-@media (max-width: 768px) {
-  .content-container {
-      padding: 1rem; /* Further adjust padding for small screens */
-  }
-
-  .main-title {
-      font-size: 1.5rem; /* Smaller main title size */
-  }
-
-  .intro-text {
-      font-size: 0.9rem; /* Smaller font for intro text */
-  }
-
-  .current-issue-banner {
-      font-size: 1rem; /* Adjust banner font size */
-  }
-
-  .submit-btn {
-      padding: 0.5rem 1rem; /* Further adjust button padding */
-  }
-
-  .highlight-list {
-      font-size: 0.9rem; /* Smaller highlight list font size */
-  }
-}
-
-@media (max-width: 375px) { /* Targeting very small devices like iPhone XR */
-  .content-container {
-      padding: 0.5rem; /* Minimal padding for very small screens */
-  }
-
-  .main-title {
-      font-size: 1.25rem; /* Further reduce title size */
-      margin-bottom: 0.5rem; /* Reduced space below title */
-  }
-
-  .intro-text {
-      font-size: 0.85rem; /* Further reduce font size */
-      line-height: 1.2; /* Adjust line height */
-  }
-
-  .submit-btn {
-      padding: 0.4rem 0.5rem; /* Reduce button padding */
-      font-size: 0.8rem; /* Smaller font size for buttons */
-      width: 100%; /* Full width for buttons */
-  }
-
-  .highlight-list {
-      font-size: 0.8rem; /* Smaller highlight list font size */
-  }
-}
-
-.card-content {
-  font-size: 1rem; /* Use rem for scalability */
-  line-height: 1.5; 
-}
-
-.section-title {
-  font-size: 1.5rem; /* Use rem for scalability */
-  font-weight: 600; 
-  color: #2c3e50; 
-  margin-bottom: 1rem; /* Adjust margins */
-  text-align: center; 
-}
-
-
-
-
-
-
-
-
-
-
-
-/* reducing gap */
-/* Main Content Container */
-.content-container {
-  padding: 2rem 5%; /* Original padding for larger devices */
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  margin: 0 auto; /* Center the container */
-  max-width: 1200px;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 1200px) {
-  .content-container {
-      padding: 1.5rem 3%; /* Adjust padding for medium screens */
-  }
-}
-
-@media (max-width: 768px) {
-  .content-container {
-      padding: 1rem; /* Further adjust padding for small screens */
-  }
-}
-
-@media (max-width: 375px) { /* Targeting very small devices like iPhone XR */
-  .content-container {
-      padding: 0.25rem; /* Minimal padding for very small screens */
-      margin: 0 1rem; /* Set left and right margin to create minimal gap */
-  }
-}
-
-
-
-
-
-
-
-/* banner image adjustment */
-@media (max-width: 768px) {
-  .current-issue-banner {
-      padding: 15px; /* Reduce padding for smaller devices */
-      border-radius: 15px; /* Slightly reduce border radius for better fit */
-      margin: 0 5px; /* Allow some margin to prevent edge touching */
-  }
-
-  .banner-title {
-      font-size: 1.5rem; /* Adjust title size for smaller screens */
-  }
-
-  .banner-volume, .banner-date {
-      font-size: 1rem; /* Adjust volume and date font sizes */
-  }
-
-  .submit-btn {
-      padding: 8px 20px; /* Adjust button padding */
+  .card {
+    flex: 1 1 100%; /* Stack cards vertically */
   }
 }
 
 @media (max-width: 375px) {
-  .current-issue-banner {
-      padding: 10px; /* Further reduce padding for very small devices */
+  .content-container {
+    padding: 0.25rem; /* Minimal padding for very small screens */
   }
 
-  .banner-title {
-      font-size: 1.3rem; /* Further adjust title size */
-  }
-
-  .banner-volume, .banner-date {
-      font-size: 0.9rem; /* Further adjust font sizes */
-  }
-
-  .submit-btn {
-      padding: 6px 15px; /* Further adjust button padding */
+  .card {
+    padding: 10px; /* Tighten card padding for compact layout */
   }
 }
-/* font size */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 18px; /* Adjust font size for smaller devices */
+  }
+}
+/* card */
+/* Default styles for large screens */
 .banner-title {
-  font-size: 50px; /* Default size for larger devices */
+  font-size: 2.5rem; /* Larger font size for title */
 }
 
 .banner-volume,
 .banner-date {
-  font-size: 35px; /* Default size for larger devices */
+  font-size: 1.8rem; /* Large size for volume and date */
 }
 
-@media (max-width: 768px) { /* Adjust for tablets and smaller devices */
+/* Button styling */
+.responsive-button {
+  font-size: 1.2rem;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
   .banner-title {
-      font-size: 35px; /* Smaller size for medium devices */
+    font-size: 2rem; /* Reduce title size */
   }
 
   .banner-volume,
   .banner-date {
-      font-size: 25px; /* Smaller size for medium devices */
+    font-size: 1.4rem; /* Smaller size for volume and date */
+  }
+
+  .responsive-button {
+    font-size: 1rem; /* Reduce button size */
+    padding: 0.5rem 1rem;
   }
 }
 
-@media (max-width: 576px) { /* Adjust for mobile devices */
+@media (max-width: 480px) {
   .banner-title {
-      font-size: 28px; /* Even smaller size for mobile devices */
+    font-size: 1.8rem; /* Further reduce title size */
   }
 
   .banner-volume,
   .banner-date {
-      font-size: 20px; /* Even smaller size for mobile devices */
+    font-size: 1.2rem; /* Even smaller for smaller screens */
+  }
+
+  .responsive-button {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
   }
 }
-/* butoon size */
-.submit-btn {
-  background-color: #007bff; /* Default background color */
-  color: #ffffff; /* Text color */
-  padding: 10px 30px; /* Default padding */
-  border: none; /* No border */
-  border-radius: 60px; /* Rounded corners */
-  font-size: 1.125rem; /* Default font size for larger devices */
-  transition: background-color 0.3s ease; /* Transition effect */
+/* Default for larger screens */
+.section-title {
+  font-size: 25px; /* Default font size */
+  text-align: left;
 }
 
-.submit-btn:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) { /* Adjust for tablets and smaller devices */
-  .submit-btn {
-      padding: 8px 20px; /* Smaller padding for medium devices */
-      font-size: 1rem; /* Smaller font size for medium devices */
+/* Responsive styling for smaller screens */
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 20px; /* Reduce font size on smaller screens */
+    text-align: left;
   }
 }
 
-@media (max-width: 576px) { /* Adjust for mobile devices */
-  .submit-btn {
-      padding: 6px 15px; /* Even smaller padding for mobile devices */
-      font-size: 0.875rem; /* Even smaller font size for mobile devices */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 18px; /* Further reduce font size on very small screens */
+    text-align: left;
   }
 }

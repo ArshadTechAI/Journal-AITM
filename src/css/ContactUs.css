@@ -482,3 +482,122 @@
         padding: 0 5px; /* Add some padding for better readability */
     }
 }
+.contact-card {
+  width: 100%; /* Ensure it uses the full available width */
+  max-width: 1200px; /* Set a max width if needed for larger screens */
+  margin: 0 auto; /* Center the card horizontally */
+  padding: 20px; /* Set padding to create space inside the card */
+}
+
+.section-title {
+  color: #0072b1; /* Color for section title */
+  font-size: 1.8rem; /* Font size */
+  text-align: center;
+  white-space: nowrap; /* Prevent wrapping */
+}
+.contact-container, .contact-card {
+  padding: 1rem; /* Adjust padding for a balanced look */
+}
+
+
+
+
+
+
+
+
+
+/* responsiveness */
+/* General Styles for Contact Card */
+.contact-card {
+  width: 100%;
+  max-width: 600px; /* Set a max width for large screens */
+  margin: 0 auto; /* Center horizontally */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center; /* Center-align content */
+  box-sizing: border-box; /* Include padding in width */
+}
+
+/* Typography */
+.contact-card h2 {
+  font-size: 1.5rem;
+  color: #003366; /* Example color */
+}
+
+.contact-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5em 0;
+}
+
+/* Icons and Contact Details */
+.contact-card .contact-info {
+  display: flex;
+  flex-direction: column; /* Stacks items vertically by default */
+  align-items: center; /* Centers content horizontally */
+  gap: 10px;
+}
+
+.contact-card .social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .contact-card {
+    padding: 30px;
+    max-width: 700px;
+  }
+
+  .contact-card h2 {
+    font-size: 2rem;
+  }
+
+  .contact-card p {
+    font-size: 1.1rem;
+  }
+
+  .contact-card .contact-info {
+    flex-direction: row; /* Display items in a row for wider screens */
+    justify-content: space-around;
+    gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-card {
+    padding: 40px;
+    max-width: 800px;
+  }
+
+  .contact-card h2 {
+    font-size: 2.2rem;
+  }
+
+  .contact-card p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Smaller Screens (Mobile) */
+@media (max-width: 480px) {
+  .contact-card {
+    padding: 15px;
+  }
+
+  .contact-card h2 {
+    font-size: 1.4rem;
+  }
+
+  .contact-card p {
+    font-size: 0.9rem;
+  }
+}
+/* card special for contact information */
+/* For screens larger than 992px (tablets/laptops/desktops), icons will be in a column */

@@ -7,16 +7,16 @@ function AuthorsDesk() {
         <div className="authors_desk">
         Author's Desk
         <hr />
-        <a href="">Current Issue</a><br />
-        <a href="">Indexing</a><br />
-        <a href="">Open Access</a><br />
-        <a href="">Author's Guidelines</a><br />
-        <a href="">Call For Paper</a><br />
-        <a href="">Online Submission</a><br />
-        <a href="">Reviewer Policy</a><br />
+        <a href="/current">Current Issue</a><br />
+        <a href="/indexing">Indexing</a><br />
+        <a href="/">Open Access</a><br />
+        <a href="/publication-ethics">Author's Guidelines</a><br />
+        <a href="/contact-us">Call For Paper</a><br />
+        <a href="/submissions">Online Submission</a><br />
+        <a href="/publication-ethics">Reviewer Policy</a><br />
         <a href="">Reviewer Guidelines</a><br />
-        <a href="">Plagiarism Policies</a><br />
-        <a href="">Withdrawal Policies</a><br />
+        <a href="/publication-ethics">Plagiarism Policies</a><br />
+        <a href="/publication-ethics">Withdrawal Policies</a><br />
 
         <div style={{ height: '10px'}}></div>
 

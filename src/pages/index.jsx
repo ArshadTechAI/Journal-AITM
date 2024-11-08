@@ -188,7 +188,28 @@ import Footer from "../components/footer";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+
+
+
+
+
 function Index() {
+
+  const [clickedCardIndex, setClickedCardIndex] = useState(null);
+  const handleCardClick = (index, area) => {
+    if (isSmallScreen) {
+      // Temporarily set the clicked card index
+      setClickedCardIndex(index);
+      fetchPapersByArea(area);
+
+      // Reset the clicked card index after a short delay to collapse the card
+      setTimeout(() => {
+        setClickedCardIndex(null);
+      }, 500); // Adjust duration as needed
+    } else {
+      fetchPapersByArea(area); // Directly fetch on larger screens
+    }
+  };
   const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 768);
   const navigate = useNavigate();
 
@@ -842,270 +863,202 @@ function Index() {
         <hr style={{ marginTop: "50px" }} />
         {/* Browse journals by descipline */}
         <section style={{ width: "100%", marginTop: "30px" }}>
-          <center>
-            <div
-              style={{
-                width: isSmallScreen ? "100%" : "90%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-                 <div  data-aos="fade-up" className="benefit-text">
-              <h2   style={{color: "#0072b1"}}>Browse journals by discipline</h2>
-              </div>
+      <center>
+        <div
+          style={{
+            width: isSmallScreen ? "100%" : "90%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <div data-aos="fade-up" className="benefit-text">
+            <h2 style={{ color: "#0072b1" }}>Browse journals by discipline</h2>
+          </div>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              flexWrap: "wrap",
+              marginTop: "30px",
+            }}
+          >
+            {loading ? <center>Loading...</center> : ""}
+            {areas.map((area, index) => (
               <div
+                key={index}
+                onMouseEnter={(e) => {
+                  if (!isSmallScreen) {
+                    e.currentTarget.style.width = "210px";
+                    e.currentTarget.style.height = "110px";
+                    e.currentTarget.style.boxShadow = "0px 0px 8px grey";
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.width = "200px";
+                  e.currentTarget.style.height = "100px";
+                  e.currentTarget.style.boxShadow = "0px 0px 6px lightGrey";
+                }}
+                onClick={() => handleCardClick(index, area)}
                 style={{
-                  width: "100%",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexWrap: "wrap",
-                  marginTop: "30px",
+                  cursor: "pointer",
+                  boxShadow: "0px 0px 6px lightGrey",
+                  borderTop: "4px solid #003366",
+                  width: isSmallScreen ? "48%" : "200px",
+                  height: "100px",
+                  borderRadius: "2px",
+                  margin: "8px",
+                  transition: "all 0.3s ease",
+                  ...(isSmallScreen && clickedCardIndex === index
+                    ? { width: "210px", height: "110px", boxShadow: "0px 0px 8px grey" }
+                    : {}),
                 }}
               >
-                {loading ? <center>Loading...</center> : ""}
-                {areas.map((area, index) => (
+                <div style={{ padding: "10px" }} />
+                <div>
+                  <p>{area}</p>
+                  <hr style={{ width: "60%" }} />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Papers Section */}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "30px",
+          }}
+        >
+          <div data-aos="fade-up" className="benefit-text">
+            <h2 style={{ color: "#0072b1" }}>
+              {selectedArea
+                ? `Papers in ${selectedArea}`
+                : !loading
+                ? "Select a discipline to see papers"
+                : ""}
+            </h2>
+          </div>
+          <div
+            style={{
+              width: isSmallScreen ? "100%" : "80%",
+              display: papers.length > 2 ? "grid" : "block",
+              gridTemplateColumns: "repeat(2, 1fr)",
+              gap: "30px",
+              marginTop: "30px",
+            }}
+          >
+            {loading2 ? <center>Loading...</center> : ""}
+            {papers.length > 0 && !loading2
+              ? papers.map((paper) => (
                   <div
-                    key={index}
-                    // className="cardsContainer"
+                    key={paper.id}
+                    onClick={() => handlePaperClick(paper)}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.width = "210px";
-                      e.currentTarget.style.height = "110px";
-                      e.currentTarget.style.boxShadow = "0px 0px 8px grey";
+                      if (!isSmallScreen) {
+                        e.currentTarget.style.boxShadow = "0px 0px 8px grey";
+                      }
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.width = "200px";
-                      e.currentTarget.style.height = "100px";
                       e.currentTarget.style.boxShadow = "0px 0px 6px lightGrey";
                     }}
-                    onClick={() => fetchPapersByArea(area)}
                     style={{
                       cursor: "pointer",
                       boxShadow: "0px 0px 6px lightGrey",
                       borderTop: "4px solid #003366",
-                      // width: "200px",
-                      width: isSmallScreen ? "38%" : "200px", // 48% for two items in a row on small screens
-                      height: "100px",
-                      borderRadius: "2px",
-                      margin: "8px",
-                      transition: "width 0.3s ease, height 0.3s ease",
+                      borderRadius: "4px",
+                      padding: "16px",
+                      margin: "0 10px 16px 10px",
+                      transition: "box-shadow 0.3s ease",
                     }}
                   >
-                    <div style={{ padding: "10px" }} />
-                    <div>
-                      <p>{area}</p>
-                      <hr style={{ width: "60%" }} />
+                    <div style={{ display: "flex", justifyContent: "space-between" }}>
+                      <a
+                        style={{
+                          fontFamily: "Metrophobic, Forum, Helvetica, Ubuntu, Arial, sans-serif",
+                          fontSize: isSmallScreen ? "18px" : "25px",
+                          display: "-webkit-box",
+                          WebkitBoxOrient: "vertical",
+                          WebkitLineClamp: 2,
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          lineHeight: "1.2em",
+                          maxHeight: "2.4em",
+                        }}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {paper.title}
+                      </a>
                     </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-                marginTop: "30px",
-              }}
-            >
-                    <div  data-aos="fade-up" className="benefit-text">
-              <h2 style={{color:"#0072b1"}}>
-                {selectedArea
-                  ? `Papers in ${selectedArea}`
-                  : !loading
-                  ? "Select a discipline to see papers"
-                  : ""}
-              </h2>
-              </div>
-              <div
-                style={{
-                  width: isSmallScreen ? "100%" : "80%",
-                  display: papers.length > 2 ? "grid" : "block",
-                  gridTemplateColumns: "repeat(2, 1fr)",
-                  gap: "30px",
-                  marginTop: "30px",
-                }}
-              >
-                {loading2 ? <center>Loading...</center> : ""}
-                {papers.length > 0 && !loading2
-                  ? papers.map((paper) => (
-                      <div
-                        key={paper.id}
-                        onClick={() => handlePaperClick(paper)} // Update to handle click
+                    <div style={{ height: "20px" }}></div>
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      {/* Author and Research Area */}
+                      <div style={{ display: "flex", flexDirection: "column", alignItems: "start" }}>
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px", marginRight: "5px" }}>Author(s):</b>
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px", maxWidth: "200px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>
+                            {paper.authors.map((author, index) => (
+                              <span key={index}> Dr. {author.name}, </span>
+                            ))}
+                          </b>
+                        </div>
+                        <div>
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px" }}>Country:</b>{" "}
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px" }}>India</b>
+                        </div>
+                        <div>
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px" }}>Research Area:</b>{" "}
+                          <b style={{ fontSize: isSmallScreen ? "12px" : "16px" }}>{paper.researchArea}</b>
+                        </div>
+                      </div>
+                      {/* PDF Button */}
+                      <span
                         onMouseEnter={(e) => {
-                          e.currentTarget.style.boxShadow = "0px 0px 8px grey";
+                          if (!isSmallScreen) {
+                            e.currentTarget.style.border = "1px solid lightGrey";
+                          }
                         }}
                         onMouseLeave={(e) => {
-                          e.currentTarget.style.boxShadow =
-                            "0px 0px 6px lightGrey";
+                          e.currentTarget.style.border = "none";
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open(paper.fileURL, "_blank", "noopener,noreferrer");
                         }}
                         style={{
-                          cursor: "pointer",
-                          boxShadow: "0px 0px 6px lightGrey",
-                          borderTop: "4px solid #003366",
-                          // marginBottom: '16px',
+                          backgroundColor: "#D9E3F0",
                           borderRadius: "4px",
-                          padding: "16px",
-                          margin: "0 10px 16px 10px", //top right bottom left
-                          transition: "width 0.3s ease, height 0.3s ease",
+                          padding: "8px 16px",
+                          color: "black",
+                          fontSize: "14px",
+                          cursor: "pointer",
                         }}
                       >
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                          }}
-                        >
-                          <a
-                            style={{
-                              fontFamily:
-                                "Metrophobic, Forum, Helvetica, Ubuntu, Arial, sans-serif",
-                              fontSize: isSmallScreen ? "18px" : "25px",
-                              display: "-webkit-box",
-                              WebkitBoxOrient: "vertical",
-                              WebkitLineClamp: 2,
-                              overflow: "hidden",
-                              textOverflow: "ellipsis",
-                              lineHeight: "1.2em",
-                              maxHeight: "2.4em",
-                            }}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {paper.title}
-                          </a>
-                        </div>
-                        <div style={{ height: "20px" }}></div>
-                        <div
-                          style={{
-                            display: "flex",
-                            justifyContent: "space-between",
-                            alignItems: "center",
-                          }}
-                        >
-                          <div
-                            style={{
-                              display: "flex",
-                              flexDirection: "column",
-                              alignItems: "start",
-                            }}
-                          >
-                            <div
-                              style={{ display: "flex", alignItems: "center" }}
-                            >
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                  marginRight: "5px",
-                                }}
-                              >
-                                Author(s):
-                              </b>
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                  maxWidth: "200px",
-                                  overflow: "hidden",
-                                  textOverflow: "ellipsis",
-                                  whiteSpace: "nowrap",
-                                }}
-                              >
-                                {paper.authors.map((author, index) => (
-                                  <span> Dr. {author.name}, </span>
-                                ))}
-                              </b>
-                            </div>
-                            <div>
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                }}
-                              >
-                                Country:
-                              </b>{" "}
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                }}
-                              >
-                                India
-                              </b>
-                            </div>
-                            <div>
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                }}
-                              >
-                                Research Area:
-                              </b>{" "}
-                              <b
-                                style={{
-                                  fontSize: isSmallScreen ? "12px" : "16px",
-                                }}
-                              >
-                                {paper.researchArea}
-                              </b>
-                            </div>
-                          </div>
-                          <span
-                            onMouseEnter={(e) => {
-                              e.currentTarget.style.border =
-                                "1px solid lightGrey";
-                            }}
-                            onMouseLeave={(e) => {
-                              e.currentTarget.style.border = "none";
-                            }}
-                            onClick={(e) => {
-                              e.stopPropagation(); // Prevents the parent div's onClick from being triggered
-                              window.open(
-                                paper.fileURL,
-                                "_blank",
-                                "noopener,noreferrer"
-                              );
-                            }}
-                            style={{
-                              backgroundColor: "#D9E3F0",
-                              borderRadius: "4px",
-                              padding: "8px 16px",
-                              textDecoration: "none",
-                              color: "black",
-                              fontSize: "14px",
-                            }}
-                            className="pdf-lin"
-                          >
-                            <a
-                              style={{ fontSize: "12px", fontWeight: "bold" }}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <FontAwesomeIcon
-                                icon={faFilePdf}
-                                color="red"
-                                size="lg"
-                              />
-                              {isSmallScreen ? "" : "View PDF"}
-                            </a>
-                          </span>
-                        </div>
-                        <div style={{ height: "10px" }}></div>
-                        <hr style={{ width: "50%" }} />
-                        <div style={{ height: "10px" }}></div>
-                      </div>
-                    ))
-                  : !loading2 && selectedArea
-                  ? "No papers found"
-                  : ""}
-              </div>
-            </div>
-          </center>
-        </section>
-
+                        <FontAwesomeIcon icon={faFilePdf} color="red" size="lg" />
+                        {isSmallScreen ? "" : " View PDF"}
+                      </span>
+                    </div>
+                    <div style={{ height: "10px" }}></div>
+                    <hr style={{ width: "50%" }} />
+                    <div style={{ height: "10px" }}></div>
+                  </div>
+                ))
+              : !loading2 && selectedArea
+              ? "No papers found"
+              : ""}
+          </div>
+        </div>
+      </center>
+    </section>
         <hr />
         <Row className="section2a">
           <Col xs={12} md={9}>

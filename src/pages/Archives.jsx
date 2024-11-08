@@ -8,6 +8,7 @@ import Header from '../components/header';
 import '../css/Archives.css';
 import AuthorsDesk from '../components/AuthorsDesk';
 import Footer from '../components/footer';
+import { Card, Row, Col, Button } from 'react-bootstrap';
 
 
 const ArchivesPage = () => {
@@ -312,7 +313,9 @@ const ArchivesPage = () => {
                     cursor: 'pointer', 
                     boxShadow: '0px 0px 6px lightGrey', 
                     borderTop: '4px solid #003366', 
-                    width: !isSmallScreen ? '100%' : '50%', 
+                    width: !isSmallScreen ? '70%' : '100%', 
+                  margin: 'auto', 
+        justifyContent: 'center', // Centers the card horizontally
                     marginBottom: '16px', 
                     borderRadius: '4px', 
                     padding: '16px',
@@ -376,98 +379,177 @@ const ArchivesPage = () => {
           )
           :
           (
-            <div>
-              <center style={{ backgroundColor: '#D9E3F0' }}>
-                <h4 id="papers-index" style={{ paddingTop: '5px', paddingBottom: '5px' }}>
-                  {"Volume "+currentData.volume}, {"Issue "+currentData.issue} ({formatDateRange("Issue"+currentData.issue)})
-                  {/* {console.log("Issue"+issue)} */}
-                </h4>
-              </center>
-              <div className="papers-index" style={{ padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                {papers.length > 0 ? papers.map((paper) => (
-                  // <div className="archive-rp-info" key={paper.id} style={{ width: '50%', marginBottom: '16px', border: '1px solid gray', padding: '8px 8px 4px', borderRadius: '8px' }}>
-                  <div 
-                    onMouseEnter={(e) => {
-                      // e.currentTarget.style.width = '51%';  // Increase width to 300px on hover
-                      // e.currentTarget.style.height = '110px'; // Increase height to 150px on hover
-                      e.currentTarget.style.boxShadow = '0px 0px 8px grey'; //
-                    }}
-                    onMouseLeave={(e) => {
-                      // e.currentTarget.style.width = '50%';  // Reset width to 200px on mouseleave
-                      // e.currentTarget.style.height = '100px'; // Reset height to 100px on mouseleave
-                      e.currentTarget.style.boxShadow = '0px 0px 6px lightGrey';
+<div
+  style={{
+    padding: '20px',
+    maxWidth: '1200px', // Limit maximum width for larger screens
+    margin: '0 auto', // Center the container
+  }}
+>
+  <center style={{ backgroundColor: '#D9E3F0', marginBottom: '20px' }}>
+    <h4
+      id="papers-index"
+      style={{ paddingTop: '5px', paddingBottom: '5px' }}
+    >
+      {"Volume " + currentData.volume}, {"Issue " + currentData.issue} (
+      {formatDateRange("Issue " + currentData.issue)})
+    </h4>
+  </center>
+  
+  <div className="papers-index">
+    <Row className="g-4 justify-content-center">
+      {papers.length > 0 ? (
+        papers.map((paper) => (
+          <Col xl={5} lg={6} md={12} key={paper.id}>
+            <Card
+              style={{
+                width: '100%',
+                maxWidth: '550px', // Restrict max width per card
+                boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)',
+                borderTop: '4px solid #003366',
+                borderRadius: '8px',
+                margin: '0 auto', // Center the card in its column
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = '0px 6px 15px rgba(0, 0, 0, 0.15)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = '0px 4px 10px rgba(0, 0, 0, 0.1)';
+              }}
+            >
+              <Card.Body>
+                <Card.Title className="text-primary" style={{ fontSize: '20px', fontWeight: 'bold' }}>
+                  {paper.title}
+                </Card.Title>
+                <Card.Text>
+                  <b>Author(s):</b>{' '}
+                  {paper.authors.map((author, index) => (
+                    <span key={index}>Dr. {author.name}{index < paper.authors.length - 1 ? ', ' : ''}</span>
+                  ))}
+                </Card.Text>
+                <Card.Text>
+                  <b>Country:</b> India
+                </Card.Text>
+                <Card.Text>
+                  <b>Research Area:</b> {paper.researchArea}
+                </Card.Text>
+                <Button
+                  variant="light"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    window.open(paper.fileURL, '_blank', 'noopener,noreferrer');
+                  }}
+                  style={{
+                    backgroundColor: '#D9E3F0',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  <FontAwesomeIcon icon={faFilePdf} color="red" /> View PDF
+                </Button>
+              </Card.Body>
+            </Card>
+          </Col>
+        ))
+      ) : (
+        <center>No papers found.</center>
+      )}
+    </Row>
+  </div>
+</div>
 
-                    }}
-                    onClick={() => handlePaperClick(paper)} // Update to handle click
-                    style={{
-                      cursor: 'pointer', 
-                      boxShadow: '0px 0px 6px lightGrey', 
-                      borderTop: '4px solid #003366', 
-                      width: '50%', 
-                      marginBottom: '16px', 
-                      borderRadius: '4px', 
-                      padding: '16px',
-                      transition: 'width 0.3s ease, height 0.3s ease'  // Add transition for smooth animation
+            // <div>
+            //   <center style={{ backgroundColor: '#D9E3F0' }}>
+            //     <h4 id="papers-index" style={{ paddingTop: '5px', paddingBottom: '5px' }}>
+            //       {"Volume "+currentData.volume}, {"Issue "+currentData.issue} ({formatDateRange("Issue"+currentData.issue)})
+            //       {/* {console.log("Issue"+issue)} */}
+            //     </h4>
+            //   </center>
+            //   <div className="papers-index" style={{ padding: '10px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            //     {papers.length > 0 ? papers.map((paper) => (
+            //       // <div className="archive-rp-info" key={paper.id} style={{ width: '50%', marginBottom: '16px', border: '1px solid gray', padding: '8px 8px 4px', borderRadius: '8px' }}>
+            //       <div 
+            //         onMouseEnter={(e) => {
+            //           // e.currentTarget.style.width = '51%';  // Increase width to 300px on hover
+            //           // e.currentTarget.style.height = '110px'; // Increase height to 150px on hover
+            //           e.currentTarget.style.boxShadow = '0px 0px 8px grey'; //
+            //         }}
+            //         onMouseLeave={(e) => {
+            //           // e.currentTarget.style.width = '50%';  // Reset width to 200px on mouseleave
+            //           // e.currentTarget.style.height = '100px'; // Reset height to 100px on mouseleave
+            //           e.currentTarget.style.boxShadow = '0px 0px 6px lightGrey';
 
-                    }}>
+            //         }}
+            //         onClick={() => handlePaperClick(paper)} // Update to handle click
+            //         style={{
+            //           cursor: 'pointer', 
+            //           boxShadow: '0px 0px 6px lightGrey', 
+            //           borderTop: '4px solid #003366', 
+            //           width: '50%', 
+            //           marginBottom: '16px', 
+            //           borderRadius: '4px', 
+            //           padding: '16px',
+            //           transition: 'width 0.3s ease, height 0.3s ease'  // Add transition for smooth animation
 
-                    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                      {/* <a style={{ fontFamily: 'Metrophobic, Forum, Helvetica, Ubuntu, Arial, sans-serif', fontSize: '25px' }} href={paper.fileURL} target="_blank" rel="noopener noreferrer">{paper.title}</a> */}
-                      <h4>{paper.title}</h4>
-                    </div>
-                    {/* <div style={{height: '20px'}}></div> */}
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                      <div style={{ marginRight: '5px'}}>
+            //         }}>
+
+            //         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            //           {/* <a style={{ fontFamily: 'Metrophobic, Forum, Helvetica, Ubuntu, Arial, sans-serif', fontSize: '25px' }} href={paper.fileURL} target="_blank" rel="noopener noreferrer">{paper.title}</a> */}
+            //           <h4>{paper.title}</h4>
+            //         </div>
+            //         {/* <div style={{height: '20px'}}></div> */}
+            //         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+            //           <div style={{ marginRight: '5px'}}>
                       
-                        <div><b>Author(s):</b>
-                          {paper.authors.map((author, index) => (
-                                <span> Dr. {author.name}, </span>
-                          ))}
-                        </div>
-                        <div><b>Country:</b> India</div>
-                        <div><b>Research Area:</b> {paper.researchArea}</div>
-                      </div>
+            //             <div><b>Author(s):</b>
+            //               {paper.authors.map((author, index) => (
+            //                     <span> Dr. {author.name}, </span>
+            //               ))}
+            //             </div>
+            //             <div><b>Country:</b> India</div>
+            //             <div><b>Research Area:</b> {paper.researchArea}</div>
+            //           </div>
                       
-                      <span 
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.border = '1px solid lightGrey';
-                        }} 
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.border = 'none';
-                        }}
-                        onClick={(e) =>{
-                            e.stopPropagation(); // Prevents the parent div's onClick from being triggered
-                            window.open(paper.fileURL, '_blank', 'noopener,noreferrer');
-                        }}
-                        style={{
-                          backgroundColor: '#D9E3F0',
-                          borderRadius: '4px', 
-                          padding: '8px 16px', 
-                          textDecoration: 'none', 
-                          color: 'black'
-                        }}
-                        className="pdf-lin">
-                        <a 
-                        // href={paper.fileURL} 
-                        // style={{ backgroundColor: '#D9E3F0', borderRadius: '4px', padding: '8px 16px', textDecoration: 'none', color: 'black'}} 
-                        style={{ fontSize: '12px', fontWeight: 'bold'}}
-                        target="_blank" rel="noopener noreferrer">
-                          <FontAwesomeIcon icon={faFilePdf} color='red'/>
-                          &nbsp;View PDF
-                        </a>
-                      </span>
-                    </div>
-                    <div style={{height: '10px'}}></div>
-                    <hr style={{ width: '50%'}} />
-                    <div style={{height: '10px'}}></div>
+            //           <span 
+            //             onMouseEnter={(e) => {
+            //               e.currentTarget.style.border = '1px solid lightGrey';
+            //             }} 
+            //             onMouseLeave={(e) => {
+            //               e.currentTarget.style.border = 'none';
+            //             }}
+            //             onClick={(e) =>{
+            //                 e.stopPropagation(); // Prevents the parent div's onClick from being triggered
+            //                 window.open(paper.fileURL, '_blank', 'noopener,noreferrer');
+            //             }}
+            //             style={{
+            //               backgroundColor: '#D9E3F0',
+            //               borderRadius: '4px', 
+            //               padding: '8px 16px', 
+            //               textDecoration: 'none', 
+            //               color: 'black'
+            //             }}
+            //             className="pdf-lin">
+            //             <a 
+            //             // href={paper.fileURL} 
+            //             // style={{ backgroundColor: '#D9E3F0', borderRadius: '4px', padding: '8px 16px', textDecoration: 'none', color: 'black'}} 
+            //             style={{ fontSize: '12px', fontWeight: 'bold'}}
+            //             target="_blank" rel="noopener noreferrer">
+            //               <FontAwesomeIcon icon={faFilePdf} color='red'/>
+            //               &nbsp;View PDF
+            //             </a>
+            //           </span>
+            //         </div>
+            //         <div style={{height: '10px'}}></div>
+            //         <hr style={{ width: '50%'}} />
+            //         <div style={{height: '10px'}}></div>
 
-                  </div>
-                ))
-                :
-                <center>No papers found.</center>
-              }
-              </div>
-            </div>
+            //       </div>
+            //     ))
+            //     :
+            //     <center>No papers found.</center>
+            //   }
+            //   </div>
+            // </div>
+            
           )
 
         }

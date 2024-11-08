@@ -831,145 +831,214 @@ function ContactUs() {
     <Card
       className="contact-card shadow-lg"
       style={{
-        borderRadius: "15px",
-        backgroundColor: "#f8f9fa",
-        padding: "20px",
+        borderRadius: "20px",
+        background: "linear-gradient(135deg, #e3f2fd, #ffffff)",
+        padding: "30px",
         marginTop: "-40px",
-        marginLeft: window.innerWidth > 768 ? "-22px" : "16px", // Conditional marginLeft
-              }}
-              data-aos="fade-right"
+      }}
+      data-aos="fade-right"
     >
-      <Card.Body style={{ justifyContent: "center", alignItems: "center", width: "100%",}}>
-      <Card.Title className="section-title">
-      <h3  data-aos="zoom-in" style={{ color: "#0072b1", fontSize: "25px", marginBottom: "20px" }}>
-            Our Contact Information
-          </h3>
+      <Card.Body>
+        <Card.Title className="section-title text-center mb-4">
+        <h3
+  data-aos="zoom-in"
+  style={{
+    color: "#0072b1",
+    fontSize: "26px",
+    fontWeight: "700",
+    textTransform: "uppercase",
+    letterSpacing: "1px",
+    wordWrap: "break-word",  // Allows text to wrap to the next line if necessary
+    hyphens: "auto",         // Adds hyphenation for better word-breaking in long words (optional)
+    whiteSpace: "normal",    // Ensures that the text wraps within the container
+    margin: "0",             // Prevents unwanted spacing around the heading
+    lineHeight: "1.3",       // Improves the line spacing for wrapping
+  }}
+>
+  Our Contact Information
+</h3>
+
         </Card.Title>
 
         {/* Introduction Text */}
-        <p style={{
-          color: "rgb(77, 77, 77)",
-          fontSize: "17.6px",
-          fontFamily: 'system-ui, -apple-system, "Segoe UI"',
-        }}>
-          We value your feedback and inquiries. Please feel free to reach out to us through any of the following contact methods or send us a message using the form below.
+        <p
+          className="text-center"
+          style={{
+            color: "#555",
+            fontSize: "18px",
+            fontFamily: 'system-ui, -apple-system, "Segoe UI"',
+            lineHeight: "1.6",
+          }}
+        >
+          We value your feedback and inquiries. Please feel free to reach out to
+          us through any of the following contact methods or send us a message
+          using the form below.
         </p>
 
-        <div className="contact-info">
-          <p style={{
-            font: '16px system-ui, -apple-system, "Segoe"', // Slightly smaller font size
-            color: "#4d4d4d",
-            margin: "5px 0",
-          }}>
-            <FontAwesomeIcon
-              icon={faEnvelope}
-              style={{ color: "#DB4437", marginRight: "8px" }}
-            />
-            <strong style={{ color: "#0072B1", fontSize: "18px" }}>
-              Email :
-            </strong>
-            <span style={{ color: "#4d4d4d", fontSize: "18px", marginLeft: "5px" }}>
-              aitm@gmail.com
-            </span>
-          </p>
-          <p style={{
-            font: '16px system-ui, -apple-system, "Segoe"', 
-            color: "#4d4d4d",
-            margin: "5px 0",
-          }}>
-            <FontAwesomeIcon
-              icon={faPhone}
-              style={{ color: "#00AFF0", marginRight: "8px" }} 
-            />
-            <strong style={{ color: "#0072B1", fontSize: "18px" }}>
-              Phone :
-            </strong>
-            <span style={{ color: "#4d4d4d", fontSize: "18px", marginLeft: "5px" }}>
-              +9945387216
-            </span>
-          </p>
-          <p style={{
-            font: '16px system-ui, -apple-system, "Segoe"',
-            color: "#4d4d4d",
-            margin: "5px 0",
-          }}>
-            <FontAwesomeIcon
-              icon={faMapMarkerAlt}
-              style={{ color: "#00B140", marginRight: "8px" }} 
-            />
-            <strong style={{ color: "#0072B1", fontSize: "18px" }}>
-              Address :
-            </strong>
-            <span style={{ color: "#4d4d4d", fontSize: "18px", marginLeft: "5px" }}>
-              XHW5+H22, Belalkanda, Bhatkal, Karnataka 581320
-            </span>
-          </p>
+        {/* Contact Info */}
+        <div
+          className="contact-info d-flex flex-column align-items-start"
+          style={{
+            gap: "15px",
+            marginTop: "20px",
+          }}
+        >
+          {[
+            {
+              icon: faEnvelope,
+              label: "Email",
+              value: "aitm@gmail.com",
+              color: "#DB4437",
+            },
+            {
+              icon: faPhone,
+              label: "Phone",
+              value: "+9945387216",
+              color: "#00AFF0",
+            },
+            {
+              icon: faMapMarkerAlt,
+              label: "Address",
+              value: "XHW5+H22, Belalkanda, Bhatkal, Karnataka 581320",
+              color: "#00B140",
+            },
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="d-flex align-items-start"
+              style={{
+                fontSize: "17px",
+                fontFamily: 'system-ui, -apple-system, "Segoe UI"',
+                alignItems: "flex-start", // Ensures everything is aligned
+              }}
+            >
+              <FontAwesomeIcon
+                icon={item.icon}
+                style={{
+                  color: item.color,
+                  marginRight: "12px",
+                  fontSize: "20px",
+                }}
+              />
+              <div>
+                <strong
+                  style={{
+                    color: "#0072B1",
+                    fontSize: "18px",
+                    marginRight: "5px",
+                  }}
+                >
+                  {item.label}:
+                </strong>
+                <span style={{ color: "#333", fontSize: "18px" }}>{item.value}</span>
+              </div>
+            </div>
+          ))}
         </div>
 
-        <div className="social-media" style={{
-  marginTop: "10px",
-  display: "flex",
-  flexDirection: "column", 
-  alignItems: "flex-start", 
-  
-}}>
-  <p style={{
-    fontWeight: "medium",
-    color: "#4d4d4d",
-    marginBottom: "10px", 
-    fontSize: "20px",
-  }}>
-    We are also available at:
+        {/* Social Media */}
+       {/* Social Media */}
+{/* Social Media */}
+<div className="social-media mt-4">
+  <p
+    style={{
+      fontWeight: "600",
+      color: "#4d4d4d",
+      fontSize: "20px",
+      marginBottom: "15px",
+    }}
+  >
+    We are also available at :&nbsp;&nbsp;
   </p>
 
-  <div style={{
-    display: "flex",
-    alignItems: "center",
-    flexWrap: "nowrap", 
-    whiteSpace: "nowrap"
-  }}>
-<a 
-  href="https://wa.me/9945387216" // Correct format
-  target="_blank" 
-  rel="noreferrer" 
-  className="whatsapp-icon" 
-  style={{ marginRight: "10px" }}
-  data-aos="fade-up" data-aos-delay="200"
->
-  
-      <FontAwesomeIcon icon={faWhatsapp} style={{ color: "#25D366", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://twitter.com/anjumanitm" target="_blank" rel="noreferrer" className="twitter-icon" style={{ marginRight: "10px" }}data-aos="fade-up" data-aos-delay="300">
-      <FontAwesomeIcon icon={faTwitter} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://www.instagram.com/anjumanitm/profilecard/?igsh=eXF1MDdkendxenRx" target="_blank" rel="noreferrer" className="instagram-icon"data-aos="fade-up" data-aos-delay="400">
-      <FontAwesomeIcon icon={faInstagram} style={{ color: "#E1306C", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://www.facebook.com/anjumanitm" target="_blank" rel="noreferrer" className="facebook-icon" data-aos="fade-up" data-aos-delay="500" style={{ marginRight: "10px" }}>
-      <FontAwesomeIcon icon={faFacebook} style={{ color: "#1DA1F2", fontSize: "24px", marginRight: "10px" }} />
-    </a>
-    <a href="https://www.linkedin.com/school/anjumanitm/" target="_blank" data-aos="fade-up" data-aos-delay="6Z   CK
-    
-     ` 00" rel="noreferrer" className="linkedin-icon">
-      <FontAwesomeIcon icon={faLinkedin} style={{ color: "#0077b5", fontSize: "24px", marginRight: "10px" }} />
-    </a>
+  <div
+    style={{
+      display: "flex",
+      justifyContent: "space-around",
+      flexWrap: "wrap",
+      gap: "10px",
+    }}
+  >
+    {[{
+        link: "https://wa.me/9945387216", 
+        icon: faWhatsapp, 
+        color: "#25D366", 
+        animation: "fade-up"
+      },
+      {
+        link: "https://twitter.com/anjumanitm", 
+        icon: faTwitter, 
+        color: "#1DA1F2", 
+        animation: "fade-up"
+      },
+      {
+        link: "https://www.instagram.com/anjumanitm", 
+        icon: faInstagram, 
+        color: "#E1306C", 
+        animation: "fade-up"
+      },
+      {
+        link: "https://www.facebook.com/anjumanitm", 
+        icon: faFacebook, 
+        color: "#1877F2", 
+        animation: "fade-up"
+      },
+      {
+        link: "https://www.linkedin.com/school/anjumanitm", 
+        icon: faLinkedin, 
+        color: "#0077B5", 
+        animation: "fade-up"
+      }
+    ].map((social, index) => (
+      <a
+        key={index}
+        href={social.link}
+        target="_blank"
+        rel="noreferrer"
+        style={{
+          fontSize: "24px", 
+          color: social.color,
+        }}
+        data-aos={social.animation}
+        data-aos-delay={`${index * 100}`} // Delay each icon slightly for a staggered effect
+      >
+        <FontAwesomeIcon icon={social.icon} />
+      </a>
+    ))}
+  </div>
 </div>
 
-</div>
+
 
         {/* Closing Statement */}
-        <p style={{
-          color: "rgb(77, 77, 77)",
-          fontSize: "17.6px",
-          fontFamily: 'system-ui, -apple-system, "Segoe UI"',
-          marginTop: "10px",
-        }}>
-          We look forward to hearing from you and will respond to your inquiries as soon as possible!
+        <p
+          className="mt-4"
+          style={{
+            color: "#4d4d4d",
+            fontSize: "17px",
+            fontFamily: 'system-ui, -apple-system, "Segoe UI"',
+          }}
+        >
+          We look forward to hearing from you and will respond to your inquiries
+          as soon as possible!
         </p>
       </Card.Body>
     </Card>
   </Col>
 </Row>
+
+{/* Custom Media Query */}
+<style>
+  {`
+    @media (min-width: 1024px) and (max-width: 1366px) {
+      .contact-info {
+        display: flex;
+        flex-direction: column; /* Stack items */
+        align-items: flex-start; /* Align vertically */
+      }
+    }
+  `}
+</style>
 
 
         <Row className="mt-5">

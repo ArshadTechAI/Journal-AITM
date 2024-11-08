@@ -1,4 +1,4 @@
-/* Admin Panel styling */
+/* Admin Panel Styling */
 .admin-panel-container {
     width: 100%;
     display: flex;
@@ -6,8 +6,10 @@
     align-items: center;
     justify-content: center;
     background-color: #F4F6F9;
+  
 }
 
+/* Admin Header Styling */
 .admin-header {
     width: 100%;
     background-color: #1A73E8;
@@ -28,11 +30,21 @@
     margin-left: 10px;
 }
 
+/* Paper Container Styling */
 .paper-container {
-    width: 80%;
-    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    min-height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
+/* Paper Card Styling */
 .paper-card {
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -40,31 +52,40 @@
     background-color: white;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    width: 100%; /* Full width by default */
+    max-width: 100%; /* Ensures card does not exceed screen width */
+    text-align: left;
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
+/* Paper Card Title */
 .paper-title {
     font-size: 1.5rem;
     font-weight: bold;
     color: #333;
 }
 
+/* Paper Card Abstract */
 .paper-abstract {
     font-size: 1rem;
     color: #666;
 }
 
+/* Author Name Styling */
 .author-name {
     font-size: 1rem;
     color: #555;
     margin-bottom: 10px;
 }
 
+/* Action Buttons Container */
 .action-buttons {
     display: flex;
     gap: 10px;
     margin-top: 10px;
 }
 
+/* Styling for Buttons */
 .approve-btn {
     background-color: #4CAF50;
     border: none;
@@ -83,6 +104,7 @@
     color: white;
 }
 
+/* Loading Overlay */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -101,6 +123,7 @@
     font-size: 1.5rem;
 }
 
+/* Reject Reason Section */
 .input-container {
     margin-top: 10px;
 }
@@ -128,15 +151,14 @@
     border-radius: 4px;
 }
 
+/* No Papers Message */
 .no-papers-message {
     font-size: 1.2rem;
     color: #666;
     margin-top: 20px;
 }
 
-
-/*modal*/
-/* Modal overlay styling */
+/* Modal Styling */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -150,7 +172,6 @@
     z-index: 1000;
 }
 
-/* Modal content styling */
 .modal-content {
     background: #fff;
     padding: 20px;
@@ -159,4 +180,335 @@
     width: 100%;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+}
+
+/* Assign Editor Styling */
+.assign-editor-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    gap: 10px;
+    padding: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.assign-editor-container label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.assign-editor-container select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    transition: border-color 0.2s;
+    outline: none;
+}
+
+.assign-editor-container select:focus {
+    border-color: #007bff;
+}
+
+.assign-editor-container button {
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.assign-editor-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Flexbox container for buttons and editor */
+.action-buttons,
+.assign-editor-container {
+    display: flex;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.action-buttons .approve-btn,
+.action-buttons .reject-btn,
+.action-buttons .ack-btn {
+    margin-right: 10px;
+}
+
+.assign-editor-container label {
+    margin-right: 5px;
+}
+
+.assign-editor-container select {
+    margin-right: 10px;
+}
+
+.assign-editor-container button {
+    margin-left: 10px;
+}
+
+/* Responsive Adjustments */
+
+/* Mobile Responsiveness (max-width: 576px) */
+@media (max-width: 576px) {
+    .paper-container {
+        padding: 10px;
+        overflow-x: hidden; /* Prevent horizontal scrolling */
+    }
+
+    .paper-card {
+        width: 100%; /* Full width on small screens */
+        max-width: 100%; /* Ensure it does not exceed the screen width */
+        margin-bottom: 20px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
+
+/* Tablet Responsiveness (576px to 768px) */
+@media (min-width: 576px) and (max-width: 768px) {
+    .paper-card {
+        width: 100%; /* Full width on medium screens */
+        max-width: 100%; /* Ensure it does not exceed the screen width */
+    }
+}
+
+/* Larger Screens (768px to 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .paper-card {
+        width: 100%; /* Full width on larger tablets */
+        max-width: 100%; /* Ensure it does not exceed the screen width */
+    }
+}
+
+/* Very Large Screens (1024px and above) */
+@media (min-width: 1024px) {
+    .paper-card {
+        width: 100%; /* One card per row on large screens */
+        max-width: 800px; /* Limit card width */
+    }
+}
+
+/* Force body to prevent overflow on small screens */
+body {
+    overflow-x: hidden;
+}
+/* car doverflow solved */
+/* Ensure Container and Cards Do Not Overflow */
+.paper-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    width: 100%; /* Full width */
+    max-width: 100%; /* Ensure it does not exceed viewport */
+    margin: 0 auto;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.paper-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    width: calc(100% - 40px); /* Subtracts the padding/gap */
+    max-width: 1000px; /* Caps max width for larger screens */
+    box-sizing: border-box; /* Padding and border included in width */
+}
+
+/* Mobile Responsiveness (max-width: 576px) */
+@media (max-width: 576px) {
+    .paper-container {
+        padding: 10px;
+        gap: 10px; /* Reduce gap for smaller screens */
+        overflow-x: hidden;
+    }
+
+    .paper-card {
+        width: 100%; /* Full width on small screens */
+        max-width: 100%; /* Ensure it fits within viewport */
+        margin: 0 auto 20px; /* Center and prevent overflow */
+    }
+}
+
+/* Body Overflow Prevention */
+body {
+    overflow-x: hidden; /* Ensure no horizontal scroll globally */
+}
+/* buttons */
+/* Ensure Buttons Don't Overflow the Card */
+.action-buttons {
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap to the next line if necessary */
+    gap: 10px; /* Space between buttons */
+    margin-top: 10px;
+    justify-content: flex-start; /* Align buttons to the left */
+    width: 100%; /* Ensure buttons take up available width */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.action-buttons button {
+    flex: 1 1 auto; /* Allow buttons to grow and shrink within their container */
+    padding: 10px 15px;
+    text-align: center;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.approve-btn {
+    background-color: #4CAF50;
+}
+
+.reject-btn {
+    background-color: #f44336;
+}
+
+.ack-btn {
+    background-color: rgb(55, 55, 250);
+}
+
+/* Handle Button Overflow on Small Screens */
+@media (max-width: 576px) {
+    .action-buttons {
+        justify-content: center; /* Center buttons on smaller screens */
+    }
+
+    .action-buttons button {
+        width: 100%; /* Each button takes full width on small screens */
+    }
+}
+/* Assign Editor Container Styling */
+.assign-editor-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping for select and button on small screens */
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+    width: 100%; /* Ensure it takes the full width of the card */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.assign-editor-container label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.assign-editor-container select {
+    flex: 1 1 auto; /* Allow the select dropdown to take available space */
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 150px; /* Prevent it from shrinking too much */
+    max-width: 100%; /* Keep it within bounds */
+    box-sizing: border-box; /* Include padding in width */
+}
+
+.assign-editor-container button {
+    flex: 0 0 auto; /* Ensure button size doesn't shrink */
+    padding: 8px 12px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.assign-editor-container button:disabled {
+    background-color: #cccccc; /* Change appearance when disabled */
+    cursor: not-allowed;
+}
+
+/* Ensure Responsive Behavior */
+@media (max-width: 576px) {
+    .assign-editor-container {
+        flex-direction: column; /* Stack elements vertically */
+        align-items: stretch; /* Ensure full width for all elements */
+    }
+
+    .assign-editor-container label,
+    .assign-editor-container select,
+    .assign-editor-container button {
+        width: 100%; /* Full width on small screens */
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping only when necessary */
+    gap: 10px; /* Add space between sections */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+}
+
+.assign-editor-container {
+    display: flex;
+    gap: 10px; /* Space between label, select, and button */
+    align-items: center;
+    flex: 1 1 auto; /* Take available space */
+}
+
+/* Move Assign Editor below action buttons only on small screens */
+@media (max-width: 768px) {
+    .assign-editor-container {
+        flex: 1 1 100%; /* Take full width */
+    }
 }

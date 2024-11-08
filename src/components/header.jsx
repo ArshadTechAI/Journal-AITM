@@ -484,7 +484,7 @@ function Header() {
     // </Navbar>
     <Navbar expand="lg" className="bg-body-tertiary" style={{ flexDirection: 'column', padding: '20px' }}>
       {/* First Row: Logo, Social Media, Profile Icon */}
-      <Container style={{ width: '100%',maxWidth: '80%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
+      <Container style={{ width: '100%',maxWidth: '80%', display: 'flex', justifyContent: 'space-between', alignItems: 'center',marginTop: '-15px' }}>
         <Navbar.Brand href="#home">
           <img
             src="/images/logo_new.png" // Replace with your logo path
@@ -545,32 +545,33 @@ function Header() {
       </Container>
 
       {/* <hr color='black'/> */}
-      <hr style={{ width: '78%', border: '1px solid black', margin: '20px 0' }} />
+      <hr style={{ width: '78%', border: '1px solid black', marginTop: '-15px' }} />
 
 
       {/* Second Row: Website Title */}
-      <Container style={{width: '100%', maxWidth: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', marginTop: '0px' }}>
+      <Container style={{width: '100%', maxWidth: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', marginTop: '-10px' }}>
         <h1 style={{textAlign: 'center', fontSize: '30px', color: '#003366', fontWeight: 'bold'}}>International Journal of Engineering, Science, Technology and Management</h1>
       </Container>
 
       {/* Third Row: Description */}
-      <Container style={{width: '100%', maxWidth: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', marginTop: '10px' }}>
+      <Container style={{width: '100%', maxWidth: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center', marginTop: '-35px' }}>
         <p style={{ fontSize: '20px', color: '#666', fontWeight: 'bold'}}>
         A Widely Indexed Open Access Peer Reviewed Multidisciplinary International Journal
         </p>
       </Container>
 
       {/* Fourth Row: Marquee Tag */}
-      <Container style={{width: '100%', maxWidth: '100%', backgroundColor: 'yellow', marginTop: '0px', padding: '5px' }}>
+      <Container style={{width: '100%', maxWidth: '100%', backgroundColor: 'yellow', marginTop: '-25px', padding: '5px' }}>
         <marquee behavior="scroll" direction="left" style={{ color: '#003366', fontSize: '16px' }}>
           Welcome to IJESTM! Submit your papers for the Volume {currentData != null ? currentData.volume : ''}, Issue {currentData != null ? currentData.issue : ''} by the end of this month!
         </marquee>
       </Container>
 
       {/* Fifth Row: Navigation Links */}
-      <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ marginTop: '20px' }} />
+      <Navbar.Toggle aria-controls="basic-navbar-nav" style={{ marginTop: '-10px' }} />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto" style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', marginTop: '20px' }}>
+        <Nav className="me-auto" style={{ display: 'flex', justifyContent: 'space-evenly', flexWrap: 'wrap', marginTop: '10px', margin: 'auto'
+         }}>
           <Nav.Link style={navLinkStyle} href="/">Home</Nav.Link>
           <Nav.Link style={navLinkStyle} href="/aim-scope">Aim & Scope</Nav.Link>
           <Nav.Link style={navLinkStyle} href="/editorial-team">Editorial Team</Nav.Link>

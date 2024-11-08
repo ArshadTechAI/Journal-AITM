@@ -359,3 +359,253 @@
 // }
 
 // export default EditorialPanel;
+import React, { useEffect, useState, useCallback } from 'react';
+import { collection, getDocs, doc, updateDoc, addDoc, getDoc, where, query } from 'firebase/firestore/lite';
+import { db, auth } from '../backend/firebase';
+import Header from '../components/header';
+import Footer from '../components/footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import '../css/AdminPanel.css';
+
+function EditorialPanel() {
+    const [papers, setPapers] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const [showRejectReason, setShowRejectReason] = useState(false);
+    const [rejectReason, setRejectReason] = useState('');
+    const [uid, setUid] = useState(null);
+    const [papersAssigned, setPapersAssigned] = useState([]);
+    const [paperDetails, setPaperDetails] = useState([]);
+    const [currentData, setCurrentData] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        // Fetch and set current user UID
+        const user = auth.currentUser;
+        if (user) {
+            setUid(user.uid);
+        }
+    }, []);
+
+    const fetchAssignedPapers = useCallback(async () => {
+        if (!uid) return;
+
+        try {
+            // Define the collection with a condition where completed is false
+            const papersCollectionRef = collection(db, `EditorialTeam/${uid}/papersAssigned`);
+            const papersQuery = query(papersCollectionRef, where("completed", "==", false));
+            
+            // Fetch documents matching the query
+            const papersSnapshot = await getDocs(papersQuery);
+            const papersList = papersSnapshot.docs.map(doc => doc.id);
+            setPapersAssigned(papersList);
+        } catch (error) {
+            console.error("Error fetching assigned papers:", error);
+        }
+    }, [uid]);
+
+    const fetchPaperDetails = useCallback(async () => {
+        if (papersAssigned.length === 0) return;
+
+        try {
+            const paperDetailsList = await Promise.all(
+                papersAssigned.map(async (paperId) => {
+                    const paperRef = doc(db, `PapersQueueCollection/${paperId}`);
+                    const paperSnap = await getDoc(paperRef);
+                    return paperSnap.exists() ? { id: paperId, ...paperSnap.data() } : null;
+                })
+            );
+            setPaperDetails(paperDetailsList.filter(paper => paper !== null));
+        } catch (error) {
+            console.error("Error fetching paper details:", error);
+        }
+    }, [papersAssigned]);
+
+    useEffect(() => {
+        fetchAssignedPapers();
+    }, [fetchAssignedPapers]);
+
+    useEffect(() => {
+        fetchPaperDetails();
+    }, [fetchPaperDetails]);
+
+    useEffect(() => {
+        const fetchCurrentData = async () => {
+            const currentDoc = await getDoc(doc(db, "Current", "current"));
+            setCurrentData(currentDoc.data());
+        };
+        fetchCurrentData();
+    }, []);
+
+    const fetchPapers = async () => {
+        try {
+            const papersCollection = collection(db, 'PapersQueueCollection');
+            const papersSnapshot = await getDocs(papersCollection);
+            const papersList = papersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setPapers(papersList.filter(paper => paper.status === 'pending'));
+        } catch (error) {
+            console.error("Error fetching papers:", error);
+        }
+    };
+
+    useEffect(() => {
+        fetchPapers();
+    }, []);
+
+    const handleApprove = async (paper) => {
+        setLoading(true);
+        try {
+            const paperRef = doc(db, 'PapersQueueCollection', paper.id);
+            await updateDoc(paperRef, { status: 'approved' });
+
+            const volumeId = `Volume${currentData.volume}`;
+            const issueId = `Issue${currentData.issue}`;
+            const papersCollectionRef = collection(db, 'PapersCollection', volumeId, issueId);
+            await addDoc(papersCollectionRef, { ...paper, status: 'approved' });
+
+            const ref = doc(db, `EditorialTeam/${uid}/papersAssigned`, paper.id);
+            await updateDoc(ref, { completed: true });
+
+            toast.success("Paper approved successfully!", { position: "top-right", autoClose: 3000 });
+            fetchPapers();
+            await sendConfirmationEmail(paper.authors[0].name, paper.authors[0].email, paper.title);
+        } catch (error) {
+            console.error("Error approving paper:", error);
+        }
+        setLoading(false);
+    };
+
+    const handleReject = (paper) => {
+        setShowRejectReason(true);
+        setCurrentData(paper);  // Set the current paper for rejection
+    };
+
+    const handleRejection = async (paper) => {
+        setLoading(true);
+        try {
+            await sendRejectionEmail(paper);
+
+            const paperRef = doc(db, 'PapersQueueCollection', paper.id);
+            await updateDoc(paperRef, { status: 'rejected', rejectReason });
+
+            const ref = doc(db, `EditorialTeam/${uid}/papersAssigned`, paper.id);
+            await updateDoc(ref, { completed: true });
+
+            toast.success("Paper rejected successfully!", { position: "top-right", autoClose: 3000 });
+            fetchPapers();
+        } catch (error) {
+            console.error("Error rejecting paper:", error);
+        }
+        setLoading(false);
+    };
+
+    const handleLogout = () => {
+        auth.signOut().then(() => {
+            localStorage.removeItem('isAdminAuthenticated');
+            navigate('/');
+        }).catch((error) => {
+            console.error('Logout failed:', error);
+        });
+    };
+
+    const sendConfirmationEmail = async (name, email, paperTitle) => {
+        try {
+            await emailjs.send(
+                'service_tl2k8ng',
+                'template_s4m95cn',
+                {
+                    to_name: name,
+                    to_email: email,
+                    message: `Your paper "${paperTitle}" has been approved by IJESTM, in Volume ${currentData?.volume}, Issue ${currentData?.issue}.`,
+                },
+                'McN8gFqdeF-Bmbn-E'
+            );
+            toast.success('Confirmation email sent.');
+        } catch (error) {
+            toast.error('Failed to send confirmation email.');
+        }
+    };
+
+    const sendRejectionEmail = async (paper) => {
+        try {
+            await emailjs.send(
+                'service_tl2k8ng',
+                'template_s4m95cn',
+                {
+                    to_name: paper.authors[0].name,
+                    to_email: paper.authors[0].email,
+                    message: `We regret to inform you that your paper titled "${paper.title}" has been rejected due to the following reasons: ${rejectReason}`,
+                },
+                'McN8gFqdeF-Bmbn-E'
+            );
+            toast.success('Rejection email sent successfully.');
+        } catch (error) {
+            toast.error('Failed to send rejection email.');
+        }
+    };
+
+    return (
+        <>
+            <ToastContainer />
+            {loading && (
+                <div className="loading-overlay">
+                    <div className="loading-indicator"><div className="spinner"></div></div>
+                </div>
+            )}
+            <Header />
+            <div className="admin-panel-container">
+                <div className="admin-header">
+                    <h1 className="admin-title">Editorial Panel</h1>
+                    <Button className="admin-logout-btn" onClick={handleLogout}>
+                        <FontAwesomeIcon icon={faSignOut} /> Logout
+                    </Button>
+                </div>
+                <div className="paper-container">
+                    {paperDetails.map((paper) => (
+                        <div key={paper.id} className="paper-card">
+                            <h2 className="paper-title">
+                                <a href={paper.fileURL} target="_blank" rel="noopener noreferrer">{paper.title}</a>
+                            </h2>
+                            <p className="paper-abstract">{paper.abstract}</p>
+                            <p className="author-name">Keywords: {paper.keywords}</p>
+                            <div className="action-buttons">
+                                <Button className="approve-btn" onClick={() => handleApprove(paper)} disabled={paper.status === "approved" || paper.status === "rejected"}>
+                                    Approve
+                                </Button>
+                                <Button className="reject-btn" onClick={() => handleReject(paper)} disabled={paper.status === "rejected"}>
+                                    Reject
+                                </Button>
+                            </div>
+                            {showRejectReason && currentData?.id === paper.id && (
+                                <div className="input-container">
+                                    <label className="reject-reason-label" htmlFor="reject-reason">Reason for Rejection:</label>
+                                    <textarea
+                                        className="reject-reason-input"
+                                        id="reject-reason"
+                                        value={rejectReason}
+                                        onChange={(e) => setRejectReason(e.target.value)}
+                                    />
+                                    <Button
+                                        className="submit-reject-btn"
+                                        onClick={() => handleRejection(paper)}
+                                        disabled={!rejectReason.trim()}
+                                    >
+                                        Submit Rejection
+                                    </Button>
+                                </div>
+                            )}
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <Footer />
+        </>
+    );
+}
+
+export default EditorialPanel;

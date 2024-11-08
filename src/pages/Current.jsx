@@ -472,7 +472,7 @@ import Header from "../components/header";
 import { useNavigate } from 'react-router-dom';
 import Footer from "../components/footer";
 import "./Current.css"; // Ensure to add custom CSS for further styling
-import { FaBookOpen, FaGlobe, FaLayerGroup } from 'react-icons/fa';
+import { FaBookOpen, FaLeaf, FaLaptopCode } from 'react-icons/fa';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -525,7 +525,7 @@ function Current() {
     color: 'rgb(77, 77, 77)',
     lineHeight: '1.6',
     textAlign: 'justify',
-    margin: '0px 1rem',
+    margin: '0px -1rem',
     
 
   }}
@@ -554,85 +554,53 @@ function Current() {
           </Col>
         </Row>
 
-        <Row className="mt-5">
-          <Col lg={4} className="mb-4">
-          <Card className="shadow-lg">
-              <Card.Body>
-                <Card.Title className="section-title" data-aos= "fade-right" style={{ color: '#005b8c' }}>
-                Innovative Research                </Card.Title>
-                <Card.Text
-  className="card-content"
-  style={{
-    fontSize: '17.6px',
-    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    color: '#4d4d4d',
-    lineHeight: '1.4',
-    textAlign: 'justify',
-    margin: '0px 1rem',
-  }}
-  data-aos= "fade-right"
->
-<FaBookOpen style={{ color: "#6A5ACD", marginRight: "8px" }}/>{`Learn about the latest trends and breakthroughs in the Science Field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.`.replace(/\s+/g, ' ').trim()}
-</Card.Text>
+{/* card */}
+<div style={{ marginTop: '30px' }}>
+  <div>
+    <div className="card-container" style={{ marginTop: "10px" }}>
+      {/* First Card */}
+      <div className="card" data-aos="fade-right">
+        <div className="card-body">
+        <h3 className="card-title" style={{ color: "rgb(0, 114, 177)" }}>Innovative Research</h3>
+        <p className="card-text">
+            <FaBookOpen style={{ color: '#6A5ACD', marginRight: '8px' }} />
+            Learn about the latest trends and breakthroughs in the Science field.
+            Discover how groundbreaking research is transforming industries and
+            paving the way for future advancements.
+          </p>
+        </div>
+      </div>
 
-              </Card.Body>
-            </Card>
-           
-          </Col>
-         
+      {/* Second Card */}
+      <div className="card" data-aos="fade-up">
+        <div className="card-body">
+          <h3 className="card-title" style={{ color: "rgb(0, 114, 177)" }}>Cutting-Edge Tech</h3>
+          <p className="card-text">
+            <FaLaptopCode style={{ color: '#FFA500', marginRight: '8px' }} />
+            Explore the latest advancements in AI, Blockchain, and other cutting-edge technologies that are revolutionizing industries and shaping the future of innovation.
 
-          <Col lg={4} className="mb-4">
-            <Card className="shadow-lg">
-              <Card.Body>
-                <Card.Title className="section-title"  data-aos= "fade-up"  style={{ color: '#005b8c' }}>
-                  Global Perspectives
-                </Card.Title>
-                <Card.Text className="card-content"
-                style={{
-                  fontSize: '17.6px',
-                  fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-                  color: '#4d4d4d',
-                  lineHeight: '1.4',
-                  textAlign: 'justify',
-                  margin: '0px 1rem',
-                }}data-aos= "fade-up">
-                                <FaGlobe style={{ color: "#0085FF", marginRight: "8px" }} />
+          </p>
+        </div>
+      </div>
 
-                Discover research from scholars worldwide, offering a comprehensive global outlook. Gain insight into how different regions approach and solve global challenges in innovative ways.Inspire collaborative change.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          
-          <Col lg={4} className="mb-4">
-            <Card className="shadow-lg">
-              <Card.Body>
-              <Card.Title className="section-title" data-aos= "fade-left"  style={{ color: '#005b8c' }}>
-              Multidisciplinary Focus
-                </Card.Title>
-                <Card.Text className="card-content" style={{
-    fontSize: '17.6px',
-    fontFamily: 'system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-    color: '#4d4d4d',
-    lineHeight: '1.4',
-    textAlign: 'justify',
-    margin: '0px 1rem',
-  }}data-aos= "fade-left">
-                  <FaLayerGroup style={{ color: "#FF5733", marginRight: "8px"}}/>The articles in this issue span multiple disciplines, offering
-                  a holistic view and interdisciplinary insights. It’s a
-                  convergence of diverse fields that lead to more innovative
-                  solutions.
-                </Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-
-          
+      {/* Third Card */}
+      <div className="card" data-aos="fade-left">
+        <div className="card-body">
+          <h3 className="card-title" style={{ color: "rgb(0, 114, 177)" }}>Sustainable Tech</h3>
+          <p className="card-text">
+            <FaLeaf style={{ color: '#32CD32', marginRight: '8px' }} />
+            Learn about the latest trends and breakthroughs in the Science field. Discover how groundbreaking research is transforming industries and paving the way for future advancements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 
-          
-        </Row>
+
+
+   
 
  
         <Row className="mt-5">
@@ -738,33 +706,46 @@ function Current() {
         padding: '20px',
         overflow: 'hidden',
       }}
-      data-aos= "fade-up"
+      data-aos="fade-up"
     >
-     <h1 className="banner-title responsive-title" data-aos="fade-up">Current Issue</h1>
-<h3 className="banner-volume responsive-volume" data-aos="fade-up">
-  Volume {currentData?.volume}, Issue {currentData?.issue}
-</h3>
-<h3 className="banner-date responsive-date" data-aos="fade-up">
-  {formatDateRange("Issue" + currentData?.issue)}
-</h3>
-<hr
-  style={{
-    width: "50%",
-    margin: "30px auto", // centers the hr element horizontally
-    borderColor: "white",
-    textAlign: "center"
-  }}
-  data-aos="fade-up" 
-/>
-
-<Button
-    className="submit-btn mt-4 responsive-button"
-    data-aos="fade-up"
-    onClick={() => navigate('/submissions')}
->
-    Submit Paper
-</Button>
-
+      <h1
+        className="banner-title responsive-title"
+        style={{ fontSize: '2.5rem', fontWeight: 'bold' }}
+        data-aos="fade-up"
+      >
+        Current Issue
+      </h1>
+      <h3
+        className="banner-volume responsive-volume"
+        style={{ fontSize: '1.8rem', marginTop: '10px' }}
+        data-aos="fade-up"
+      >
+        Volume {currentData?.volume}, Issue {currentData?.issue}
+      </h3>
+      <h3
+        className="banner-date responsive-date"
+        style={{ fontSize: '1.5rem', marginTop: '5px' }}
+        data-aos="fade-up"
+      >
+        {formatDateRange('Issue' + currentData?.issue)}
+      </h3>
+      <hr
+        style={{
+          width: '50%',
+          margin: '30px auto', // centers the hr element horizontally
+          borderColor: 'white',
+          textAlign: 'center',
+        }}
+        data-aos="fade-up"
+      />
+      <Button
+        className="submit-btn mt-4 responsive-button"
+        style={{ fontSize: '1.2rem', padding: '0.75rem 1.5rem' }}
+        data-aos="fade-up"
+        onClick={() => navigate('/submissions')}
+      >
+        Submit Paper
+      </Button>
     </div>
   </Col>
 </Row>
@@ -790,36 +771,61 @@ function Current() {
 
 <Row className="mt-5">
   <Col lg={12} className="text-left">
-    <h3 className="section-title" style={{
+  <h3 
+  className="section-title" 
+  style={{
     fontSize: '25px',
     fontFamily: 'Merriweather, serif',
     color: 'rgb(0, 114, 177)',
-  }}   data-aos= "fade-up"
->How to Engage with the Content :</h3>
-    <ul className="highlight-list">
-      <li className="list-item"data-aos= "fade-up">
-        <strong style={{
-                    fontSize: "17.6px",
-                    fontFamily: "system-ui, -apple-system, Segoe",
-                    color: "#0072B1",
-                    fontWeight: "600"}}   
->Read Full Articles:</strong> Click on the article title to view or download in PDF format.
+    wordWrap: 'break-word',
+    overflowWrap: 'break-word',
+    textAlign: 'left',
+    whiteSpace: 'normal', // Ensure text wraps normally
+  }} 
+  data-aos="fade-up"
+>
+  How to Engage with the Content:
+</h3>
+
+    <ul className="highlight-list" style={{ paddingLeft: '20px' }}>
+      <li className="list-item" data-aos="fade-up">
+        <strong 
+          style={{
+            fontSize: "17.6px",
+            fontFamily: "system-ui, -apple-system, Segoe",
+            color: "#0072B1",
+            fontWeight: "600"
+          }}
+        >
+          Read Full Articles:
+        </strong> 
+        Click on the article title to view or download in PDF format.
       </li>
-      <li className="list-item"data-aos= "fade-up">
-        <strong style={{
-                    fontSize: "17.6px",
-                    fontFamily: "system-ui, -apple-system, Segoe",
-                    color: "#0072B1",
-                    fontWeight: "600"}}   data-aos= "fade-up"
->Stay Updated:</strong> Subscribe to our newsletter for updates on new issues and special collections.
+      <li className="list-item" data-aos="fade-up">
+        <strong 
+          style={{
+            fontSize: "17.6px",
+            fontFamily: "system-ui, -apple-system, Segoe",
+            color: "#0072B1",
+            fontWeight: "600"
+          }}
+        >
+          Stay Updated:
+        </strong> 
+        Subscribe to our newsletter for updates on new issues and special collections.
       </li>
-      <li className="list-item"data-aos= "fade-up">
-        <strong style={{
-                    fontSize: "17.6px",
-                    fontFamily: "system-ui, -apple-system, Segoe",
-                    color: "#0072B1",
-                    fontWeight: "600"}}   data-aos= "fade-up"
->Submit Your Work:</strong> Visit our{" "}
+      <li className="list-item" data-aos="fade-up">
+        <strong 
+          style={{
+            fontSize: "17.6px",
+            fontFamily: "system-ui, -apple-system, Segoe",
+            color: "#0072B1",
+            fontWeight: "600"
+          }}
+        >
+          Submit Your Work:
+        </strong> 
+        Visit our{" "}
         <a href="/submissions" className="submission-link">
           Submission Guidelines
         </a>{" "}
@@ -828,6 +834,7 @@ function Current() {
     </ul>
   </Col>
 </Row>
+
 
 
 
