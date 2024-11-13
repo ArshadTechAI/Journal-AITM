@@ -33,7 +33,7 @@ function PublicationEthics() {
     background: 'linear-gradient(135deg, #f7f9fc, #ffffff)',
     boxShadow: '0 10px 30px rgba(0, 0, 0, 0.1)',
     borderRadius: '12px',
-    maxWidth: '1160px',
+    maxWidth: '1260px',
     padding: '40px',
     margin: '0 auto',
     fontFamily: "'Roboto', sans-serif",

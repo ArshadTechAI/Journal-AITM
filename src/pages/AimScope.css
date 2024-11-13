@@ -397,8 +397,8 @@ body, html {
 
 /* Main Page Styling */
 .aim-scope-page {
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1260px;
+  margin: 30px auto;
   padding: 20px;
   line-height: 1.6;
   color: #333;

@@ -54,6 +54,8 @@ const EditorialTeam = () => {
  const [isHODModal3Open, setHODModal3Open] = useState(false);
  const [isHODModal4Open, setHODModal4Open] = useState(false);
  const [isHODModal5Open, setHODModal5Open] = useState(false);
+ const [isHODModal6Open, setHODModal6Open] = useState(false);
+
 
 
  // Functions to open/close each HOD modal
@@ -72,7 +74,8 @@ const EditorialTeam = () => {
  const openHODModal5 = () => setHODModal5Open(true);
  const closeHODModal5 = () => setHODModal5Open(false);
 
-
+ const openHODModal6 = () => setHODModal6Open(true);
+ const closeHODModal6 = () => setHODModal6Open(false);
 
 
 
@@ -331,7 +334,7 @@ const closeModal = () => {
   
    {/* Principal Card */}
    <div className="editorial_team_section">
-   <h2 className="section_title" style={{ color: "#0072b1" }}>Chief Editor:</h2>
+   <h2 className="section_title" style={{ color: "#0072b1" }}>Chief Editor</h2>
       {/* Chief Editor Card */}
   
 
@@ -407,7 +410,7 @@ const closeModal = () => {
 
 {/* co-chief */}
 <div className="co_chief_editors_section">
-    <h2 className="section_title" style={{ color: "#0072b1" }}>Co-Chief Editors:</h2>
+    <h2 className="section_title" style={{ color: "#0072b1" }}>Co-Chief Editors</h2>
     <div className="co_chief_cards_row">
         {/* Co-Chief Editor Card 1 */}
         <div className="co_chief_card">
@@ -519,7 +522,7 @@ const closeModal = () => {
  
 
 <div className="associate_editors_section">
-        <h2 className="section_title" style={{ color: "#0072b1" }}>Associate Editors:</h2>
+        <h2 className="section_title" style={{ color: "#0072b1" }}>Associate Editors</h2>
         
         <div className="hod_cards_row">
           {/* HOD Card 1 */}
@@ -683,121 +686,31 @@ const closeModal = () => {
           )}
 
 
-
-
-          {/* HOD Card 4 */}
-          <div className="hod_card">
-            <div className="hod_img">
-              <img className="img" src="/images/WhatsApp Image 2024-11-03 at 15,59,13_7f61168e_enhanced_enhanced.jpg" alt="HOD 4" />
-            </div>
-            <h3 className="hod_name">Dr. Kiran V. 
-             Shanbhag</h3>
-            <p className="hod_role">Associate Editor</p>
-            <p className="hod_description">
-            Leading the Department of Electronics and Communication Engineering
-            </p>      
-            <button className="read_more_button" onClick={openHODModal5}>Read More</button>
-          </div>
-
-          {/* Modal for HOD 4 */}
-          {isHODModal5Open && (
-  <div className="modal_overlay">
-    <div className="modal_content">
-      <h2>About Dr. Kiran V. Shanbhag</h2>
-      <p>
-        Dr. Kiran V. Shanbhag is the Head of the Department of Electronics and Communication Engineering at Anjuman Institute of Technology and Management, Bhatkal. With nearly two decades of experience, Dr. Shanbhag is recognized for his dedication to academic excellence and his impactful contributions to research. His leadership in the department is marked by a commitment to fostering an environment where students are encouraged to explore and innovate in the fields of electronics and communication.
-      </p>
-      <p>
-        Dr. Shanbhag’s research interests lie in wireless communication, Multiple Access for 5G, and IoT. Over his 19-year career, he has published extensively in prestigious academic journals and presented his work at numerous conferences. As a passionate educator and researcher, Dr. Shanbhag continues to inspire students and faculty alike, driving advancements in technology and contributing to the academic growth of the department.
-      </p>
-      <div className="contact_info">
-        <p><strong>Email:</strong> shanbhagkiranv@anjuman.edu.in</p>
-        <p><strong>Phone:</strong> 8050567634</p>
-        <p><strong>Qualification:</strong> PhD</p>
-        <p><strong>Department:</strong> Electronics and Communication Engineering</p>
-        <p><strong>Designation:</strong> Head of Department, Assistant Professor</p>
-        <p><strong>Experience:</strong> 19 Years</p>
-        <p><strong>College:</strong> Anjuman Institute of Technology and Management, Bhatkal</p>
-        <p><strong>University:</strong> Visvesvaraya Technological University</p>
-        <p><strong>Area of Interest:</strong> Wireless Communication, Multiple Access for 5G, IoT</p>
-        <p><strong>Orchid ID:</strong> 0000-0001-9269-7703</p>
-        <p><strong>Scopus ID:</strong> 36810255700</p>
-      </div>
-      <button className="close_modal_button" onClick={closeHODModal5}>Close</button>
-    </div>
+{/* kiran sir */}
+      {/* HOD Card 4 */}
+   {/* HOD Card 5 */}
+<div className="hod_card">
+  <div className="hod_img">
+    <img className="img" src="/images/WhatsApp Image 2024-11-03 at 15,59,13_7f61168e_enhanced_enhanced.jpg" alt="HOD 5" />
   </div>
-)}
+  <h3 className="hod_name">Dr. Kiran V. Shanbhag</h3>
+  <p className="hod_role">Associate Editor</p>
+  <p className="hod_description">
+    Leading the Department of Electronics and Communication Engineering
+  </p>      
+  <button className="read_more_button" onClick={openHODModal5}>Read More</button>
+</div>
 
-
-
-          {/* HOD Card 4 */}
-          <div className="hod_card">
-            <div className="hod_img">
-              <img className="img" src="/images/WhatsApp Image 2024-11-03 at 15,59,13_7f61168e_enhanced_enhanced.jpg" alt="HOD 4" />
-            </div>
-            <h3 className="hod_name">Dr. Kiran V. 
-             Shanbhag</h3>
-            <p className="hod_role">Associate Editor</p>
-            <p className="hod_description">
-            Leading the Department of Electronics and Communication Engineering
-            </p>      
-            <button className="read_more_button" onClick={openHODModal5}>Read More</button>
-          </div>
-
-          {/* Modal for HOD 4 */}
-          {isHODModal5Open && (
+{/* Modal for HOD 5 */}
+{isHODModal5Open && (
   <div className="modal_overlay">
     <div className="modal_content">
       <h2>About Dr. Kiran V. Shanbhag</h2>
       <p>
-        Dr. Kiran V. Shanbhag is the Head of the Department of Electronics and Communication Engineering at Anjuman Institute of Technology and Management, Bhatkal. With nearly two decades of experience, Dr. Shanbhag is recognized for his dedication to academic excellence and his impactful contributions to research. His leadership in the department is marked by a commitment to fostering an environment where students are encouraged to explore and innovate in the fields of electronics and communication.
+        Dr. Kiran V. Shanbhag is the Head of the Department of Electronics and Communication Engineering at Anjuman Institute of Technology and Management, Bhatkal. With nearly two decades of experience, Dr. Shanbhag is recognized for his dedication to academic excellence and his impactful contributions to research.
       </p>
       <p>
-        Dr. Shanbhag’s research interests lie in wireless communication, Multiple Access for 5G, and IoT. Over his 19-year career, he has published extensively in prestigious academic journals and presented his work at numerous conferences. As a passionate educator and researcher, Dr. Shanbhag continues to inspire students and faculty alike, driving advancements in technology and contributing to the academic growth of the department.
-      </p>
-      <div className="contact_info">
-        <p><strong>Email:</strong> shanbhagkiranv@anjuman.edu.in</p>
-        <p><strong>Phone:</strong> 8050567634</p>
-        <p><strong>Qualification:</strong> PhD</p>
-        <p><strong>Department:</strong> Electronics and Communication Engineering</p>
-        <p><strong>Designation:</strong> Head of Department, Assistant Professor</p>
-        <p><strong>Experience:</strong> 19 Years</p>
-        <p><strong>College:</strong> Anjuman Institute of Technology and Management, Bhatkal</p>
-        <p><strong>University:</strong> Visvesvaraya Technological University</p>
-        <p><strong>Area of Interest:</strong> Wireless Communication, Multiple Access for 5G, IoT</p>
-        <p><strong>Orchid ID:</strong> 0000-0001-9269-7703</p>
-        <p><strong>Scopus ID:</strong> 36810255700</p>
-      </div>
-      <button className="close_modal_button" onClick={closeHODModal5}>Close</button>
-    </div>
-  </div>
-)}
-
-
-          {/* HOD Card 4 */}
-          <div className="hod_card">
-            <div className="hod_img">
-              <img className="img" src="/images/WhatsApp Image 2024-11-03 at 15,59,13_7f61168e_enhanced_enhanced.jpg" alt="HOD 4" />
-            </div>
-            <h3 className="hod_name">Dr. Kiran V. 
-             Shanbhag</h3>
-            <p className="hod_role">Associate Editor</p>
-            <p className="hod_description">
-            Leading the Department of Electronics and Communication Engineering
-            </p>      
-            <button className="read_more_button" onClick={openHODModal5}>Read More</button>
-          </div>
-
-          {/* Modal for HOD 4 */}
-          {isHODModal5Open && (
-  <div className="modal_overlay">
-    <div className="modal_content">
-      <h2>About Dr. Kiran V. Shanbhag</h2>
-      <p>
-        Dr. Kiran V. Shanbhag is the Head of the Department of Electronics and Communication Engineering at Anjuman Institute of Technology and Management, Bhatkal. With nearly two decades of experience, Dr. Shanbhag is recognized for his dedication to academic excellence and his impactful contributions to research. His leadership in the department is marked by a commitment to fostering an environment where students are encouraged to explore and innovate in the fields of electronics and communication.
-      </p>
-      <p>
-        Dr. Shanbhag’s research interests lie in wireless communication, Multiple Access for 5G, and IoT. Over his 19-year career, he has published extensively in prestigious academic journals and presented his work at numerous conferences. As a passionate educator and researcher, Dr. Shanbhag continues to inspire students and faculty alike, driving advancements in technology and contributing to the academic growth of the department.
+        His leadership in the department is marked by a commitment to fostering an environment where students are encouraged to explore and innovate in the fields of electronics and communication.
       </p>
       <div className="contact_info">
         <p><strong>Email:</strong> shanbhagkiranv@anjuman.edu.in</p>
@@ -820,45 +733,90 @@ const closeModal = () => {
 
 
 
-          {/* HOD Card 4 */}
-          <div className="hod_card">
-            <div className="hod_img">
-              <img className="img" src="/images/WhatsApp Image 2024-11-03 at 15,59,13_7f61168e_enhanced_enhanced.jpg" alt="HOD 4" />
-            </div>
-            <h3 className="hod_name">Dr. Kiran V. 
-             Shanbhag</h3>
-            <p className="hod_role">Associate Editor</p>
-            <p className="hod_description">
-            Leading the Department of Electronics and Communication Engineering
-            </p>      
-            <button className="read_more_button" onClick={openHODModal5}>Read More</button>
-          </div>
+{/* daniel sir */}
+{/* HOD Card 6 */}
+<div className="hod_card">
+  <div className="hod_img">
+    <img className="img" src="/images/WhatsApp Image 2024-11-03 at 22,22,53_b1e15577_enhanced.jpg" alt="HOD 6" />
+  </div>
+  <h3 className="hod_name">Dr. Daniel FS Jayapalan</h3>
+  <p className="hod_role">Associate Editor</p>
+  <p className="hod_description">
+    Professor, Department of Computer Science and Engineering
+  </p>      
+  <button className="read_more_button" onClick={openHODModal6}>Read More</button>
+</div>
 
-          {/* Modal for HOD 4 */}
-          {isHODModal5Open && (
+{/* Modal for HOD 6 */}
+{isHODModal6Open && (
   <div className="modal_overlay">
     <div className="modal_content">
-      <h2>About Dr. Kiran V. Shanbhag</h2>
+      <h2>About Dr. Daniel FS Jayapalan</h2>
       <p>
-        Dr. Kiran V. Shanbhag is the Head of the Department of Electronics and Communication Engineering at Anjuman Institute of Technology and Management, Bhatkal. With nearly two decades of experience, Dr. Shanbhag is recognized for his dedication to academic excellence and his impactful contributions to research. His leadership in the department is marked by a commitment to fostering an environment where students are encouraged to explore and innovate in the fields of electronics and communication.
+        Dr. Daniel FS Jayapalan is a Professor in the Department of Computer Science and Engineering at Anjuman Institute of Technology and Management, Bhatkal. With 18 years of experience, he is known for his dedication to advancing the field of computer science and mentoring the next generation of engineers.
       </p>
       <p>
-        Dr. Shanbhag’s research interests lie in wireless communication, Multiple Access for 5G, and IoT. Over his 19-year career, he has published extensively in prestigious academic journals and presented his work at numerous conferences. As a passionate educator and researcher, Dr. Shanbhag continues to inspire students and faculty alike, driving advancements in technology and contributing to the academic growth of the department.
+        Dr. Jayapalan's areas of expertise include Artificial Intelligence, Cloud Computing, Software Engineering, and Operating Systems. He has published numerous research papers in reputed journals and continues to contribute to cutting-edge developments in his field.
       </p>
       <div className="contact_info">
-        <p><strong>Email:</strong> shanbhagkiranv@anjuman.edu.in</p>
-        <p><strong>Phone:</strong> 8050567634</p>
+        <p><strong>Email:</strong> danielfsj@anjuman.edu.in</p>
+        <p><strong>Phone:</strong> 8148164343</p>
         <p><strong>Qualification:</strong> PhD</p>
-        <p><strong>Department:</strong> Electronics and Communication Engineering</p>
-        <p><strong>Designation:</strong> Head of Department, Assistant Professor</p>
-        <p><strong>Experience:</strong> 19 Years</p>
+        <p><strong>Department:</strong> Computer Science and Engineering</p>
+        <p><strong>Designation:</strong> Professor</p>
+        <p><strong>Experience:</strong> 18 Years</p>
         <p><strong>College:</strong> Anjuman Institute of Technology and Management, Bhatkal</p>
         <p><strong>University:</strong> Visvesvaraya Technological University</p>
-        <p><strong>Area of Interest:</strong> Wireless Communication, Multiple Access for 5G, IoT</p>
-        <p><strong>Orchid ID:</strong> 0000-0001-9269-7703</p>
-        <p><strong>Scopus ID:</strong> 36810255700</p>
+        <p><strong>Area of Interest:</strong> AI, Cloud Computing, Software Engineering, Operating Systems</p>
+        <p><strong>Orchid ID:</strong> 0000-0002-4817-5067</p>
+        {/* <p><strong>Scopus ID:</strong> [Scopus ID Placeholder]</p> */}
       </div>
-      <button className="close_modal_button" onClick={closeHODModal5}>Close</button>
+      <button className="close_modal_button" onClick={closeHODModal6}>Close</button>
+    </div>
+  </div>
+)}
+
+
+
+
+
+<div className="hod_card">
+  <div className="hod_img">
+    <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="HOD 6" />
+  </div>
+  <h3 className="hod_name">Dr. Daniel FS Jayapalan</h3>
+  <p className="hod_role">Associate Editor</p>
+  <p className="hod_description">
+    Professor, Department of Computer Science and Engineering
+  </p>      
+  <button className="read_more_button" onClick={openHODModal6}>Read More</button>
+</div>
+
+{/* Modal for HOD 6 */}
+{isHODModal6Open && (
+  <div className="modal_overlay">
+    <div className="modal_content">
+      <h2>About Dr. Daniel FS Jayapalan</h2>
+      <p>
+        Dr. Daniel FS Jayapalan is a Professor in the Department of Computer Science and Engineering at Anjuman Institute of Technology and Management, Bhatkal. With 18 years of experience, he is known for his dedication to advancing the field of computer science and mentoring the next generation of engineers.
+      </p>
+      <p>
+        Dr. Jayapalan's areas of expertise include Artificial Intelligence, Cloud Computing, Software Engineering, and Operating Systems. He has published numerous research papers in reputed journals and continues to contribute to cutting-edge developments in his field.
+      </p>
+      <div className="contact_info">
+        <p><strong>Email:</strong> danielfsj@anjuman.edu.in</p>
+        <p><strong>Phone:</strong> 8148164343</p>
+        <p><strong>Qualification:</strong> PhD</p>
+        <p><strong>Department:</strong> Computer Science and Engineering</p>
+        <p><strong>Designation:</strong> Professor</p>
+        <p><strong>Experience:</strong> 18 Years</p>
+        <p><strong>College:</strong> Anjuman Institute of Technology and Management, Bhatkal</p>
+        <p><strong>University:</strong> Visvesvaraya Technological University</p>
+        <p><strong>Area of Interest:</strong> AI, Cloud Computing, Software Engineering, Operating Systems</p>
+        <p><strong>Orchid ID:</strong> 0000-0002-4817-5067</p>
+        {/* <p><strong>Scopus ID:</strong> [Scopus ID Placeholder]</p> */}
+      </div>
+      <button className="close_modal_button" onClick={closeHODModal6}>Close</button>
     </div>
   </div>
 )}
@@ -868,6 +826,52 @@ const closeModal = () => {
 
 
 
+
+
+
+
+<div className="hod_card">
+  <div className="hod_img">
+    <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="HOD 6" />
+  </div>
+  <h3 className="hod_name">Dr. Daniel FS Jayapalan</h3>
+  <p className="hod_role">Associate Editor</p>
+  <p className="hod_description">
+    Professor, Department of Computer Science and Engineering
+  </p>      
+  <button className="read_more_button" onClick={openHODModal6}>Read More</button>
+</div>
+
+{/* Modal for HOD 6 */}
+{isHODModal6Open && (
+  <div className="modal_overlay">
+    <div className="modal_content">
+      <h2>About Dr. Daniel FS Jayapalan</h2>
+      <p>
+        Dr. Daniel FS Jayapalan is a Professor in the Department of Computer Science and Engineering at Anjuman Institute of Technology and Management, Bhatkal. With 18 years of experience, he is known for his dedication to advancing the field of computer science and mentoring the next generation of engineers.
+      </p>
+      <p>
+        Dr. Jayapalan's areas of expertise include Artificial Intelligence, Cloud Computing, Software Engineering, and Operating Systems. He has published numerous research papers in reputed journals and continues to contribute to cutting-edge developments in his field.
+      </p>
+      <div className="contact_info">
+        <p><strong>Email:</strong> danielfsj@anjuman.edu.in</p>
+        <p><strong>Phone:</strong> 8148164343</p>
+        <p><strong>Qualification:</strong> PhD</p>
+        <p><strong>Department:</strong> Computer Science and Engineering</p>
+        <p><strong>Designation:</strong> Professor</p>
+        <p><strong>Experience:</strong> 18 Years</p>
+        <p><strong>College:</strong> Anjuman Institute of Technology and Management, Bhatkal</p>
+        <p><strong>University:</strong> Visvesvaraya Technological University</p>
+        <p><strong>Area of Interest:</strong> AI, Cloud Computing, Software Engineering, Operating Systems</p>
+        <p><strong>Orchid ID:</strong> 0000-0002-4817-5067</p>
+        {/* <p><strong>Scopus ID:</strong> [Scopus ID Placeholder]</p> */}
+      </div>
+      <button className="close_modal_button" onClick={closeHODModal6}>Close</button>
+    </div>
+  </div>
+)}
+
+  
 
 
 
@@ -897,7 +901,7 @@ const closeModal = () => {
  {/* Editorial Board Section */}
 {/* EditoriaBoard Section */}
 <div className="editorial_board_section">
-    <h2 className="section_title" style={{ color: "#0072b1" }}>Editorial Board Members:</h2>
+    <h2 className="section_title" style={{ color: "#0072b1" }}>Editorial Board Members</h2>
     <div className="editorial_board_row">
         {/* Board Member Card 1 */}
         <div className="hod_card">
@@ -1040,7 +1044,7 @@ const closeModal = () => {
 {/* card 5 */}
 <div className="hod_card">
             <div className="hod_img">
-                <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="Board Member 2" />
+                <img className="img" src="/images/WhatsApp Image 2024-11-12 at 16,44,20_db6eda36_enhanced.jpg" alt="Board Member 2" />
             </div>
             <h3 className="hod_name">Dr. Devaseelan S</h3>
             <p className="hod_role">Editorial Board Member</p>
@@ -1061,6 +1065,8 @@ const closeModal = () => {
                 <p><strong>Experience:</strong> 8+ Years</p>
                 <p><strong>College:</strong> Institute of Allied Health Science</p>
                 <p><strong>University:</strong> Srinivas University</p>
+                <p><strong>Publisher:</strong> Anjuman Institute of technology and management</p>
+
                 <p><strong>Area of Interest:</strong> Cyber Forensics, Forensic Science, Criminology, and Security Science</p>
             </div>
             <button className="close_modal_button" onClick={closeModal}>Close</button>
@@ -1068,16 +1074,19 @@ const closeModal = () => {
     </div>
 )} 
 {/* card 6 */}
+
+{/* HOD Card for Dr. Manoj Jayabalan */}
 <div className="hod_card">
-            <div className="hod_img">
-                <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="Board Member 2" />
-            </div>
-            <h3 className="hod_name">Dr. Manoj Jayabalan</h3>
-            <p className="hod_role">Editorial Board Member</p>
-            <p className="hod_description">Specialist in Data Mining and Healthcare Informatics.</p>
-            <button className="read_more_button" onClick={() => openModal(7)}>Read More</button>
-        </div>
-        {isModalOpen === 7 && (
+    <div className="hod_img">
+        <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="Board Member 3" />
+    </div>
+    <h3 className="hod_name">Dr. Manoj Jayabalan</h3>
+    <p className="hod_role">Editorial Board Member</p>
+    <p className="hod_description">Specialist in Data Mining and Healthcare Informatics.</p>
+    <button className="read_more_button" onClick={() => openModal(7)}>Read More</button>
+</div>
+
+{isModalOpen === 7 && (
     <div className="modal_overlay">
         <div className="modal_content">
             <h2>About Dr. Manoj Jayabalan</h2>
@@ -1087,82 +1096,57 @@ const closeModal = () => {
                 <p><strong>Phone:</strong> +447398453707</p>
                 <p><strong>Qualification:</strong> PhD</p>
                 <p><strong>Department:</strong> School of Computer Science and Mathematics</p>
-                <p><strong>Designation:</strong> Academics</p>
+                <p><strong>Designation:</strong> Academic</p>
                 <p><strong>Experience:</strong> 12+ Years</p>
                 <p><strong>University:</strong> Liverpool John Moores University, UK</p>
                 <p><strong>Area of Interest:</strong> Data Mining, Machine Learning, Software Engineering, Healthcare Informatics, Information System Security</p>
-                <p><strong>Orchid ID:</strong> <a href="https://orcid.org/0000-0002-1599-965X" target="_blank">https://orcid.org/0000-0002-1599-965X</a></p>
-                <p><strong>Scopus ID:</strong> <a href="https://www.scopus.com/authid/detail.uri?authorId=57189237693" target="_blank">https://www.scopus.com/authid/detail.uri?authorId=57189237693</a></p>
+                <p><strong>Orchid ID:</strong> <a href="https://orcid.org/0000-0002-1599-965X" target="_blank">0000-0002-1599-965X</a></p>
+                <p><strong>Scopus ID:</strong> <a href="https://www.scopus.com/authid/detail.uri?authorId=57189237693" target="_blank">57189237693</a></p>
             </div>
             <button className="close_modal_button" onClick={closeModal}>Close</button>
         </div>
     </div>
-)} 
+)}
 
 
-{/* card7 */}
+{/* RENISHA MAM */}
 <div className="hod_card">
-            <div className="hod_img">
-                <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="Board Member 2" />
-            </div>
-            <h3 className="hod_name">Dr. Manoj Jayabalan</h3>
-            <p className="hod_role">Editorial Board Member</p>
-            <p className="hod_description">Specialist in Data Mining and Healthcare Informatics.</p>
-            <button className="read_more_button" onClick={() => openModal(7)}>Read More</button>
-        </div>
-        {isModalOpen === 7 && (
+    <div className="hod_img">
+        <img className="img" src="/images/WhatsApp Image 2024-11-03 at 22.19.23_9cd9d65d.jpg" alt="Renisha P.S" />
+    </div>
+    <h3 className="hod_name">Dr. Renisha P.S</h3>
+    <p className="hod_role">Editorial Board Member</p>
+    <p className="hod_description">Assistant Professor and Research Scholar at NITK.</p>
+    <button className="read_more_button" onClick={() => openModal(8)}>Read More</button>
+</div>
+
+{isModalOpen === 8 && (
     <div className="modal_overlay">
         <div className="modal_content">
-            <h2>About Dr. Manoj Jayabalan</h2>
-            <p>Dr. Manoj Jayabalan is an academic at the School of Computer Science and Mathematics, Liverpool John Moores University, UK. With over 12 years of experience, his expertise spans data mining, machine learning, software engineering, healthcare informatics, and information system security. His contributions to these fields make him a respected figure in academic and research communities.</p>
+            <h2>About Dr. Renisha P.S</h2>
+            <p>
+                Dr. Renisha P.S is an Assistant Professor at Anjuman Institute of Technology and Management and a Research Scholar at NITK. 
+                She has extensive experience in academia and is dedicated to advancing knowledge in her areas of expertise.
+            </p>
             <div className="contact_info">
-                <p><strong>Email:</strong> m.jayabalan@ljmu.ac.uk</p>
-                <p><strong>Phone:</strong> +447398453707</p>
+                <p><strong>Email:</strong> [Add Email]</p>
+                <p><strong>Phone:</strong> [Add Phone Number]</p>
                 <p><strong>Qualification:</strong> PhD</p>
-                <p><strong>Department:</strong> School of Computer Science and Mathematics</p>
-                <p><strong>Designation:</strong> Academics</p>
-                <p><strong>Experience:</strong> 12+ Years</p>
-                <p><strong>University:</strong> Liverpool John Moores University, UK</p>
-                <p><strong>Area of Interest:</strong> Data Mining, Machine Learning, Software Engineering, Healthcare Informatics, Information System Security</p>
-                <p><strong>Orchid ID:</strong> <a href="https://orcid.org/0000-0002-1599-965X" target="_blank">https://orcid.org/0000-0002-1599-965X</a></p>
-                <p><strong>Scopus ID:</strong> <a href="https://www.scopus.com/authid/detail.uri?authorId=57189237693" target="_blank">https://www.scopus.com/authid/detail.uri?authorId=57189237693</a></p>
+                <p><strong>Department:</strong> Computer Science and Engineering</p>
+                <p><strong>Designation:</strong> Assistant Professor</p>
+                <p><strong>Experience:</strong> [Add Experience]</p>
+                <p><strong>College:</strong> AITM, Bhatkal</p>
+                <p><strong>University:</strong> NITK</p>
+                <p><strong>Area of Interest:</strong> [Add Areas of Interest]</p>
             </div>
             <button className="close_modal_button" onClick={closeModal}>Close</button>
         </div>
     </div>
-)} 
+)}
 
-{/* card 8 */}
-<div className="hod_card">
-            <div className="hod_img">
-                <img className="img" src="/images/Anwar_sathik_sir.jpeg" alt="Board Member 2" />
-            </div>
-            <h3 className="hod_name">Dr. Manoj Jayabalan</h3>
-            <p className="hod_role">Editorial Board Member</p>
-            <p className="hod_description">Specialist in Data Mining and Healthcare Informatics.</p>
-            <button className="read_more_button" onClick={() => openModal(7)}>Read More</button>
-        </div>
-        {isModalOpen === 7 && (
-    <div className="modal_overlay">
-        <div className="modal_content">
-            <h2>About Dr. Manoj Jayabalan</h2>
-            <p>Dr. Manoj Jayabalan is an academic at the School of Computer Science and Mathematics, Liverpool John Moores University, UK. With over 12 years of experience, his expertise spans data mining, machine learning, software engineering, healthcare informatics, and information system security. His contributions to these fields make him a respected figure in academic and research communities.</p>
-            <div className="contact_info">
-                <p><strong>Email:</strong> m.jayabalan@ljmu.ac.uk</p>
-                <p><strong>Phone:</strong> +447398453707</p>
-                <p><strong>Qualification:</strong> PhD</p>
-                <p><strong>Department:</strong> School of Computer Science and Mathematics</p>
-                <p><strong>Designation:</strong> Academics</p>
-                <p><strong>Experience:</strong> 12+ Years</p>
-                <p><strong>University:</strong> Liverpool John Moores University, UK</p>
-                <p><strong>Area of Interest:</strong> Data Mining, Machine Learning, Software Engineering, Healthcare Informatics, Information System Security</p>
-                <p><strong>Orchid ID:</strong> <a href="https://orcid.org/0000-0002-1599-965X" target="_blank">https://orcid.org/0000-0002-1599-965X</a></p>
-                <p><strong>Scopus ID:</strong> <a href="https://www.scopus.com/authid/detail.uri?authorId=57189237693" target="_blank">https://www.scopus.com/authid/detail.uri?authorId=57189237693</a></p>
-            </div>
-            <button className="close_modal_button" onClick={closeModal}>Close</button>
-        </div>
-    </div>
-)} 
+
+
+
 
 
 </div>
